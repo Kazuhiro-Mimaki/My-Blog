@@ -10,8 +10,8 @@ categories:
 -
 author:
 authorEmoji: 🤖
-authorImage: "/images/whoami/mimatin.png"
-authorImageUrl: "/images/whoami/mimatin.png"
+authorImage: "/images/whoami/avatar.jpg"
+authorImageUrl: ""
 authorDesc:
 socialOptions:
   email: ""
