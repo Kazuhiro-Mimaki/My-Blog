@@ -1,9 +1,9 @@
-+++
-title = "About"
-description = "Kazuhiro Mimaki's profile"
-type = "about"
-date = "2020-11-13"
-+++
+---
+title: "About"
+description: "Kazuhiro Mimaki's profile"
+type: "about"
+date: "2020-11-13"
+---
 
 # - Profile
 
