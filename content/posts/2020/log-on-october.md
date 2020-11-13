@@ -1,7 +1,7 @@
 ---
 title: "コロナ自粛期間の10月にやったこと"
 description: "Log on October"
-date: "2020-10-30"
+date: 2020-10-30
 author: "Kazuhiro Mimaki"
 categories:
  - "experience"

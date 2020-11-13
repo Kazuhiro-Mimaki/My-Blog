@@ -1,9 +1,9 @@
-+++
-title = "コロナ自粛期間の7月にやったこと"
-description = "log on July"
-date = "2020-08-08"
-aliases = ["/posts/2020/log-on-july/"]
-+++
+---
+title: "コロナ自粛期間の7月にやったこと"
+description: "log on July"
+date: 2020-08-08
+aliases: ["/posts/2020/log-on-july/"]
+---
 
 7月にやったことのログ。
 <!--more-->

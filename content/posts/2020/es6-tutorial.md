@@ -1,9 +1,9 @@
-+++
-title = "ES6(JavaScript)の基礎を押さえる"
-description = "Foundation of ES6"
-date = "2020-03-29"
-aliases = ["/posts/2020/es6-tutorial/"]
-+++
+---
+title: "ES6(JavaScript)の基礎を押さえる"
+description: "Foundation of ES6"
+date: 2020-03-29
+aliases: ["/posts/2020/es6-tutorial/"]
+---
 
 JavaScriptの新記法ES6の基礎を少し学んだので、そのアウトプットです。
 <!--more-->

@@ -1,9 +1,9 @@
-+++
-title = "モジュール・パッケージ・ライブラリの違いがよく分からないので整理してみた"
-description = "Difference among module/package/library"
-date = "2020-06-05"
-aliases = ["/posts/2020/module-package-library/"]
-+++
+---
+title: "モジュール・パッケージ・ライブラリの違いがよく分からないので整理してみた"
+description: "Difference among module/package/library"
+date: 2020-06-05
+aliases: ["/posts/2020/module-package-library/"]
+---
 
 モジュール・パッケージ・ライブラリの区別難しい。。。
 <!--more-->

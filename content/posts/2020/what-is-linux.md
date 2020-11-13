@@ -1,9 +1,9 @@
-+++
-title = "Linuxとは"
-description = "What is linux"
-date = "2020-03-30"
-aliases = ["/post/2020/what-is-linux/"]
-+++
+---
+title: "Linuxとは"
+description: "What is linux"
+date: 2020-03-30
+aliases: ["/post/2020/what-is-linux/"]
+---
 
 Linuxとはそもそも何なのかについて調べました。
 <!--more-->

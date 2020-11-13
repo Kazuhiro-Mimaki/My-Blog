@@ -1,7 +1,7 @@
 ---
 title: "[Rails] いいね数順でランキング"
 description: "Ranking by like counts using rails"
-date: "2020-08-20"
+date: 2020-08-20
 author: "Kazuhiro Mimaki"
 tags:
  - "Rails"

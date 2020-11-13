@@ -1,9 +1,9 @@
-+++
-title = "Web APIの概念を押さえる"
-description = "What is web API"
-date = "2020-04-11"
-aliases = ["/posts/2020/what-is-web-api/"]
-+++
+---
+title: "Web APIの概念を押さえる"
+description: "What is web API"
+date: 2020-04-11
+aliases: ["/posts/2020/what-is-web-api/"]
+---
 
 Web API is 何？
 <!--more-->

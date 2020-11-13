@@ -1,9 +1,9 @@
-+++
-title = "聞いたことはあるがよくわからないJavaScript周辺のあれこれ"
-description = "Keywords of JavaScript"
-date = "2020-08-09"
-aliases = ["/posts/2020/keywords-js/"]
-+++
+---
+title: "聞いたことはあるがよくわからないJavaScript周辺のあれこれ"
+description: "Keywords of JavaScript"
+date: 2020-08-09
+aliases: ["/posts/2020/keywords-js/"]
+---
 
 JSでよくお目にかかるキーワードをまとめてみました。
 今後も追加していくと思います。

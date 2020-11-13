@@ -1,9 +1,9 @@
-+++
-title = "大学生がVue.jsを使って3日間でポートフォリオを作成してみた"
-description = "I developed my portfolio site"
-date = "2020-06-28"
-aliases = ["/posts/2020/vue-portfolio/"]
-+++
+---
+title: "大学生がVue.jsを使って3日間でポートフォリオを作成してみた"
+description: "I developed my portfolio site"
+date: 2020-06-28
+aliases: ["/posts/2020/vue-portfolio/"]
+---
 
 Vue.jsでポートフォリオを作ったのでまとめました。
 <!--more-->
