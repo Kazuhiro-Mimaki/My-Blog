@@ -3,7 +3,6 @@ title = "Dockerと仮想マシンの違い"
 description = "Difference between docker and vm"
 date = "2020-03-28"
 aliases = ["/posts/2020/difference-docker-vm/"]
-author = "Hugo Authors"
 +++
 
 Dockerと仮想マシンの違いについてまとめてみました。

@@ -3,7 +3,6 @@ title = "モジュール・パッケージ・ライブラリの違いがよく�
 description = "Difference among module/package/library"
 date = "2020-06-05"
 aliases = ["/posts/2020/module-package-library/"]
-author = "Hugo Authors"
 +++
 
 モジュール・パッケージ・ライブラリの区別難しい。。。

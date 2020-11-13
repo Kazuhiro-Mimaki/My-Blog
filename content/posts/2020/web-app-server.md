@@ -3,7 +3,6 @@ title = "webサーバとアプリケーションサーバって何が違うん�
 description = "Difference between web server and application server"
 date = "2020-06-20"
 aliases = ["/posts/2020/web-app-server/"]
-author = "Hugo Authors"
 +++
 
 webサーバとアプリケーションサーバの違いについてのまとめです。

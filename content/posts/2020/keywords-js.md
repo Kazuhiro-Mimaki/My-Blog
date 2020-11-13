@@ -3,7 +3,6 @@ title = "聞いたことはあるがよくわからないJavaScript周辺のあ�
 description = "Keywords of JavaScript"
 date = "2020-08-09"
 aliases = ["/posts/2020/keywords-js/"]
-author = "Hugo Authors"
 +++
 
 JSでよくお目にかかるキーワードをまとめてみました。

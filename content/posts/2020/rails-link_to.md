@@ -3,7 +3,6 @@ title = "[Rails] link_toのリンク先を別タブで表示させたい"
 description = "Open the page on another tab by using rails"
 date = "2020-07-11"
 aliases = ["/posts/2020/rails-link_to/"]
-author = "Hugo Authors"
 +++
 
 railsのlink_toでの遷移先を別タブで表示させたい。

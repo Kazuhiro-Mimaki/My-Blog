@@ -8,7 +8,7 @@ series:
 -
 categories:
 -
-author:
+author: Kazuhiro Mimaki
 authorEmoji: 🤖
 authorImage: "/images/whoami/avatar.jpg"
 authorImageUrl: ""

@@ -3,7 +3,6 @@ title = "[Rails] webpackerでCSSを読み込みたい"
 description = "Load CSS by webpacker"
 date = "2020-08-24"
 aliases = ["/posts/2020/webpacker-css/"]
-author = "Hugo Authors"
 +++
 
 railsのver.6以上を使うなら `asset pipeline` ではなく `webpacker` でCSSを読み込みたいと思い、実装したのでメモです。

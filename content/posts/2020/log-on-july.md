@@ -3,7 +3,6 @@ title = "コロナ自粛期間の7月にやったこと"
 description = "log on July"
 date = "2020-08-08"
 aliases = ["/posts/2020/log-on-july/"]
-author = "Hugo Authors"
 +++
 
 7月にやったことのログ。

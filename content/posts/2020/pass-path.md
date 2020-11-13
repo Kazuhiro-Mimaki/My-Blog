@@ -3,7 +3,6 @@ title = "【PATHを通す】を理解する"
 description = "Understand the meaning of「PATHを通す」"
 date = "2020-04-25"
 aliases = ["/posts/2020/pass-path/"]
-author = "Hugo Authors"
 +++
 
 「PATHを通す」ってよく聞くけど、意味がよく分からなかったので勉強しました。

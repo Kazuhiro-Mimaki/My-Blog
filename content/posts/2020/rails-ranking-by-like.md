@@ -3,7 +3,6 @@ title = "[Rails] いいね数順でランキング"
 description = "Ranking by like counts using rails"
 date = "2020-08-20"
 aliases = ["/posts/2020/rails-ranking-by-like/"]
-author = "Hugo Authors"
 +++
 
 
