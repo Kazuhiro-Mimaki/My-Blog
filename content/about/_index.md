@@ -5,25 +5,25 @@ type = "about"
 date = "2020-11-13"
 +++
 
-# 📓 Profile
+# - Profile
 
 My name is Kazuhiro Mimaki.
 I'm a student at Kyoto University, also web developer.
 
 ---
-# 📙 Personal links
+# - Personal links
 GitHub：[https://github.com/Kazuhiro-Mimaki](https://github.com/Kazuhiro-Mimaki)
 Twitter：[https://twitter.com/#](https://twitter.com/#)
 
 ---
-# 📗 Skills
+# - Skills
 
-### - Ruby / Ruby on Rails
+### Ruby / Ruby on Rails
 
 1番最初に触った言語, フレームワークです。
 個人でのアプリケーション開発やiOSのサーバーサイドで使用するAPI開発の経験があります。
 
-### - JavaScript / Vue.js
+### JavaScript / Vue.js
 
 Firestore, Cloud storageを用いたアプリの開発やLPの制作経験があります。
 基本的にTypeScriptを用いて書いてます。
