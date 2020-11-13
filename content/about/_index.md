@@ -1,8 +1,8 @@
 ---
-title: "About"
+title: "About section"
 description: "Kazuhiro Mimaki's profile"
 type: "about"
-date: "2020-11-13"
+date: 2020-11-13
 ---
 
 # - Profile
