@@ -6,13 +6,11 @@
   xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
   xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>Series on Hugo Zzo Theme</title>
+    <title>Series on 完全に理解したい</title>
     <link>http://example.org/series/</link>
-    <description>Recent content in Series on Hugo Zzo Theme</description>
+    <description>Recent content in Series on 完全に理解したい</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <managingEditor>godblessu0405@gmail.com (Kazuhiro Mimaki)</managingEditor>
-    <webMaster>godblessu0405@gmail.com (Kazuhiro Mimaki)</webMaster>
+    <language>ja</language>
     <copyright>©{year}, All Rights Reserved</copyright>
     
         <atom:link href="http://example.org/series/index.xml" rel="self" type="application/rss+xml" />

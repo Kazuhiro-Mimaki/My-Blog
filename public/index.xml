@@ -6,15 +6,13 @@
   xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
   xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>Hugo Zzo Theme</title>
+    <title>完全に理解したい</title>
     <link>http://example.org/</link>
-    <description>Recent content on Hugo Zzo Theme</description>
+    <description>Recent content on 完全に理解したい</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <managingEditor>godblessu0405@gmail.com (Kazuhiro Mimaki)</managingEditor>
-    <webMaster>godblessu0405@gmail.com (Kazuhiro Mimaki)</webMaster>
+    <language>ja</language>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Tue, 26 Mar 2019 08:47:11 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
@@ -44,10 +42,372 @@
 
       
       <item>
+        <title>コロナ自粛期間の10月にやったこと</title>
+        <link>http://example.org/posts/2020/log-on-october/</link>
+        <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Fri, 30 Oct 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/log-on-october/</guid>
+        <description>&lt;p&gt;10月にやったことのログ。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>コロナ自粛期間の9月にやったこと</title>
+        <link>http://example.org/posts/2020/log-on-september/</link>
+        <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Wed, 30 Sep 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/log-on-september/</guid>
+        <description>&lt;p&gt;9月にやったことのログ。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>コロナ自粛期間の8月にやったこと</title>
+        <link>http://example.org/posts/2020/log-on-august/</link>
+        <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Mon, 31 Aug 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/log-on-august/</guid>
+        <description>&lt;p&gt;8月にやったことのログ。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>[Rails] webpackerでCSSを読み込みたい</title>
+        <link>http://example.org/posts/2020/webpacker-css/</link>
+        <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Mon, 24 Aug 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/webpacker-css/</guid>
+        <description>&lt;p&gt;railsのver.6以上を使うなら &lt;code&gt;asset pipeline&lt;/code&gt; ではなく &lt;code&gt;webpacker&lt;/code&gt; でCSSを読み込みたいと思い、実装したのでメモです。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>[Rails] いいね数順でランキング</title>
+        <link>http://example.org/posts/2020/rails-ranking-by-like/</link>
+        <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Thu, 20 Aug 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/rails-ranking-by-like/</guid>
+        <description>&lt;p&gt;今回はいいね数の多い順(いいね数が0も含む)に投稿を表示させるランキング機能の実装方法についてです。&lt;br /&gt;
+ランキング機能の実装方法は他でもあったのですが、いいねが0の投稿も表示させている記事が見当たらなかったので実装してみました。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>聞いたことはあるがよくわからないJavaScript周辺のあれこれ</title>
+        <link>http://example.org/posts/2020/keywords-js/</link>
+        <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Sun, 09 Aug 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/keywords-js/</guid>
+        <description>&lt;p&gt;JSでよくお目にかかるキーワードをまとめてみました。&lt;br /&gt;
+今後も追加していくと思います。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>コロナ自粛期間の7月にやったこと</title>
+        <link>http://example.org/posts/2020/log-on-july/</link>
+        <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Sat, 08 Aug 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/log-on-july/</guid>
+        <description>&lt;p&gt;7月にやったことのログ。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>[Rails] link_toのリンク先を別タブで表示させたい</title>
+        <link>http://example.org/posts/2020/rails-link_to/</link>
+        <pubDate>Sat, 11 Jul 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Sat, 11 Jul 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/rails-link_to/</guid>
+        <description>&lt;p&gt;railsのlink_toでの遷移先を別タブで表示させたい。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>コロナ自粛期間の6月にやったこと</title>
+        <link>http://example.org/posts/2020/log-on-june/</link>
+        <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Tue, 30 Jun 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/log-on-june/</guid>
+        <description>&lt;p&gt;6月にやったことのログ。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>大学生がVue.jsを使って3日間でポートフォリオを作成してみた</title>
+        <link>http://example.org/posts/2020/vue-portfolio/</link>
+        <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Sun, 28 Jun 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/vue-portfolio/</guid>
+        <description>&lt;p&gt;Vue.jsでポートフォリオを作ったのでまとめました。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>webサーバとアプリケーションサーバって何が違うんだろう？</title>
+        <link>http://example.org/posts/2020/web-app-server/</link>
+        <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Sat, 20 Jun 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/web-app-server/</guid>
+        <description>&lt;p&gt;webサーバとアプリケーションサーバの違いについてのまとめです。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>モジュール・パッケージ・ライブラリの違いがよく分からないので整理してみた</title>
+        <link>http://example.org/posts/2020/module-package-library/</link>
+        <pubDate>Fri, 05 Jun 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Fri, 05 Jun 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/module-package-library/</guid>
+        <description>&lt;p&gt;モジュール・パッケージ・ライブラリの区別難しい。。。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>コロナ自粛期間の5月にやったこと</title>
+        <link>http://example.org/posts/2020/log-on-may/</link>
+        <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Sun, 31 May 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/log-on-may/</guid>
+        <description>&lt;p&gt;5月にやったことのログ。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>コロナ自粛期間の4月にやったこと</title>
+        <link>http://example.org/posts/2020/log-on-april/</link>
+        <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Fri, 08 May 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/log-on-april/</guid>
+        <description>&lt;p&gt;4月にやったことのログ。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>【PATHを通す】を理解する</title>
+        <link>http://example.org/posts/2020/pass-path/</link>
+        <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Sat, 25 Apr 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/pass-path/</guid>
+        <description>&lt;p&gt;「PATHを通す」ってよく聞くけど、意味がよく分からなかったので勉強しました。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Web APIの概念を押さえる</title>
+        <link>http://example.org/posts/2020/what-is-web-api/</link>
+        <pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Sat, 11 Apr 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/what-is-web-api/</guid>
+        <description>&lt;p&gt;Web API is 何？&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Linuxとは</title>
+        <link>http://example.org/posts/2020/what-is-linux/</link>
+        <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Mon, 30 Mar 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/what-is-linux/</guid>
+        <description>&lt;p&gt;Linuxとはそもそも何なのかについて調べました。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>ES6(JavaScript)の基礎を押さえる</title>
+        <link>http://example.org/posts/2020/es6-tutorial/</link>
+        <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Sun, 29 Mar 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/es6-tutorial/</guid>
+        <description>&lt;p&gt;JavaScriptの新記法ES6の基礎を少し学んだので、そのアウトプットです。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Dockerと仮想マシンの違い</title>
+        <link>http://example.org/posts/2020/difference-docker-vm/</link>
+        <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Sat, 28 Mar 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/difference-docker-vm/</guid>
+        <description>&lt;p&gt;Dockerと仮想マシンの違いについてまとめてみました。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>SQLの４大命令について</title>
+        <link>http://example.org/posts/2020/sql-order/</link>
+        <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
+        
+        <atom:modified>Fri, 27 Mar 2020 00:00:00 +0000</atom:modified>
+        <guid>http://example.org/posts/2020/sql-order/</guid>
+        <description>&lt;p&gt;SQLとはデータベース言語であり、データベースを管理するソフトウェアを操作・制御することが目的です。&lt;/p&gt;</description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
         <title>My First Post</title>
         <link>http://example.org/posts/myfirstpost/</link>
         <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
-        <author>godblessu0405@gmail.com (Kazuhiro Mimaki)</author>
+        
         <atom:modified>Tue, 26 Mar 2019 08:47:11 +0100</atom:modified>
         <guid>http://example.org/posts/myfirstpost/</guid>
         <description>こんにちは、世界。</description>
