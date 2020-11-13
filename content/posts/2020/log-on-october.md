@@ -1,5 +1,5 @@
 +++
-title = "コロナ自粛期間の10月にやったこと"
+title = "自粛期間の10月にやったこと"
 description = "log on October"
 date = "2020-10-30"
 aliases = ["/posts/2020/log-on-october/"]
