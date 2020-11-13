@@ -5,65 +5,65 @@ on:
     branches:
       - master # 任意のブランチを設定
 
-# jobs:
-#   build:
-#     name: deyloy to firebae hosting
-#     runs-on: ubuntu-latest
-
-#     steps:
-#     - uses: actions/checkout@v1
-#       with:
-#         submodules: true
-#     - name: Setup hugo
-#       uses: peaceiris/actions-hugo@v2
-#       with:
-#         hugo-version: '0.63.2'
-
-#     - name: Build
-#       run: hugo
-
-#     - name: Deploy
-#       uses: w9jds/firebase-action@master
-#       with:
-#         args: deploy --only hosting
-#       env:
-#         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-
 jobs:
   build:
-    name: build hugo projects
+    name: deyloy to firebae hosting
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v1
-        with:
-          submodules: true
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: 'latest'
-      - name: build hugo pages
-        run: hugo
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: public
-          path: public
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      - name: Download Artifact
-        uses: actions/download-artifact@master
-        with:
-          name: public
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_ID: my-newblog
+    - uses: actions/checkout@v1
+      with:
+        submodules: true
+    - name: Setup hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: 'latest'
+
+    - name: Build
+      run: hugo
+
+    - name: Deploy
+      uses: w9jds/firebase-action@master
+      with:
+        args: deploy --only hosting
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+# jobs:
+#   build:
+#     name: build hugo projects
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repo
+#         uses: actions/checkout@v1
+#         with:
+#           submodules: true
+#       - name: Setup Hugo
+#         uses: peaceiris/actions-hugo@v2
+#         with:
+#           hugo-version: 'latest'
+#       - name: build hugo pages
+#         run: hugo
+#       - name: Archive Production Artifact
+#         uses: actions/upload-artifact@master
+#         with:
+#           name: public
+#           path: public
+#   deploy:
+#     name: Deploy
+#     needs: build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repo
+#         uses: actions/checkout@master
+#       - name: Download Artifact
+#         uses: actions/download-artifact@master
+#         with:
+#           name: public
+#       - name: Deploy to Firebase
+#         uses: w9jds/firebase-action@master
+#         with:
+#           args: deploy --only hosting
+#         env:
+#           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+#           PROJECT_ID: my-newblog
