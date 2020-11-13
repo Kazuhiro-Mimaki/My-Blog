@@ -1,9 +1,12 @@
-+++
-title = "コロナ自粛期間の10月にやったこと"
-description = "log on October"
-date = "2020-10-30"
-aliases = ["/posts/2020/log-on-october/"]
-+++
+---
+title: "コロナ自粛期間の10月にやったこと"
+description: "Log on October"
+date: "2020-10-30"
+author: "Kazuhiro Mimaki"
+categories:
+ - "experience"
+ - "振り返り"
+---
 
 10月にやったことのログ。
 <!--more-->

@@ -1,12 +1,13 @@
-+++
-title = "[Rails] いいね数順でランキング"
-description = "Ranking by like counts using rails"
-date = "2020-08-20"
-aliases = ["/posts/2020/rails-ranking-by-like/"]
-+++
+---
+title: "[Rails] いいね数順でランキング"
+description: "Ranking by like counts using rails"
+date: "2020-08-20"
+author: "Kazuhiro Mimaki"
+tags:
+ - "Rails"
+---
 
-
-今回はいいね数の多い順(いいね数が0も含む)に投稿を表示させるランキング機能の実装方法についてです。  
+今回はいいね数の多い順(いいね数が0も含む)に投稿を表示させるランキング機能の実装方法についてです。
 ランキング機能の実装方法は他でもあったのですが、いいねが0の投稿も表示させている記事が見当たらなかったので実装してみました。
 <!--more-->
 
