@@ -2,18 +2,18 @@
 title: "コロナ自粛期間の9月にやったこと"
 description: "log on September"
 date: 2020-09-30
-aliases: ["/posts/2020/log-on-september/"]
+aliases: ["/posts/log-on-september/"]
 ---
 
 9月にやったことのログ。
 <!--more-->
 成長も見やすいし何やったか振り返れるので、毎月やったことをログとして残していこうと思う。
 ちなみにこれまでの記事は以下です。
-- [コロナ自粛期間の4月にやったこと]({{< relref "/posts/2020/log-on-april.md#アンカー" >}})
-- [コロナ自粛期間の5月にやったこと]({{< relref "/posts/2020/log-on-may.md#アンカー" >}})
-- [コロナ自粛期間の6月にやったこと]({{< relref "/posts/2020/log-on-june.md#アンカー" >}})
-- [コロナ自粛期間の7月にやったこと]({{< relref "/posts/2020/log-on-july.md#アンカー" >}})
-- [コロナ自粛期間の8月にやったこと]({{< relref "/posts/2020/log-on-august.md#アンカー" >}})
+- [コロナ自粛期間の4月にやったこと]({{< relref "/posts/log-on-april.md#アンカー" >}})
+- [コロナ自粛期間の5月にやったこと]({{< relref "/posts/log-on-may.md#アンカー" >}})
+- [コロナ自粛期間の6月にやったこと]({{< relref "/posts/log-on-june.md#アンカー" >}})
+- [コロナ自粛期間の7月にやったこと]({{< relref "/posts/log-on-july.md#アンカー" >}})
+- [コロナ自粛期間の8月にやったこと]({{< relref "/posts/log-on-august.md#アンカー" >}})
 
 # 9月にやったこと
 9月も8月に引き続き開発タスクに追われていました。

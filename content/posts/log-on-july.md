@@ -2,16 +2,16 @@
 title: "コロナ自粛期間の7月にやったこと"
 description: "log on July"
 date: 2020-08-08
-aliases: ["/posts/2020/log-on-july/"]
+aliases: ["/posts/log-on-july/"]
 ---
 
 7月にやったことのログ。
 <!--more-->
 成長も見やすいし何やったか振り返れるので、毎月やったことをログとして残していこうと思う。
 ちなみにこれまでの記事は以下です。
-- [コロナ自粛期間の4月にやったこと]({{< relref "/posts/2020/log-on-april.md#アンカー" >}})
-- [コロナ自粛期間の5月にやったこと]({{< relref "/posts/2020/log-on-may.md#アンカー" >}})
-- [コロナ自粛期間の6月にやったこと]({{< relref "/posts/2020/log-on-june.md#アンカー" >}})
+- [コロナ自粛期間の4月にやったこと]({{< relref "/posts/log-on-april.md#アンカー" >}})
+- [コロナ自粛期間の5月にやったこと]({{< relref "/posts/log-on-may.md#アンカー" >}})
+- [コロナ自粛期間の6月にやったこと]({{< relref "/posts/log-on-june.md#アンカー" >}})
 
 # 7月にやったこと
 7月はあまり頑張れなかった。先月にやると言ってたJS関係の勉強は頑張って取り組んだが、集中力が続かず、進捗も生めず。

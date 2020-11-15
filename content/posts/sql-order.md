@@ -2,7 +2,7 @@
 title: "SQLの４大命令について"
 description: "SQL, language to control DB"
 date: 2020-03-27
-aliases: ["/posts/2020/sql-order/"]
+aliases: ["/posts/sql-order/"]
 ---
 
 SQLとはデータベース言語であり、データベースを管理するソフトウェアを操作・制御することが目的です。

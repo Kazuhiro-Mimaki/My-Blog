@@ -2,17 +2,17 @@
 title: "コロナ自粛期間の8月にやったこと"
 description: "log on August"
 date: 2020-08-31
-aliases: ["/posts/2020/log-on-august/"]
+aliases: ["/posts/log-on-august/"]
 ---
 
 8月にやったことのログ。
 <!--more-->
 成長も見やすいし何やったか振り返れるので、毎月やったことをログとして残していこうと思う。
 ちなみにこれまでの記事は以下です。
-- [コロナ自粛期間の4月にやったこと]({{< relref "/posts/2020/log-on-april.md#アンカー" >}})
-- [コロナ自粛期間の5月にやったこと]({{< relref "/posts/2020/log-on-may.md#アンカー" >}})
-- [コロナ自粛期間の6月にやったこと]({{< relref "/posts/2020/log-on-june.md#アンカー" >}})
-- [コロナ自粛期間の7月にやったこと]({{< relref "/posts/2020/log-on-july.md#アンカー" >}})
+- [コロナ自粛期間の4月にやったこと]({{< relref "/posts/log-on-april.md#アンカー" >}})
+- [コロナ自粛期間の5月にやったこと]({{< relref "/posts/log-on-may.md#アンカー" >}})
+- [コロナ自粛期間の6月にやったこと]({{< relref "/posts/log-on-june.md#アンカー" >}})
+- [コロナ自粛期間の7月にやったこと]({{< relref "/posts/log-on-july.md#アンカー" >}})
 
 # 8月にやったこと
 8月は開発のタスクが多すぎてそれに追われてました。。

@@ -2,7 +2,7 @@
 title: "Linuxとは"
 description: "What is linux"
 date: 2020-03-30
-aliases: ["/post/2020/what-is-linux/"]
+aliases: ["/post/what-is-linux/"]
 ---
 
 Linuxとはそもそも何なのかについて調べました。

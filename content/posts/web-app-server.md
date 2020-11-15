@@ -2,7 +2,7 @@
 title: "webサーバとアプリケーションサーバって何が違うんだろう？"
 description: "Difference between web server and application server"
 date: 2020-06-20
-aliases: ["/posts/2020/web-app-server/"]
+aliases: ["/posts/web-app-server/"]
 ---
 
 webサーバとアプリケーションサーバの違いについてのまとめです。

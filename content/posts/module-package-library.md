@@ -2,7 +2,7 @@
 title: "モジュール・パッケージ・ライブラリの違いがよく分からないので整理してみた"
 description: "Difference among module/package/library"
 date: 2020-06-05
-aliases: ["/posts/2020/module-package-library/"]
+aliases: ["/posts/module-package-library/"]
 ---
 
 モジュール・パッケージ・ライブラリの区別難しい。。。

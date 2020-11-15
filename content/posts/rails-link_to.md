@@ -2,7 +2,7 @@
 title: "[Rails] link_toのリンク先を別タブで表示させたい"
 description: "Open the page on another tab by using rails"
 date: 2020-07-11
-aliases: ["/posts/2020/rails-link_to/"]
+aliases: ["/posts/ails-link_to/"]
 ---
 
 railsのlink_toでの遷移先を別タブで表示させたい。
@@ -26,7 +26,7 @@ Railsでlink_toを使うときに別タブで表示させたいと思い、実�
 これで別タブで開けるようになる。
 しかし、これだとパフォーマンスとセキュリティの面で問題が。。。
 
-- [グーグルのエンジニアが警告、「別タブで開く」リンクは実はヤバいんだって！？【SEO情報まとめ】](https://webtan.impress.co.jp/e/2020/03/13/35510) 
+- [グーグルのエンジニアが警告、「別タブで開く」リンクは実はヤバいんだって！？【SEO情報まとめ】](https://webtan.impress.co.jp/e/2020/03/13/35510)
 - [実はヤバい？危険な「別タブで開く（target=”_blank”）」](https://wwg.co.jp/blog/3807)
 
 この問題を回避するためには `rel="noopener noreferrer"` をつけるといいみたい。

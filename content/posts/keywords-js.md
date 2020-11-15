@@ -2,7 +2,7 @@
 title: "聞いたことはあるがよくわからないJavaScript周辺のあれこれ"
 description: "Keywords of JavaScript"
 date: 2020-08-09
-aliases: ["/posts/2020/keywords-js/"]
+aliases: ["/posts/keywords-js/"]
 ---
 
 JSでよくお目にかかるキーワードをまとめてみました。
