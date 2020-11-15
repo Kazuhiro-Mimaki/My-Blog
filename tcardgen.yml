@@ -1,0 +1,37 @@
+title:
+  start:
+    px: 160
+    pY: 300
+  fontSize: 52
+  fontStyle: Bold
+  maxWidth: 900
+  lineSpacing: 10
+category:
+  start:
+    px: 90
+    py: 220
+  fgHexColor: "#e5B52a"
+  fontSize: 42
+  fontStyle: Regular
+info:
+  start:
+    px: 210
+    py: 90
+  fgHexColor: "#a0a0a0"
+  fontSize: 38
+  fontStyle: Regular
+tags:
+  start:
+    px: 90
+    py: 520
+  fgHexColor: "#FFFFFF"
+  bgHexColor: "#a0a0a0"
+  fontSize: 22
+  fontStyle: Medium
+  boxAlign: Left
+  boxSpacing: 6
+  boxPadding:
+    top: 6
+    right: 10
+    bottom: 6
+    left: 8

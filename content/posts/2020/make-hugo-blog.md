@@ -1,8 +1,8 @@
 ---
 title: "静的サイトジェネレーターHugoで自作ブログ"
 description: "Make blog by hugo"
-date: 2020-11-15
-author: "Kazuhiro Mimaki"
+date: 2020-11-15T00:00:00+09:00
+author: ["Kazuhiro Mimaki"]
 tags:
  - "Hugo"
 categories:
