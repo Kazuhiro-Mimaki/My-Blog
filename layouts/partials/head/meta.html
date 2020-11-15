@@ -56,24 +56,14 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
     <meta property="twitter:title" content="{{ $.Param "title" }}">
-    <meta property="twitter:description" content="{{ $.Param "description" }}"> -->
+    <meta property="twitter:description" content="{{ $.Param "description" }}">
 {{ else }}
-    <!-- <meta property="og:image" content="{{.Site.BaseURL}}images/whoami/default_ogp.jpg">
+    <meta property="og:image" content="{{.Site.BaseURL}}images/whoami/default_ogp.jpg">
     <meta property="og:image:url" content="{{.Site.BaseURL}}images/whoami/default_ogp.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
     <meta property="twitter:title" content="{{ $.Param "title" }}">
     <meta property="twitter:description" content="{{ $.Param "description" }}"> -->
-    <!-- General -->
-    <meta property="og:url" content="{{ .Permalink }}" />
-    <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}" />
-    <meta property="og:site_name" content="{{ .Site.Title }}" />
-    <meta property="og:title" content="{{ .Title }}" />
-    <meta property="og:description" content="{{ with .Description -}}{{ . }}{{ else -}}{{ if .IsPage }}{{ substr .Summary 0 300 }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
-    <meta property="og:image" content="{{ if .Params.thumbnail -}}{{ .Params.thumbnail|absURL }}{{ else if hasPrefix .File.Path "post" -}}{{ path.Join "tcard" (print .File.BaseFileName ".png") | absURL }}{{ else -}}{{ "img/default.png" | absURL }}{{ end -}}" />
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@{{ .Site.Params.twitterName }}" />
 {{ end }}
 {{ hugo.Generator }}
 <meta name="msapplication-TileColor" content="{{ $.Scratch.Get "themeTitleColor" | default "#fff" }}">
@@ -83,6 +73,15 @@
 <meta name="msapplication-navbutton-color" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-status-bar-style" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}" />
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+<meta property="og:title" content="{{ .Title }}" />
+<meta property="og:description" content="{{ with .Description -}}{{ . }}{{ else -}}{{ if .IsPage }}{{ substr .Summary 0 300 }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+<meta property="og:image" content="{{ if .Params.thumbnail -}}{{ .Params.thumbnail|absURL }}{{ else if hasPrefix .File.Path "post" -}}{{ path.Join "tcard" (print .File.BaseFileName ".png") | absURL }}{{ else -}}{{ "img/default.png" | absURL }}{{ end -}}" />
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@{{ .Site.Params.twitterName }}" />
 {{ if $.Param "canonicalUrl" }}
 <link rel="canonical" href="{{ $.Param "canonicalUrl" | absLangURL }}">
 {{ else }}
