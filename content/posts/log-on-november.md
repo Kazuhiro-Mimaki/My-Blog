@@ -1,8 +1,10 @@
 ---
 title: "コロナ自粛期間の11月にやったこと"
 description: "Log on November"
-date: 2020-11-30
-author: "Kazuhiro Mimaki"
+date: 2020-11-15T00:00:00+09:00
+author: ["Kazuhiro Mimaki"]
+tags:
+ - "log"
 categories:
  - "experience"
  - "振り返り"
