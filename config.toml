@@ -1,6 +1,19 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "My Hugo Blog"
+paginate = 5
+
+disqusShortname = ""
+googleAnalytics = ""
+
+[author]
+name = "Kazuhiro Mimaki"
+
+[params]
+author = "Kazuhiro Mimaki"
+paginationSinglePost = true
+style = "light-without-switcher"
+readMore = false
 
 # utteranc.es support
 utterancesRepo = ""  # mandatory

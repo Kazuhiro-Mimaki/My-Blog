@@ -335,6 +335,12 @@ article header h1 a {
     text-decoration: none;
 }
 
+.post-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .post-info {
     color: var(--post-info-color);
     font-size: 0.75em;
@@ -407,8 +413,20 @@ article figcaption {
     margin-bottom: 2em;
 }
 
-.read-more {
-    margin: 1em 0;
+.read-more a {
+    border-radius: 4px;
+    padding: 10px 15px;
+    background: #000;
+    color: #fff;
+}
+
+.read-more:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.read-more a:hover {
+    border-bottom: none;
 }
 
 .divider {

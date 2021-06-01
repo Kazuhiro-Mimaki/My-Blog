@@ -5,12 +5,7 @@
 
     {{ if not .Site.Params.disableSummary }}
         <div class="content post-summary p-summary">
-            {{ .Summary | safeHTML }}
-        </div>
-    {{ end }}
-    {{ if and (.Truncated) (.Site.Params.readMore) }}
-        <div class="read-more">
-            <a class="u-url" href="{{ .RelPermalink }}">{{ i18n "readMore" | humanize }}</a>
+            {{ .Summary | safeHTML | truncate 200 }}
         </div>
     {{ end }}
     
