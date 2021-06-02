@@ -20,7 +20,7 @@ jobs:
         hugo-version: 'latest'
 
     - name: Build
-      run: cd && hugo
+      run: hugo
 
     - name: Deploy
       uses: w9jds/firebase-action@master

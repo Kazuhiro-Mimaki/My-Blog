@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>ES6(JavaScript)の基礎を押さえる - My Hugo Blog</title>
+<meta name="description" content="">
+
+<link rel="icon" type="image/x-icon" href="http://example.org/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="http://example.org/favicon.png">
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="http://example.org/css/style.4fe69ea6459333f1e3d84ac96be5bc503c30ef54ef52abb4b6aa70e9080c2cf9.css" integrity="sha256-T&#43;aepkWTM/Hj2ErJa&#43;W8UDww71TvUqu0tqpw6QgMLPk=">
+    
+
+
+
+
+
+<meta property="og:title" content="ES6(JavaScript)の基礎を押さえる" />
+<meta property="og:description" content="Foundation of ES6" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/es6-tutorial/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-03-29T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-03-29T00:00:00&#43;00:00" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ES6(JavaScript)の基礎を押さえる"/>
+<meta name="twitter:description" content="Foundation of ES6"/>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header"> 
+            
+                <div class="header-top">
+    <h1 class="site-title">
+        <a href="/">My Hugo Blog</a>
+    </h1>
+    <ul class="social-icons">
+
+
+    
+        
+        <li>
+            <a href="https://github.com/gohugoio" title="Github" rel="me">
+            <span class="inline-svg" >
+    
+
+
+
+    
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="https://ya.ru" title="Telegram" rel="me">
+                <span class="inline-svg" >
+    
+
+
+ 
+    
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg>
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+</div>
+
+    <nav>
+        
+        
+        <a class="" href="http://example.org/about/" title="">About</a>
+        
+        <a class="" href="http://example.org/tags/" title="">Tags</a>
+        
+        <a class="" href="http://example.org/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1"> 
+            
+    
+    
+    <article class="post h-entry">
+        <header class="post-header">
+            <h1 class="p-name post-title">ES6(JavaScript)の基礎を押さえる</h1>
+        </header>
+        <div class="content e-content">
+            <p>JavaScriptの新記法ES6の基礎を少し学んだので、そのアウトプットです。</p>
+<h1 id="es6とは">ES6とは</h1>
+<p>ES6はJavaScriptの新しいバージョン。
+現在は多くのブラウザが対応していないため、ES6で書いたコードを動かすためにはES5(1つ前のバージョン)への変換が必要になる。
+この変更を&quot;トランスパイル&quot;と呼び、Babelというツールを利用してトランスパイルを行う。</p>
+<h1 id="letとconst">letとconst</h1>
+<p>letで変数を、constで定数を定義できる。
+letは再代入が可能であるのに対し、constは再代入が不可能。</p>
+<p>letでの変数宣言</p>
+<pre><code class="language-javascript:" data-lang="javascript:">let name = 'Jonh';
+console.log(name); // =&gt; Jonh
+
+name = 'Kate'; // 再代入する
+console.log(name); // =&gt; Kate
+</code></pre><p>constでの変数宣言</p>
+<pre><code class="language-javascript:" data-lang="javascript:">const name = 'Jonh';
+console.log(name); // =&gt; Jonh
+
+name = 'Kate'; // 再代入するとエラーになる
+</code></pre><h1 id="テンプレートリテラル">テンプレートリテラル</h1>
+<p>バッククオートで文字列を囲むと、<code>${}</code>で文字列内に変数展開ができ、改行も反映できる。</p>
+<pre><code class="language-javascript:" data-lang="javascript:">const name = 'Jonh';
+const age = 21;
+
+console.log(`${name}は${age}歳です`); // =&gt; Jonhは21歳です
+</code></pre><h1 id="アロー関数">アロー関数</h1>
+<p>関数とはいくつかの処理をまとめたもの。
+アロー関数は関数の中でも無名関数の省略形で、従来より簡潔な記述で関数を定義できる。</p>
+<p>通常の関数</p>
+<pre><code class="language-javascript:" data-lang="javascript:">const a = function(){
+//まとめたい処理
+};
+</code></pre><p>上と同義のアロー関数</p>
+<pre><code class="language-javascript:" data-lang="javascript:">const a = () =&gt; {
+//まとめたい処理
+};
+</code></pre><h1 id="class構文">Class構文</h1>
+<p>オブジェクトを生成する際、最初に設計図を用意する必要がある。
+この設計図を&quot;クラス&quot;と呼ぶ。
+「class クラス名」とすることでクラスを定義することができる。</p>
+<pre><code class="language-javascript:" data-lang="javascript:">class User = {
+ constructor() {
+  this.name = 'Jonh';
+ }
+} //クラスの定義
+
+const user = new User(); //インスタンスを生成
+console.log(user.name); // =&gt; Jonh
+</code></pre>
+        </div>
+        
+
+
+<div class="post-info-container">
+    <div class="post-info">
+        
+            <div class="post-date dt-published">2020-03-29</div>
+        
+        
+        <a class="post-hidden-url u-url" href="http://example.org/posts/es6-tutorial/">http://example.org/posts/es6-tutorial/</a>
+        <a href=http://example.org/ class="p-name p-author post-hidden-author h-card" rel="me">Kazuhiro Mimaki</a>
+    
+    
+        <div class="post-taxonomies">
+            
+                
+        </div>
+    </div>
+    <div class="read-more">
+        <a class="u-url" href="/posts/es6-tutorial/">Read more</a>
+    </div>
+</div>
+
+    </article>
+
+    
+        
+    <div class="pagination post-pagination">
+        <div class="left pagination-item ">
+            
+                <a href="/posts/what-is-linux/">Linuxとは</a>
+            
+        </div>
+        <div class="right pagination-item ">
+            
+                <a href="/posts/difference-docker-vm/">Dockerと仮想マシンの違い</a>
+            
+        </div>
+    </div>
+
+
+
+
+    
+
+    
+
+    
+
+
+        </main>
+        
+            <footer class="common-footer">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+        <div class="copyright">
+            <p>© Kazuhiro Mimaki, 2021<br>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/mitrichius/hugo-theme-anubis">Anubis</a>.<br>
+            
+            </p>  
+        </div> 
+
+        
+
+    
+
+
+   
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=http://example.org/ class="p-name u-url url fn" rel="me">Kazuhiro Mimaki</a> 
+
+    
+
+    
+</p> 
+</footer>
+
+        
+    </div>
+</body>
+</html>

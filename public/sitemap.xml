@@ -1,137 +1,125 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
+    <loc>http://example.org/posts/log-on-2020/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/categories/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/categories/experience/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/log/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/categories/%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/categories/develop/</loc>
+    <lastmod>2020-11-15T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/hugo/</loc>
+    <lastmod>2020-11-15T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/log-on-november/</loc>
+    <lastmod>2020-11-15T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/make-hugo-blog/</loc>
+    <lastmod>2020-11-15T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/screen-shots-with-mac/</loc>
+    <lastmod>2020-11-13T14:30:00+09:00</lastmod>
+  </url><url>
     <loc>http://example.org/about/</loc>
     <lastmod>2020-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://example.org/posts/</loc>
     <lastmod>2020-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/</loc>
-    <lastmod>2020-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/log-on-october/</loc>
+  </url><url>
+    <loc>http://example.org/posts/rails-ranking-by-like-with-pagination/</loc>
+    <lastmod>2020-11-11T14:30:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/rails/</loc>
+    <lastmod>2020-11-11T14:30:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/log-on-october/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/log-on-september/</loc>
+  </url><url>
+    <loc>http://example.org/posts/tutorial-rebase/</loc>
+    <lastmod>2020-10-25T14:30:00+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/log-on-september/</loc>
     <lastmod>2020-09-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/log-on-august/</loc>
+  </url><url>
+    <loc>http://example.org/showcase/</loc>
+    <lastmod>2020-09-28T15:43:38+09:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/log-on-august/</loc>
     <lastmod>2020-08-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/webpacker-css/</loc>
+  </url><url>
+    <loc>http://example.org/posts/webpacker-css/</loc>
     <lastmod>2020-08-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/rails-ranking-by-like/</loc>
+  </url><url>
+    <loc>http://example.org/posts/rails-ranking-by-like/</loc>
     <lastmod>2020-08-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/keywords-js/</loc>
+  </url><url>
+    <loc>http://example.org/posts/keywords-js/</loc>
     <lastmod>2020-08-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/log-on-july/</loc>
+  </url><url>
+    <loc>http://example.org/posts/log-on-july/</loc>
     <lastmod>2020-08-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/rails-link_to/</loc>
+  </url><url>
+    <loc>http://example.org/posts/rails-link_to/</loc>
     <lastmod>2020-07-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/log-on-june/</loc>
+  </url><url>
+    <loc>http://example.org/posts/log-on-june/</loc>
     <lastmod>2020-06-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/vue-portfolio/</loc>
+  </url><url>
+    <loc>http://example.org/posts/vue-portfolio/</loc>
     <lastmod>2020-06-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/web-app-server/</loc>
+  </url><url>
+    <loc>http://example.org/posts/web-app-server/</loc>
     <lastmod>2020-06-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/module-package-library/</loc>
+  </url><url>
+    <loc>http://example.org/posts/module-package-library/</loc>
     <lastmod>2020-06-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/log-on-may/</loc>
+  </url><url>
+    <loc>http://example.org/posts/log-on-may/</loc>
     <lastmod>2020-05-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/log-on-april/</loc>
+  </url><url>
+    <loc>http://example.org/posts/log-on-april/</loc>
     <lastmod>2020-05-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/pass-path/</loc>
+  </url><url>
+    <loc>http://example.org/posts/pass-path/</loc>
     <lastmod>2020-04-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/what-is-web-api/</loc>
+  </url><url>
+    <loc>http://example.org/posts/what-is-web-api/</loc>
     <lastmod>2020-04-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/what-is-linux/</loc>
+  </url><url>
+    <loc>http://example.org/posts/what-is-linux/</loc>
     <lastmod>2020-03-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/es6-tutorial/</loc>
+  </url><url>
+    <loc>http://example.org/posts/es6-tutorial/</loc>
     <lastmod>2020-03-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/difference-docker-vm/</loc>
+  </url><url>
+    <loc>http://example.org/posts/difference-docker-vm/</loc>
     <lastmod>2020-03-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/2020/sql-order/</loc>
+  </url><url>
+    <loc>http://example.org/posts/sql-order/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://example.org/archive/</loc>
+    <lastmod>2019-11-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://example.org/posts/myfirstpost/</loc>
     <lastmod>2019-03-26T08:47:11+01:00</lastmod>
   </url>
-  
-  <url>
-    <loc>http://example.org/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>http://example.org/series/</loc>
-  </url>
-  
-  <url>
-    <loc>http://example.org/tags/</loc>
-  </url>
-  
 </urlset>

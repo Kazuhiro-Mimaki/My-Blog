@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>大学生がVue.jsを使って3日間でポートフォリオを作成してみた - My Hugo Blog</title>
+<meta name="description" content="">
+
+<link rel="icon" type="image/x-icon" href="http://example.org/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="http://example.org/favicon.png">
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="http://example.org/css/style.4fe69ea6459333f1e3d84ac96be5bc503c30ef54ef52abb4b6aa70e9080c2cf9.css" integrity="sha256-T&#43;aepkWTM/Hj2ErJa&#43;W8UDww71TvUqu0tqpw6QgMLPk=">
+    
+
+
+
+
+
+<meta property="og:title" content="大学生がVue.jsを使って3日間でポートフォリオを作成してみた" />
+<meta property="og:description" content="I developed my portfolio site" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/vue-portfolio/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-06-28T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-06-28T00:00:00&#43;00:00" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="大学生がVue.jsを使って3日間でポートフォリオを作成してみた"/>
+<meta name="twitter:description" content="I developed my portfolio site"/>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header"> 
+            
+                <div class="header-top">
+    <h1 class="site-title">
+        <a href="/">My Hugo Blog</a>
+    </h1>
+    <ul class="social-icons">
+
+
+    
+        
+        <li>
+            <a href="https://github.com/gohugoio" title="Github" rel="me">
+            <span class="inline-svg" >
+    
+
+
+
+    
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="https://ya.ru" title="Telegram" rel="me">
+                <span class="inline-svg" >
+    
+
+
+ 
+    
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg>
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+</div>
+
+    <nav>
+        
+        
+        <a class="" href="http://example.org/about/" title="">About</a>
+        
+        <a class="" href="http://example.org/tags/" title="">Tags</a>
+        
+        <a class="" href="http://example.org/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1"> 
+            
+    
+    
+    <article class="post h-entry">
+        <header class="post-header">
+            <h1 class="p-name post-title">大学生がVue.jsを使って3日間でポートフォリオを作成してみた</h1>
+        </header>
+        <div class="content e-content">
+            <p>Vue.jsでポートフォリオを作ったのでまとめました。</p>
+<h1 id="作ったサイト">作ったサイト</h1>
+<p><a href="https://mk-portfolio-site.netlify.app/">https://mk-portfolio-site.netlify.app/</a></p>
+<h1 id="動機">動機</h1>
+<p>今回サイトを作った動機は「自分のポートフォリオサイト持ってるのってなんかかっこいいよなぁ」と思ったからです。ちょうどいいアウトプットにもなりそうだったので作ることにしました。かかった期間は3日間。時間でいうと20時間くらいです。</p>
+<h1 id="1日目">1日目</h1>
+<h2 id="サイトの構成を練る">サイトの構成を練る</h2>
+<p>ネット上で他の方が作ったポートフォリオを色々見まくって考えました。
+内容は以下の４項目に決めました。他の学生のポートフォリオを見ていると、インターンの開発経験や研究の内容を盛り込んでいる人も結構いましたが、自分は書くことがなかったのでその項目は外しました。悲しい。。。</p>
+<ol>
+<li>Top(トップページ)</li>
+<li>About(プロフィール)</li>
+<li>Skills(使ってきた技術)</li>
+<li>Works(制作物)</li>
+</ol>
+<p>デザインに関しても色々な方のポートフォリオを参考にしました。色やレイアウトはなるべくシンプルなものを目指しました。</p>
+<h2 id="使用技術の選定">使用技術の選定</h2>
+<p>基本的なレイアウトやデザインはHTML/CSS、動きをつけたりコンポーネントをまとめる部分でVue.jsを中心に使おうと決めました。Vue.jsを選択した理由は大きく2つ。1つ目の理由は他のライブラリやフレームワーク(ReactやAngularなど)と比べてとっつきやすいから、2つ目は人気そうだから、です(笑)。実際触ってみてかなり使いやすかったのでポートフォリオ作成したい人はVue.jsオススメです！</p>
+<h2 id="環境構築--大枠の実装">環境構築 &amp; 大枠の実装</h2>
+<p><a href="https://qiita.com/567000/items/dde495d6a8ad1c25fa43">Vue.js を vue-cli を使ってシンプルにはじめてみる</a> という記事を見ながらVue CLIを使ってプロジェクトを作成しました。
+サイトの大まかなレイアウトやデザインを実装しました。細かいアニメーションやリンクの対応はまだできていない状態でした。</p>
+<h1 id="2日目">2日目</h1>
+<h2 id="おしゃれなライブラリを導入">おしゃれなライブラリを導入</h2>
+<p><a href="https://qiita.com/shoma3571/items/025a4e8aedeb62b1fed4">Vue.jsでポートフォリオを書く</a>という記事に書かれていたvue-typerとsmoothScrollという2つのライブラリを導入しました。サイトに簡単な動作をつけたい人にはオススメです。</p>
+<h2 id="hover時の動作">hover時の動作</h2>
+<p>ボタンや画像のhoverに応じた色の変化や表示非表示の切り替えなどの動作をつけていきました。この辺ができてくると動きが出てきて楽しい。</p>
+<h1 id="3日目">3日目</h1>
+<h2 id="レスポンシブデザイン">レスポンシブデザイン</h2>
+<p>今だとスマホで見る人が圧倒的に多いので、レスポンシブは必須かなと思い導入しました。レイアウトとフォントサイズの調整が主だったので割と簡単でした。1つ大変だったのがハンバーガーメニューです。ヘッダーにサイドバーを表示させるためのハンバーガーメニューを実装しました。Vue.jsのトランジションを取り入れて滑らかなアニメーションが実現できたかなと思います。(よかったらスマホで見てみてください&hellip;！)</p>
+<h2 id="サイト公開">サイト公開</h2>
+<p>デプロイは<a href="https://www.netlify.com/">Netlify</a>を利用しました。GitHubと連携させて自動デプロイができるので超便利です。<a href="https://qiita.com/mnuma/items/15f2e8a5f34a392bc604">vue-cliとNetlifyで始めるお手軽サイトホスティング</a>という記事を見れば簡単にホスティングできます。<a href="https://pages.github.com/">Github Pages</a>でもいいと思います。</p>
+<h1 id="もう少しやりたかったこと">もう少しやりたかったこと</h1>
+<h2 id="ディレクトリ構成--単一ファイルコンポーネント">ディレクトリ構成 &amp; 単一ファイルコンポーネント</h2>
+<p>実際にプロジェクトを作成していく中でディレクトリ構成に悩みました。そこで <a href="https://qiita.com/tockn/items/2ce68b99e0839df52200#modules--pages%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">Vue.js ディレクトリ構成 色々試してみた</a> という記事を参考に<code>Modules &amp; Pagesパターン</code>を採用してプロジェクトに反映させようとしました。Modulesに再利用可能なコンポーネント、Pagesに基本的なページ構成を書いていく、という考え方です。Vue.jsには単一ファイルコンポーネントという考え方があります。これは部品の再利用性や可読性を高めるために、レイアウトを部品ごとに分けて実装しようという考え方です。ディレクトリ構成は考えたもののうまくコンポーネントをまとめられなかったので、この辺はもう少し勉強して改善したいところです。</p>
+<h2 id="アニメーション">アニメーション</h2>
+<p>CSSアニメーションやVue.jsのトランジションを絡ませてサイトに動きをつけようとしたのですが、結構大変でした。上の方でも触れているハンバーガーメニューの実装は頑張りましたが、他のアニメーションに関しては今回は諦めました。時間ができたらまた挑戦したいです。</p>
+<h1 id="まとめ">まとめ</h1>
+<p>思っていたより楽に良さげなサイトを作ることができました。「お手軽にポートフォリオ作ってみたい！」という方はぜひVue.js使ってみてください。では！</p>
+<h1 id="参考記事">参考記事</h1>
+<ul>
+<li><a href="https://qiita.com/567000/items/dde495d6a8ad1c25fa43">Vue.js を vue-cli を使ってシンプルにはじめてみる</a></li>
+<li><a href="https://qiita.com/shoma3571/items/025a4e8aedeb62b1fed4">Vue.jsでポートフォリオを書く</a></li>
+<li><a href="https://qiita.com/p1ass/items/a01578b782f17f573510">フロント未学習の大学生が1週間でVue.jsを使ったポートフォリオを作った話</a></li>
+<li><a href="https://qiita.com/mnuma/items/15f2e8a5f34a392bc604">vue-cliとNetlifyで始めるお手軽サイトホスティング</a></li>
+<li><a href="https://qiita.com/tockn/items/2ce68b99e0839df52200#modules--pages%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">Vue.js ディレクトリ構成 色々試してみた</a></li>
+</ul>
+<p>その他様々なポートフォリオサイトを拝見し、参考にさせていただきました。</p>
+        </div>
+        
+
+
+<div class="post-info-container">
+    <div class="post-info">
+        
+            <div class="post-date dt-published">2020-06-28</div>
+        
+        
+        <a class="post-hidden-url u-url" href="http://example.org/posts/vue-portfolio/">http://example.org/posts/vue-portfolio/</a>
+        <a href=http://example.org/ class="p-name p-author post-hidden-author h-card" rel="me">Kazuhiro Mimaki</a>
+    
+    
+        <div class="post-taxonomies">
+            
+                
+        </div>
+    </div>
+    <div class="read-more">
+        <a class="u-url" href="/posts/vue-portfolio/">Read more</a>
+    </div>
+</div>
+
+    </article>
+
+    
+        
+    <div class="pagination post-pagination">
+        <div class="left pagination-item ">
+            
+                <a href="/posts/log-on-june/">コロナ自粛期間の6月にやったこと</a>
+            
+        </div>
+        <div class="right pagination-item ">
+            
+                <a href="/posts/web-app-server/">webサーバとアプリケーションサーバって何が違うんだろう？</a>
+            
+        </div>
+    </div>
+
+
+
+
+    
+
+    
+
+    
+
+
+        </main>
+        
+            <footer class="common-footer">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+        <div class="copyright">
+            <p>© Kazuhiro Mimaki, 2021<br>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/mitrichius/hugo-theme-anubis">Anubis</a>.<br>
+            
+            </p>  
+        </div> 
+
+        
+
+    
+
+
+   
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=http://example.org/ class="p-name u-url url fn" rel="me">Kazuhiro Mimaki</a> 
+
+    
+
+    
+</p> 
+</footer>
+
+        
+    </div>
+</body>
+</html>

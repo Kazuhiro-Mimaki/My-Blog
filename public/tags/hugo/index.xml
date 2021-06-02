@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on My Hugo Blog</title>
+    <link>http://example.org/tags/hugo/</link>
+    <description>My Hugo Blog (Hugo)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Nov 2020 00:00:00 +0900</lastBuildDate>
+    
+    <atom:link href="http://example.org/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>静的サイトジェネレーターHugoで自作ブログ</title>
+      <link>http://example.org/posts/make-hugo-blog/</link>
+      <pubDate>Sun, 15 Nov 2020 00:00:00 +0900</pubDate>
+      
+      <guid>http://example.org/posts/make-hugo-blog/</guid>
+      <description>&lt;p&gt;今回Hugoで自作ブログを作ってみました。&lt;/p&gt;
+&lt;h2 id=&#34;hugoとは&#34;&gt;Hugoとは&lt;/h2&gt;
+&lt;p&gt;Hugoとはスピードと柔軟性を兼ね備えたGo製の静的サイトジェネレーターです。
+静的サイトジェネレーターやjamstackといった静的サイトベースの技術を最近よく目にするので、僕もその波に乗りました。(ミーハー)&lt;/p&gt;
+&lt;p&gt;クラウドサーバーを使えば、自分でサーバーを管理する手間も省けるし、DBも不要。
+あと、当たり前かもだけど動的サイトと比べるとページ表示速度がとにかく速い。
+このあたりがWordpressのようなCMSと比べた時のメリットかなと思います。&lt;/p&gt;
+&lt;h2 id=&#34;hugoでブログ作成をスタート&#34;&gt;Hugoでブログ作成をスタート&lt;/h2&gt;
+&lt;p&gt;Hugoには素敵なテンプレートがたくさん用意されています。
+ので、僕のように「完全オリジナルは面倒」という人も安心してください。
+このブログも「」というテーマを拝借させていただいています。
+&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;Hugoテーマ一覧&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下のコマンドを打つだけで最初のセットアップが完了します。
+なんて便利なんだ、、、！&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;$ hugo new site &amp;lt;ディレクトリ名&amp;gt;
+$ cd &amp;lt;ディレクトリ名&amp;gt;
+$ git init
+$ git submodule add &amp;lt;GitHub上のテーマのurl&amp;gt; &amp;lt;テーマの名前&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;あとは自分好みにレイアウトやデザインをカスタマイズしたり、記事を追加していけばいい感じになります。(適当)
+各テーマのdocumentを見れば割とカスタマイズできるかと思います。&lt;/p&gt;
+&lt;h2 id=&#34;firebaseでホスティング&#34;&gt;Firebaseでホスティング&lt;/h2&gt;
+&lt;p&gt;FirebaseかNetlifyが良さそうだなぁと思っていたのですが、表示速度は妥協したくなかったのでfirebaseにしました。
+ドメインはgoogle domainで取得しました。(まじで一瞬だった)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://techblog.kayac.com/netlify-vs-firebase-2018&#34;&gt;徹底比較！Firebase vs Netlify (2018年版)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://usomitainikagayakumachi.tokyo/2018-05-29_github_pages_or_netrify_or_firebase/&#34;&gt;【GithubPages VS Netlify VS Firebase】爆速で静的サイトのホスティングができるのはどれ？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GitHub Actionsで自動ビルド&amp;amp;デプロイをしてくれるように設定しておけば、pushするだけで本番環境に差分が反映されるのでオススメです。&lt;/p&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;まだ未完成の部分もあるのでそこの調整は引き続きしていきます。
+静的サイトジェネレーターめちゃくちゃ便利だなとしみじみ。
+新しくブログを書き始めるならHugoにhello worldしてみてはどうでしょうか。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

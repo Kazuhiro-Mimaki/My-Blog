@@ -1,406 +1,1258 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" 
-  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
-  xmlns:dc="http://purl.org/dc/elements/1.1/" 
-  xmlns:atom="http://www.w3.org/2005/Atom" 
-  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
-  xmlns:media="http://search.yahoo.com/mrss/">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Post section on 完全に理解したい</title>
+    <title>Post section on My Hugo Blog</title>
     <link>http://example.org/posts/</link>
-    <description>Recent content in Post section on 完全に理解したい</description>
+    <description>My Hugo Blog (Post section)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
-    <copyright>©{year}, All Rights Reserved</copyright>
+    <language>en-us</language>
     <lastBuildDate>Fri, 13 Nov 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>2020年にやったこと</title>
+      <link>http://example.org/posts/log-on-2020/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0900</pubDate>
+      
+      <guid>http://example.org/posts/log-on-2020/</guid>
+      <description>&lt;p&gt;メリークリスマス！
+聖なる夜に振り返りするのってなんかロマンチックじゃない？&lt;/p&gt;
+&lt;p&gt;ということで、今年1年間の振り返り記事を書いてみました。
+今年1年間と書いてますが実際頑張ったのは, 就活が終わった5月以降なので半年の振り返りをしていきます。&lt;/p&gt;
+&lt;p&gt;GitHubを見てもきれいに半分がまっさら！w&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/images/posts/2020-github-log.png&#34; alt=&#34;github-log&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;触れた技術たち&#34;&gt;触れた技術たち&lt;/h1&gt;
+&lt;p&gt;とりあえず興味のある言語やフレームワークに手を伸ばしてたら, 少し幅を広げすぎました。
+来年はもう少し的を絞って1つの理解を深めるのが課題。&lt;/p&gt;
+&lt;h3 id=&#34;ruby-on-rails&#34;&gt;Ruby on Rails&lt;/h3&gt;
+&lt;p&gt;最近はdisられることも多いが最初に触れたフレームワークがこいつでよかったです。
+「プログラミング全くわからん」の状態から「なんとなくアプリケーションが作れる」になれたのはこのフレームワークが優秀だったからだと思います。
+ありがとう, Ruby on Rails。&lt;/p&gt;
+&lt;h3 id=&#34;javascript&#34;&gt;JavaScript&lt;/h3&gt;
+&lt;p&gt;ちょうど半年前に触り始めました。めちゃくちゃ苦手からちょっと苦手に変わりました。&lt;/p&gt;
+&lt;h3 id=&#34;typescript&#34;&gt;TypeScript&lt;/h3&gt;
+&lt;p&gt;初めて触れた静的型付け言語です。
+最近はJS製のフレームワーク触る時もTSを使おうと頑張ってます。&lt;/p&gt;
+&lt;h3 id=&#34;flutter&#34;&gt;Flutter&lt;/h3&gt;
+&lt;p&gt;確か5月？に開催されたハッカソンで触れました。もう全部忘れましたがw
+また機会があればアプリ開発もやってみたいです。&lt;/p&gt;
+&lt;h3 id=&#34;vuejs&#34;&gt;Vue.js&lt;/h3&gt;
+&lt;p&gt;初めて触れたJSのフレームワークです。
+HTMLライクに書けるのがVue.jsのいいところかなと思ってます。
+初心者の僕でもとっつきやすかったです。&lt;/p&gt;
+&lt;h3 id=&#34;react&#34;&gt;React&lt;/h3&gt;
+&lt;p&gt;絶賛キャッチアップ中。
+最近触り始めたのですが, もうVue.jsに戻りたいです。w&lt;/p&gt;
+&lt;h3 id=&#34;gas&#34;&gt;GAS&lt;/h3&gt;
+&lt;p&gt;バイト先でスプシやgoogleフォームを使ったタスクの自動化で使いました。
+GASってわりと簡単に書けて便利ですね。&lt;/p&gt;
+&lt;h3 id=&#34;python&#34;&gt;Python&lt;/h3&gt;
+&lt;p&gt;スクレイピングとアルゴリズムの勉強程度しか触ってません。
+内定先ではメインで使う言語っぽいので来年はPythonに浸りそう&amp;hellip;？&lt;/p&gt;
+&lt;h3 id=&#34;docker&#34;&gt;Docker&lt;/h3&gt;
+&lt;p&gt;ローカルでコンテナ環境作るくらいならできるようになりました。
+本番環境でのコンテナ運用などはまだやったことないです。&lt;/p&gt;
+&lt;h3 id=&#34;heroku&#34;&gt;Heroku&lt;/h3&gt;
+&lt;p&gt;デプロイでたくさんお世話になりました。&lt;/p&gt;
+&lt;h3 id=&#34;firebase&#34;&gt;Firebase&lt;/h3&gt;
+&lt;p&gt;特にfirestoreとcloud storageはお世話になりました。
+firebase超便利。
+ただ、クエリの種類がまだまだ充実していない印象でした。検索機能とかの実装はかなりやりづらかった。
+この辺りはSQLベースの方が扱いやすいです。&lt;/p&gt;
+&lt;h3 id=&#34;aws&#34;&gt;AWS&lt;/h3&gt;
+&lt;p&gt;入門書買ってきてちょっと動かしてみた程度。
+本当に初歩の初歩しか理解してません。
+来年は業務でもガッツリ触れるといいな〜。&lt;/p&gt;
+&lt;h3 id=&#34;github&#34;&gt;GitHub&lt;/h3&gt;
+&lt;p&gt;ここ半年で一気に力がついたように思います。
+普通にチーム開発していく分には困らなくなりました。&lt;/p&gt;
+&lt;h1 id=&#34;技術書&#34;&gt;技術書&lt;/h1&gt;
+&lt;p&gt;流し読みしたものや途中で挫折したものもあります。
+お正月に読み返したい。
+個人的には「リーダブルコード」, 「SOFT SKILLS」, 「Web API The Good Parts」が良かったです。
+それにしても技術書高すぎない？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Webを支える技術&lt;/li&gt;
+&lt;li&gt;基本情報技術者試験参考書&lt;/li&gt;
+&lt;li&gt;プログラムはなぜ動くのか&lt;/li&gt;
+&lt;li&gt;オブジェクト指向でなぜ作るのか&lt;/li&gt;
+&lt;li&gt;ネットワークはなぜ繋がるのか&lt;/li&gt;
+&lt;li&gt;リーダブルコード&lt;/li&gt;
+&lt;li&gt;SOFT SKILLS&lt;/li&gt;
+&lt;li&gt;新しいLinuxの教科書&lt;/li&gt;
+&lt;li&gt;Rubyチェリー本&lt;/li&gt;
+&lt;li&gt;Ruby on Rails5アプリケーションプログラミング&lt;/li&gt;
+&lt;li&gt;達人に学ぶDB設計徹底指南書&lt;/li&gt;
+&lt;li&gt;JavaScript本格入門&lt;/li&gt;
+&lt;li&gt;Amazon Web Services超入門&lt;/li&gt;
+&lt;li&gt;プロになるためのWeb技術入門&lt;/li&gt;
+&lt;li&gt;Web API The Good Parts&lt;/li&gt;
+&lt;li&gt;Web db press 4冊&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;チーム開発-or-お仕事-or-ボランティア&#34;&gt;チーム開発 or お仕事 or ボランティア&lt;/h1&gt;
+&lt;p&gt;ありがたいことに色々経験させてもらいました, 感謝 :pray:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;web制作(LP4本)&lt;/li&gt;
+&lt;li&gt;スマートコスメのiOSアプリ(バックエンドのAPI)&lt;/li&gt;
+&lt;li&gt;ヴィーガン向けのレシピ共有サービス&lt;/li&gt;
+&lt;li&gt;海外で作られたサービスの改修&lt;/li&gt;
+&lt;li&gt;スクールの卒業生のプロダクトを投稿/閲覧できるサービス&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;個人開発&#34;&gt;個人開発&lt;/h1&gt;
+&lt;p&gt;もう少し手の凝ったやつを作りたかった, というのが反省です。
+どれも簡単なものばかり。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;開発プロダクト投稿サービス(GitHub APIとrails)&lt;/li&gt;
+&lt;li&gt;ポートフォリオサイト(Vue.jsで3日で頑張ったやつ)&lt;/li&gt;
+&lt;li&gt;LINE bot(googleカレンダー, slackと紐付けたto do管理のためのLINE bot)&lt;/li&gt;
+&lt;li&gt;スクールの卒業生のプロダクトを投稿/閲覧できるサービス(β版)&lt;/li&gt;
+&lt;li&gt;ブログ(Hugoのテーマをカスタマイズ)&lt;/li&gt;
+&lt;li&gt;Buzzrita(QiitaをスクレイピングしてTwitterのボットに呟かせる)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;作りかけ-or-リリースはしてない小さなアウトプット&#34;&gt;作りかけ or リリースはしてない小さなアウトプット&lt;/h1&gt;
+&lt;p&gt;この単位のアウトプットはもっと増やしたいです。
+あと質も上げたい。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;映画検索アプリ(tmdb APIとReact, TypeScriptで実装なう)&lt;/li&gt;
+&lt;li&gt;電卓(Vue.js)&lt;/li&gt;
+&lt;li&gt;ブラックジャック(php)&lt;/li&gt;
+&lt;li&gt;バックエンドrailsのAPI, フロントエンドはReact&amp;amp;TypeScriptでTwitterクローン(実装なう)&lt;/li&gt;
+&lt;li&gt;GASで色々自動化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;記事など&#34;&gt;記事など&lt;/h1&gt;
+&lt;p&gt;Qiitaに22記事投稿。以上！w
+来年はZennを使ってみたい&amp;hellip;！&lt;/p&gt;
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
+&lt;p&gt;直接技術に関連した話ではないのですが, 毎月のログをまとめていたのは良かったです。
+何をやったか, 何ができなかったか, 来月は何をやるか, みたいなところが把握しやすかった気がします。
+これは来年も続けたい。&lt;/p&gt;
+&lt;p&gt;勉強会に関してはいくつかオンラインで参加したのですが, うまく活用できなかったので来年はもっと活用したいです。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;書き出してみると意外と頑張ってたかもしれないです。
+半年あれば色々できるもんやね。&lt;/p&gt;
+&lt;p&gt;自分の弱みはすぐ目移りしちゃうことと, 質の高いアウトプットが少ないことだと思ってるので, 来年修正したいです。
+あと圧倒的基礎力不足。
+プログラミング言語やフレームワークを使うよりももっと前にやるべき根本的な仕組みの理解, ネットワークへの理解, 基本的なアルゴリズムの理解などなど, この辺の知識が皆無なのでヤバイなぁと思ってます。ここも頑張って勉強せねば。
+やることいっぱいですね。終わりが見えない。でも、楽しいです。
+来年は今年の3倍アウトプット出します。&lt;/p&gt;
+&lt;p&gt;それでは皆さん, 良いお年を〜&lt;/p&gt;
+</description>
+    </item>
     
+    <item>
+      <title>コロナ自粛期間の11月にやったこと</title>
+      <link>http://example.org/posts/log-on-november/</link>
+      <pubDate>Sun, 15 Nov 2020 00:00:00 +0900</pubDate>
+      
+      <guid>http://example.org/posts/log-on-november/</guid>
+      <description>&lt;p&gt;11月にやったことのログ。&lt;/p&gt;
+&lt;p&gt;成長も見やすいし何やったか振り返れるので、毎月やったことをログとして残していこうと思う。
+ちなみにこれまでの記事は以下です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-april/#アンカー&#34;&gt;コロナ自粛期間の4月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-may/#アンカー&#34;&gt;コロナ自粛期間の5月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-june/#アンカー&#34;&gt;コロナ自粛期間の6月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-july/#アンカー&#34;&gt;コロナ自粛期間の7月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-august/#アンカー&#34;&gt;コロナ自粛期間の8月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-september/#アンカー&#34;&gt;コロナ自粛期間の9月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-october/#アンカー&#34;&gt;コロナ自粛期間の10月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;11月にやったこと&#34;&gt;11月にやったこと&lt;/h1&gt;
+&lt;p&gt;今月はリリースするプロダクトが多めでその対応に時間割いてました。
+インプットはあんましできてない。。。&lt;/p&gt;
+&lt;h2 id=&#34;アルゴリズムとデータ構造の勉強挫折&#34;&gt;アルゴリズムとデータ構造の勉強(挫折)&lt;/h2&gt;
+&lt;p&gt;n回目の挫折w
+難しくて挫折するというか他のやりたいこと優先させてしまう感じなんよね。
+12月は絶対毎日継続する。1日30分でいいから継続する。&lt;/p&gt;
+&lt;h2 id=&#34;サイト制作&#34;&gt;サイト制作&lt;/h2&gt;
+&lt;p&gt;Vue.jsで1ヶ月くらい時間割いて作ってたサイトリリースしました。&lt;/p&gt;
+&lt;h2 id=&#34;プロダクト開発&#34;&gt;プロダクト開発&lt;/h2&gt;
+&lt;p&gt;8月頃からのんびり開発していたプロダクト一覧表示と検索ができるサービス。
+ようやくリリースしました。ひとまず安心。。。:pray:
+とはいえ、まだ改善点あるので、直していきます。
+今月は一気に開発が進んだ気がします。&lt;/p&gt;
+&lt;h2 id=&#34;hugo製ブログ完成&#34;&gt;hugo製ブログ完成&lt;/h2&gt;
+&lt;p&gt;知人に依頼してたアイコンができました。
+ファビコンにも使ってるやつです。
+このファビコン可愛くないですか？？かわいい。
+気に入ってるので大切に使わせていただきます。&lt;/p&gt;
+&lt;h2 id=&#34;buzzrita&#34;&gt;Buzzrita&lt;/h2&gt;
+&lt;p&gt;QiitaのLGTM数が高い記事をランダムで1日2回呟いてくれるボット作りました。&lt;/p&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;2020年の開発者が知っておくべき11の必須スキル&lt;a href=&#34;https://t.co/D01MtmC4NH&#34;&gt;https://t.co/D01MtmC4NH&lt;/a&gt;&lt;/p&gt;&amp;mdash; Buzzrita (@buzzrita) &lt;a href=&#34;https://twitter.com/buzzrita/status/1332293075813638145?ref_src=twsrc%5Etfw&#34;&gt;November 27, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;p&gt;リポジトリはこちら↓
+&lt;a href=&#34;https://github.com/Kazuhiro-Mimaki/Trend-from-Qiita&#34;&gt;&lt;img src=&#34;https://gh-card.dev/repos/Kazuhiro-Mimaki/Trend-from-Qiita.svg&#34; alt=&#34;Kazuhiro-Mimaki/Trend-from-Qiita - GitHub&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;実装内容としては「Pythonでスクレイピング -&amp;gt; Twitter APIでボットに呟かせる」というのをHerokuのtime schedulerで定期実行してる感じです。
+本当はslackにも投げたかったんだけど、うまくいかない。試行錯誤中。&lt;/p&gt;
+&lt;h2 id=&#34;lpサイト制作&#34;&gt;LPサイト制作&lt;/h2&gt;
+&lt;p&gt;こちら上記とはまた異なるサイトの作成をお手伝いしました。
+一応バックエンドrailsなんだけど、ほぼCSS職人してたw&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;11月はリリース対応に追われて少し疲れた。。。
+12月は時間できそうなので個人開発にリソース割きたい。
+アルゴリズムとデータ構造の勉強も毎日継続する！
+今年も残り1ヶ月か〜〜早すぎる〜〜&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>静的サイトジェネレーターHugoで自作ブログ</title>
+      <link>http://example.org/posts/make-hugo-blog/</link>
+      <pubDate>Sun, 15 Nov 2020 00:00:00 +0900</pubDate>
+      
+      <guid>http://example.org/posts/make-hugo-blog/</guid>
+      <description>&lt;p&gt;今回Hugoで自作ブログを作ってみました。&lt;/p&gt;
+&lt;h2 id=&#34;hugoとは&#34;&gt;Hugoとは&lt;/h2&gt;
+&lt;p&gt;Hugoとはスピードと柔軟性を兼ね備えたGo製の静的サイトジェネレーターです。
+静的サイトジェネレーターやjamstackといった静的サイトベースの技術を最近よく目にするので、僕もその波に乗りました。(ミーハー)&lt;/p&gt;
+&lt;p&gt;クラウドサーバーを使えば、自分でサーバーを管理する手間も省けるし、DBも不要。
+あと、当たり前かもだけど動的サイトと比べるとページ表示速度がとにかく速い。
+このあたりがWordpressのようなCMSと比べた時のメリットかなと思います。&lt;/p&gt;
+&lt;h2 id=&#34;hugoでブログ作成をスタート&#34;&gt;Hugoでブログ作成をスタート&lt;/h2&gt;
+&lt;p&gt;Hugoには素敵なテンプレートがたくさん用意されています。
+ので、僕のように「完全オリジナルは面倒」という人も安心してください。
+このブログも「」というテーマを拝借させていただいています。
+&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;Hugoテーマ一覧&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下のコマンドを打つだけで最初のセットアップが完了します。
+なんて便利なんだ、、、！&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;$ hugo new site &amp;lt;ディレクトリ名&amp;gt;
+$ cd &amp;lt;ディレクトリ名&amp;gt;
+$ git init
+$ git submodule add &amp;lt;GitHub上のテーマのurl&amp;gt; &amp;lt;テーマの名前&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;あとは自分好みにレイアウトやデザインをカスタマイズしたり、記事を追加していけばいい感じになります。(適当)
+各テーマのdocumentを見れば割とカスタマイズできるかと思います。&lt;/p&gt;
+&lt;h2 id=&#34;firebaseでホスティング&#34;&gt;Firebaseでホスティング&lt;/h2&gt;
+&lt;p&gt;FirebaseかNetlifyが良さそうだなぁと思っていたのですが、表示速度は妥協したくなかったのでfirebaseにしました。
+ドメインはgoogle domainで取得しました。(まじで一瞬だった)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://techblog.kayac.com/netlify-vs-firebase-2018&#34;&gt;徹底比較！Firebase vs Netlify (2018年版)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://usomitainikagayakumachi.tokyo/2018-05-29_github_pages_or_netrify_or_firebase/&#34;&gt;【GithubPages VS Netlify VS Firebase】爆速で静的サイトのホスティングができるのはどれ？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GitHub Actionsで自動ビルド&amp;amp;デプロイをしてくれるように設定しておけば、pushするだけで本番環境に差分が反映されるのでオススメです。&lt;/p&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;まだ未完成の部分もあるのでそこの調整は引き続きしていきます。
+静的サイトジェネレーターめちゃくちゃ便利だなとしみじみ。
+新しくブログを書き始めるならHugoにhello worldしてみてはどうでしょうか。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[mac]スクリーンショットを超快適にしよう</title>
+      <link>http://example.org/posts/screen-shots-with-mac/</link>
+      <pubDate>Fri, 13 Nov 2020 14:30:00 +0900</pubDate>
+      
+      <guid>http://example.org/posts/screen-shots-with-mac/</guid>
+      <description>&lt;p&gt;Macでスクリーンショットを利用する際のtipsをシェアします。&lt;/p&gt;
+&lt;h1 id=&#34;スクリーンショットする際のショートカットキー&#34;&gt;スクリーンショットする際のショートカットキー&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Command + Shift + 3&lt;/strong&gt;
+画面全体をキャプチャ。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Command + Shit + 4&lt;/strong&gt;
+マウスで選択した範囲のみキャプチャ。
+マウスカーソルの形状が変わるのでキャプチャしたい範囲をドラッグで決める。
+ESCでキャンセル。&lt;/p&gt;
+&lt;h1 id=&#34;保存せずそのままクリップボードにコピーしたい場合&#34;&gt;保存せず、そのままクリップボードにコピーしたい場合&lt;/h1&gt;
+&lt;p&gt;これ超便利！知らない人は人生半分損してる。。。
+ドキュメント貼り付け作業が捗ります。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Command + Shift + Control + 3&lt;/strong&gt;
+画面全体&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Command + Shit + Control + 4&lt;/strong&gt;
+マウス選択の範囲。&lt;/p&gt;
+&lt;p&gt;上記のショートカットキー＋Controlキーを押すだけ。&lt;/p&gt;
+&lt;h1 id=&#34;保存場所を変更&#34;&gt;保存場所を変更&lt;/h1&gt;
+&lt;p&gt;デフォルトではデスクトップに保存されますが、任意のディレクトリに移動できます。
+デスクトップにスクショ溜まるのうざいので、これは良い！
+コマンドラインから設定し、再起動すれば反映されます。&lt;/p&gt;
+&lt;p&gt;↓今回は ~/Downloads/ に設定していますが、別のディレクトリも指定可能。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ defaults write com.apple.screencapture location ~/Downloads/　
+↓デフォルトに戻す場合はこちら。設定値を削除するイメージです。
+$ defaults delete com.apple.screencapture location
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;↓やっぱりデフォルトに戻したい場合。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ defaults delete com.apple.screencapture location
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;保存形式を変更&#34;&gt;保存形式を変更&lt;/h1&gt;
+&lt;p&gt;デフォルトではpngで保存されます。
+複数のファイル形式を指定できます。
+用途に応じて保存時に形式変更できるので最高！
+こちらもコマンドラインから設定し、再起動すれば反映されます。&lt;/p&gt;
+&lt;p&gt;↓今回はjpgで保存する場合のコマンド。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;defaults write com.apple.screencapture type jpg;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;これであなたのスクリーンショットライフは超快適になること間違いなしですね！&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/tocomi/items/8c8e8f8202ea6da2c46d&#34;&gt;macOSのスクリーンショット設定を変更する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/mamohacy/items/559af38aacb7a17a1600&#34;&gt;Macでスクリーンショットを撮る方法と保存先＆形式を変える方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>[Rails] いいね数順でランキングかつページネーション</title>
+      <link>http://example.org/posts/rails-ranking-by-like-with-pagination/</link>
+      <pubDate>Wed, 11 Nov 2020 14:30:00 +0900</pubDate>
+      
+      <guid>http://example.org/posts/rails-ranking-by-like-with-pagination/</guid>
+      <description>&lt;p&gt;以前このような記事を書きました。
+&lt;a href=&#34;http://example.org/posts/rails-ranking-by-like/#アンカー&#34;&gt;[Rails]いいね数順でランキング&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;この内容に加え、ページネーションを実装したのでメモとして残しておきます。
+今回はいいね数順で並び替えた投稿を1ページに5つ表示させるページネーションの実装を目指します。&lt;/p&gt;
+&lt;h1 id=&#34;前提&#34;&gt;前提&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;投稿のテーブルは &lt;code&gt;posts&lt;/code&gt;、 ユーザーのテーブルは &lt;code&gt;users&lt;/code&gt; とする。&lt;/li&gt;
+&lt;li&gt;いいね機能に必要な中間テーブルは &lt;code&gt;likes&lt;/code&gt; とする。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;posts&lt;/code&gt;・&lt;code&gt;users&lt;/code&gt;・&lt;code&gt;likes&lt;/code&gt; それぞれのテーブルはいずれも作成済みとする。&lt;/li&gt;
+&lt;li&gt;ページネーションは&lt;code&gt;Kaminari&lt;/code&gt;というgemを使用して実装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;手順&#34;&gt;手順&lt;/h1&gt;
+&lt;h2 id=&#34;モデルにアソシエーションを定義&#34;&gt;モデルにアソシエーションを定義&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-post.rb&#34; data-lang=&#34;post.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Post&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+    belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+    has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+    has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:liked_users&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;through&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;source&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-user.rb&#34; data-lang=&#34;user.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;User&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:posts&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:liked_posts&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;through&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;source&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:post&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-like.rb&#34; data-lang=&#34;like.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Like&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+  belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:post&lt;/span&gt;
+  belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;kaminari-をgemfileに追記し-bundle-install&#34;&gt;Kaminari をGemfileに追記し, bundle install&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Gemfile&#34; data-lang=&#34;Gemfile&#34;&gt;gem &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;kaminari&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;~&amp;gt; 0.17.0&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;$ bundle install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;コントローラーをいじる&#34;&gt;コントローラーをいじる&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-app/controller/posts_controller.rb&#34; data-lang=&#34;app/controller/posts_controller.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;index&lt;/span&gt;
+  posts &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Post&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;includes(&lt;span style=&#34;color:#e6db74&#34;&gt;:liked_users&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sort {&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;a,b&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; b&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;liked_users&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;size &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&amp;gt;&lt;/span&gt; a&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;liked_users&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;size}
+  @posts &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Kaminari&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;paginate_array(posts)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;page(params&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;:page&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;per(&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ここでは &lt;code&gt;sort&lt;/code&gt; というrubyのメソッドを使って順序を操作している。
+=&amp;gt; &lt;a href=&#34;https://docs.ruby-lang.org/ja/latest/method/Array/i/sort.html&#34;&gt;sortに関してはこちらを参照&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;a.liked_users.size&lt;/code&gt;、&lt;code&gt;b.liked_users.size&lt;/code&gt; が表しているのはそれぞれ各投稿のいいね数。
+すなわち、各投稿のいいね数を比較して昇順で並び替えている。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sort&lt;/code&gt;メソッドによって生成される&lt;code&gt;posts&lt;/code&gt;という変数は配列のデータなので、&lt;code&gt;paginate_array&lt;/code&gt;というメソッドを使用している。&lt;/p&gt;
+&lt;h2 id=&#34;ビューで表示させる&#34;&gt;ビューで表示させる&lt;/h2&gt;
+&lt;p&gt;あとはビューで表示させるだけ。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-app/view/posts/index.html&#34; data-lang=&#34;app/view/posts/index.html&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt;% @posts.each do |post| %&amp;gt;
 
-      
-      <item>
-        <title>コロナ自粛期間の10月にやったこと</title>
-        <link>http://example.org/posts/2020/log-on-october/</link>
-        <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Fri, 30 Oct 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/log-on-october/</guid>
-        <description>&lt;p&gt;10月にやったことのログ。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>コロナ自粛期間の9月にやったこと</title>
-        <link>http://example.org/posts/2020/log-on-september/</link>
-        <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Wed, 30 Sep 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/log-on-september/</guid>
-        <description>&lt;p&gt;9月にやったことのログ。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>コロナ自粛期間の8月にやったこと</title>
-        <link>http://example.org/posts/2020/log-on-august/</link>
-        <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Mon, 31 Aug 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/log-on-august/</guid>
-        <description>&lt;p&gt;8月にやったことのログ。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>[Rails] webpackerでCSSを読み込みたい</title>
-        <link>http://example.org/posts/2020/webpacker-css/</link>
-        <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Mon, 24 Aug 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/webpacker-css/</guid>
-        <description>&lt;p&gt;railsのver.6以上を使うなら &lt;code&gt;asset pipeline&lt;/code&gt; ではなく &lt;code&gt;webpacker&lt;/code&gt; でCSSを読み込みたいと思い、実装したのでメモです。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>[Rails] いいね数順でランキング</title>
-        <link>http://example.org/posts/2020/rails-ranking-by-like/</link>
-        <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Thu, 20 Aug 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/rails-ranking-by-like/</guid>
-        <description>&lt;p&gt;今回はいいね数の多い順(いいね数が0も含む)に投稿を表示させるランキング機能の実装方法についてです。&lt;br /&gt;
-ランキング機能の実装方法は他でもあったのですが、いいねが0の投稿も表示させている記事が見当たらなかったので実装してみました。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>聞いたことはあるがよくわからないJavaScript周辺のあれこれ</title>
-        <link>http://example.org/posts/2020/keywords-js/</link>
-        <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Sun, 09 Aug 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/keywords-js/</guid>
-        <description>&lt;p&gt;JSでよくお目にかかるキーワードをまとめてみました。&lt;br /&gt;
-今後も追加していくと思います。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>コロナ自粛期間の7月にやったこと</title>
-        <link>http://example.org/posts/2020/log-on-july/</link>
-        <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Sat, 08 Aug 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/log-on-july/</guid>
-        <description>&lt;p&gt;7月にやったことのログ。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>[Rails] link_toのリンク先を別タブで表示させたい</title>
-        <link>http://example.org/posts/2020/rails-link_to/</link>
-        <pubDate>Sat, 11 Jul 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Sat, 11 Jul 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/rails-link_to/</guid>
-        <description>&lt;p&gt;railsのlink_toでの遷移先を別タブで表示させたい。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>コロナ自粛期間の6月にやったこと</title>
-        <link>http://example.org/posts/2020/log-on-june/</link>
-        <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Tue, 30 Jun 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/log-on-june/</guid>
-        <description>&lt;p&gt;6月にやったことのログ。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>大学生がVue.jsを使って3日間でポートフォリオを作成してみた</title>
-        <link>http://example.org/posts/2020/vue-portfolio/</link>
-        <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Sun, 28 Jun 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/vue-portfolio/</guid>
-        <description>&lt;p&gt;Vue.jsでポートフォリオを作ったのでまとめました。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>webサーバとアプリケーションサーバって何が違うんだろう？</title>
-        <link>http://example.org/posts/2020/web-app-server/</link>
-        <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Sat, 20 Jun 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/web-app-server/</guid>
-        <description>&lt;p&gt;webサーバとアプリケーションサーバの違いについてのまとめです。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>モジュール・パッケージ・ライブラリの違いがよく分からないので整理してみた</title>
-        <link>http://example.org/posts/2020/module-package-library/</link>
-        <pubDate>Fri, 05 Jun 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Fri, 05 Jun 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/module-package-library/</guid>
-        <description>&lt;p&gt;モジュール・パッケージ・ライブラリの区別難しい。。。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>コロナ自粛期間の5月にやったこと</title>
-        <link>http://example.org/posts/2020/log-on-may/</link>
-        <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Sun, 31 May 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/log-on-may/</guid>
-        <description>&lt;p&gt;5月にやったことのログ。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>コロナ自粛期間の4月にやったこと</title>
-        <link>http://example.org/posts/2020/log-on-april/</link>
-        <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Fri, 08 May 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/log-on-april/</guid>
-        <description>&lt;p&gt;4月にやったことのログ。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>【PATHを通す】を理解する</title>
-        <link>http://example.org/posts/2020/pass-path/</link>
-        <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Sat, 25 Apr 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/pass-path/</guid>
-        <description>&lt;p&gt;「PATHを通す」ってよく聞くけど、意味がよく分からなかったので勉強しました。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>Web APIの概念を押さえる</title>
-        <link>http://example.org/posts/2020/what-is-web-api/</link>
-        <pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Sat, 11 Apr 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/what-is-web-api/</guid>
-        <description>&lt;p&gt;Web API is 何？&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>Linuxとは</title>
-        <link>http://example.org/posts/2020/what-is-linux/</link>
-        <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Mon, 30 Mar 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/what-is-linux/</guid>
-        <description>&lt;p&gt;Linuxとはそもそも何なのかについて調べました。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>ES6(JavaScript)の基礎を押さえる</title>
-        <link>http://example.org/posts/2020/es6-tutorial/</link>
-        <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Sun, 29 Mar 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/es6-tutorial/</guid>
-        <description>&lt;p&gt;JavaScriptの新記法ES6の基礎を少し学んだので、そのアウトプットです。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>Dockerと仮想マシンの違い</title>
-        <link>http://example.org/posts/2020/difference-docker-vm/</link>
-        <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Sat, 28 Mar 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/difference-docker-vm/</guid>
-        <description>&lt;p&gt;Dockerと仮想マシンの違いについてまとめてみました。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>SQLの４大命令について</title>
-        <link>http://example.org/posts/2020/sql-order/</link>
-        <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
-        
-        <atom:modified>Fri, 27 Mar 2020 00:00:00 +0000</atom:modified>
-        <guid>http://example.org/posts/2020/sql-order/</guid>
-        <description>&lt;p&gt;SQLとはデータベース言語であり、データベースを管理するソフトウェアを操作・制御することが目的です。&lt;/p&gt;</description>
-        
-        <dc:creator>Hugo Authors</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-      <item>
-        <title>My First Post</title>
-        <link>http://example.org/posts/myfirstpost/</link>
-        <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
-        
-        <atom:modified>Tue, 26 Mar 2019 08:47:11 +0100</atom:modified>
-        <guid>http://example.org/posts/myfirstpost/</guid>
-        <description>こんにちは、世界。</description>
-        
-        <dc:creator>Kazuhiro Mimaki</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
+  #省略
 
+&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt;% end %&amp;gt;
+&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt;%= paginate @posts %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;まだまだ知らないメソッドたちはたくさんあるなぁ。&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.ruby-lang.org/ja/latest/method/Array/i/sort.html&#34;&gt;Array#sort (Ruby 2.7.0 リファレンスマニュアル)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/you8/items/df68aaee3010e282d1ae&#34;&gt;[rails]kaminariを使ってページネーションを作る&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.konboi.com/post/2013/03/31/224939/&#34;&gt;kaminariを使って配列に対してのページャーを作成する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>コロナ自粛期間の10月にやったこと</title>
+      <link>http://example.org/posts/log-on-october/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/log-on-october/</guid>
+      <description>&lt;p&gt;10月にやったことのログ。&lt;/p&gt;
+&lt;p&gt;成長も見やすいし何やったか振り返れるので、毎月やったことをログとして残していこうと思う。
+ちなみにこれまでの記事は以下です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-april/#アンカー&#34;&gt;コロナ自粛期間の4月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-may/#アンカー&#34;&gt;コロナ自粛期間の5月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-june/#アンカー&#34;&gt;コロナ自粛期間の6月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-july/#アンカー&#34;&gt;コロナ自粛期間の7月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-august/#アンカー&#34;&gt;コロナ自粛期間の8月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-september/#アンカー&#34;&gt;コロナ自粛期間の9月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;10月にやったこと&#34;&gt;10月にやったこと&lt;/h1&gt;
+&lt;p&gt;9月に比べると10月は比較的新しいことに挑戦できました。&lt;/p&gt;
+&lt;h2 id=&#34;サイト制作&#34;&gt;サイト制作&lt;/h2&gt;
+&lt;p&gt;引き続きVue.jsとTypeScriptでフロント書き書きしてました
+コンポーネントの切り分けだいぶ慣れた&lt;/p&gt;
+&lt;h2 id=&#34;プロダクト開発&#34;&gt;プロダクト開発&lt;/h2&gt;
+&lt;p&gt;8月頃からゆるゆる開発しているプロダクト一覧表示と検索ができるサービス。
+今月は一気に開発が進んだ気がします。
+あとはドメインがきたらひとまずリリースしようかなと。
+Vuexが分からない、というかFluxが分からない、、、
+ついでにMVVMも理解できてないので勉強したい、最近アーキテクチャに興味湧いてきてます。&lt;/p&gt;
+&lt;h2 id=&#34;達人に学ぶdb設計徹底指南書読んだ&#34;&gt;「達人に学ぶDB設計徹底指南書」読んだ&lt;/h2&gt;
+&lt;p&gt;良書でした。
+正規化は100%正義だと思っていたけど、パフォーマンスが落ちる場合もあるらしいです。
+DBに深い関心が芽生えたとともにSQLがっつり勉強したくなりました。&lt;/p&gt;
+&lt;h2 id=&#34;n1問題改善&#34;&gt;n+1問題改善&lt;/h2&gt;
+&lt;p&gt;rails製のサービス開発をお手伝いしていて、そこでn+1問題が起きまくっていたのでクエリの呼び出し方をいろいろ変えてみました。
+改善できたとこもあるけど、よく分からない部分の方が多いので引き続き試行錯誤していきたいです。&lt;/p&gt;
+&lt;h2 id=&#34;iosアプリのサーバーサイドのapi書いた&#34;&gt;iOSアプリのサーバーサイドのAPI書いた&lt;/h2&gt;
+&lt;p&gt;SNSでお声がけいただいて新たにメンバーとしてjoinしました。
+新しくテーブル作る時、今後の機能の拡張性を考えながら作るのまじで難しい。。。
+初めてSwagger使いやした。hamlも初めて書いた。
+あと、rails勉強してたはずなのに「こんなに知らないメソッドあるんだ」ってくらい初めて見るメソッドが多くて腰抜けた。。。
+まだまだrailsも勉強足りないね…むり。。。&lt;/p&gt;
+&lt;h2 id=&#34;hugoでブログ作成中&#34;&gt;hugoでブログ作成中&lt;/h2&gt;
+&lt;p&gt;フルスクラッチでも良かったけど良さげなテーマ見つけたので拝借してアレンジなうです。
+ビルドとデプロイはGitHub Actionsで自動化。(20回failしたのは内緒・・・)
+知人にファビコン作成を依頼中です、楽しみ&amp;hellip;！&lt;/p&gt;
+&lt;h2 id=&#34;rebase完全に理解した&#34;&gt;rebase完全に理解した&lt;/h2&gt;
+&lt;p&gt;ずっと理解できなかったrebaseという概念をようやく理解できたような気がします。(気がするだけかも。。。！？)
+自分のローカルで使う時は featureブランチ上でmasterかdevelopをmergeしたい時にrebaseで代用すればコミット履歴がすっきりしそう。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;10月はわりと新しいことに挑戦できた気がします。
+11月からはずっと逃げてきたアルゴリズムとデータ構造を勉強し始めようかなと思っています。
+あと、積読が溜まっているのでそっちも消化したい。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>rebase完全に理解した</title>
+      <link>http://example.org/posts/tutorial-rebase/</link>
+      <pubDate>Sun, 25 Oct 2020 14:30:00 +0900</pubDate>
+      
+      <guid>http://example.org/posts/tutorial-rebase/</guid>
+      <description>&lt;p&gt;最近実務で初めてrebaseを使って「？？？？」となったので調べました。&lt;/p&gt;
+&lt;p&gt;以下の動画、記事が分かりやすかったです。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=CRlGDDprdOQ&#34;&gt;Git MERGE vs REBASE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.atlassian.com/ja/git/tutorials/merging-vs-rebasing&#34;&gt;マージとリベース&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;具体例&#34;&gt;具体例&lt;/h2&gt;
+&lt;p&gt;今回は動画から引用してこのような場合を考えてみます。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;m2まで作業が進んでいるmasterブランチからfeatureブランチへcheckout&lt;/li&gt;
+&lt;li&gt;featureブランチでf1をコミット&lt;/li&gt;
+&lt;li&gt;masterブランチにcheckoutしてm3をコミット&lt;/li&gt;
+&lt;li&gt;再度featureブランチにcheckoutしてf2をコミット
+&lt;img src=&#34;https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/575694/adb79854-97ec-a83f-0ac8-0f61e8c9719a.png&#34; alt=&#34;スクリーンショット 2020-10-25 10.58.28.png&#34;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;ここまでの各ブランチのlog&#34;&gt;ここまでの各ブランチのlog&lt;/h2&gt;
+&lt;h4 id=&#34;masterブランチのlog&#34;&gt;masterブランチのlog&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;m3
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;featureブランチのlog&#34;&gt;featureブランチのlog&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;f2
+f1
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;merge-vs-rebase&#34;&gt;merge vs rebase&lt;/h2&gt;
+&lt;p&gt;ここからfeatureブランチにて、masterブランチを&lt;code&gt;merge&lt;/code&gt;, &lt;code&gt;rebase&lt;/code&gt;するとそれぞれどうなるか見ていきます。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git merge master&lt;/code&gt;のlog&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;f2
+m3
+f1
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;git rebase master&lt;/code&gt;のlog&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;f2
+f1
+m3
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;merge&lt;/code&gt;では時系列に沿ってそのまま差分を統合しているのに対し、&lt;code&gt;rebase&lt;/code&gt;ではfeatureブランチの先端がmasterで置き換えられています。
+&lt;code&gt;rebase&lt;/code&gt;を用いるとコミット履歴がすっきりしますね。&lt;/p&gt;
+&lt;h2 id=&#34;rebaseのアンチパターン&#34;&gt;rebaseのアンチパターン&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.atlassian.com/ja/git/tutorials/merging-vs-rebasing&#34;&gt;この記事&lt;/a&gt;から引用します。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;リベースの特徴を理解できたら、次に最も重要なことは、実行してはいけないときを知ることです。git rebase の黄金律は、リベースを public ブランチでは決して使用しないことです。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;masterブランチにて、自分の作業ブランチをrebaseしてしまうとmasterのコミット履歴が書き換えられてしまいます。
+このように、他の人にも共有済みのブランチで&lt;code&gt;rebase&lt;/code&gt;は使わないように注意しましょう。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>コロナ自粛期間の9月にやったこと</title>
+      <link>http://example.org/posts/log-on-september/</link>
+      <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/log-on-september/</guid>
+      <description>&lt;p&gt;9月にやったことのログ。&lt;/p&gt;
+&lt;p&gt;成長も見やすいし何やったか振り返れるので、毎月やったことをログとして残していこうと思う。
+ちなみにこれまでの記事は以下です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-april/#アンカー&#34;&gt;コロナ自粛期間の4月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-may/#アンカー&#34;&gt;コロナ自粛期間の5月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-june/#アンカー&#34;&gt;コロナ自粛期間の6月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-july/#アンカー&#34;&gt;コロナ自粛期間の7月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-august/#アンカー&#34;&gt;コロナ自粛期間の8月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;9月にやったこと&#34;&gt;9月にやったこと&lt;/h1&gt;
+&lt;p&gt;9月も8月に引き続き開発タスクに追われていました。
+インプットにもう少し時間使いたい、、、&lt;/p&gt;
+&lt;h2 id=&#34;lp制作&#34;&gt;LP制作&lt;/h2&gt;
+&lt;p&gt;先月から引き続き、Vue.jsとTypeScriptをメインで使用してサイト制作に取り組みました。
+&lt;code&gt;Composition API&lt;/code&gt; という新しい記法でVueを書いています。
+コンポーネントの作り方が徐々に分かってきた。&lt;/p&gt;
+&lt;h2 id=&#34;プロダクト開発&#34;&gt;プロダクト開発&lt;/h2&gt;
+&lt;p&gt;firestoreとGASの連携に成功。
+google formから送信したデータをfirestoreに保存することはできました。
+ただ、画像の保存・参照がうまくいかず。。。
+最終的に、google formは使わずVue.jsのアプリケーション内でフォーム入力も完結させることに。
+firestoreにデータを送信・保存し、画像はcloud storageから参照する形にしました。
+なんとかここまで実装できて良かった。&lt;/p&gt;
+&lt;h2 id=&#34;gitコマンド諸々&#34;&gt;gitコマンド諸々&lt;/h2&gt;
+&lt;p&gt;チーム開発をする機会が増え、色々なgitコマンドを触るようになりました。
+特に新しく学んだのは、&lt;code&gt;rebase&lt;/code&gt;, &lt;code&gt;squash&lt;/code&gt;, &lt;code&gt;cherry-pick&lt;/code&gt; コマンド。
+&lt;code&gt;rebase&lt;/code&gt; はまだよく分からないけど使いこなせるようになりたい、、！&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;9月も開発タスクに追われる日々でした、、、
+最近開発タスクに追われて新しい技術やスキルの習得に時間を割けないのがもどかしいです。
+10月は最低あと3つは新しいことしたいなぁと、頑張る。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>コロナ自粛期間の8月にやったこと</title>
+      <link>http://example.org/posts/log-on-august/</link>
+      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/log-on-august/</guid>
+      <description>&lt;p&gt;8月にやったことのログ。&lt;/p&gt;
+&lt;p&gt;成長も見やすいし何やったか振り返れるので、毎月やったことをログとして残していこうと思う。
+ちなみにこれまでの記事は以下です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-april/#アンカー&#34;&gt;コロナ自粛期間の4月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-may/#アンカー&#34;&gt;コロナ自粛期間の5月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-june/#アンカー&#34;&gt;コロナ自粛期間の6月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-july/#アンカー&#34;&gt;コロナ自粛期間の7月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;8月にやったこと&#34;&gt;8月にやったこと&lt;/h1&gt;
+&lt;p&gt;8月は開発のタスクが多すぎてそれに追われてました。。&lt;/p&gt;
+&lt;h2 id=&#34;サービス開発のお手伝い&#34;&gt;サービス開発のお手伝い&lt;/h2&gt;
+&lt;p&gt;先月から引き続きRailsを使ったサービス開発に取り組みました。
+自分が作った機能がリリースされたので喜んでました。
+あとはjQueryを使ったモーダルの表示とか実装しました。&lt;/p&gt;
+&lt;h2 id=&#34;サイト制作&#34;&gt;サイト制作&lt;/h2&gt;
+&lt;p&gt;Vue.jsとTypeScriptをメインで使用してサイト制作に取り組みました。
+どこまで細かくコンポーネントにするかが難しい。。TypeScript使ったらバニラJSには戻れない笑
+CSSアニメーションも結構触ってフロントエンド楽しい！ってなってました。&lt;/p&gt;
+&lt;h2 id=&#34;プロダクト開発&#34;&gt;プロダクト開発&lt;/h2&gt;
+&lt;p&gt;バイト先のプログラミングスクールで受講生のプロダクト一覧の表示と検索ができるサイトが必要になったので、その開発をしていました。
+Vuetifyを使ってざっくりフロントのレイアウトを作るのはできたので、あとはバックエンド。。。
+firestoreとGASでなんとかならないかなぁと試行錯誤中です。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;8月は開発タスクに追われてインプットの時間全然取れなかった。
+9月もこの傾向続きそうなのでちょっと心配です。
+仕事しながらインプットしてる社会人の方ほんとすごいわ。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[Rails] webpackerでCSSを読み込みたい</title>
+      <link>http://example.org/posts/webpacker-css/</link>
+      <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/webpacker-css/</guid>
+      <description>&lt;p&gt;railsのver.6以上を使うなら &lt;code&gt;asset pipeline&lt;/code&gt; ではなく &lt;code&gt;webpacker&lt;/code&gt; でCSSを読み込みたいと思い、実装したのでメモです。&lt;/p&gt;
+&lt;h2 id=&#34;ディレクトリ構成&#34;&gt;ディレクトリ構成&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rails/webpacker&#34;&gt;webpacker&lt;/a&gt; のREADME.mdより。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;app/javascript:
+  └── packs:
+      # only webpack entry files here
+      └── application.js
+      └── application.css
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;手順&#34;&gt;手順&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;rails new&lt;/code&gt; は完了しているものとします。
+rails6より下のversion使ってる人はwebpackerもインストールしましょう。&lt;/p&gt;
+&lt;h2 id=&#34;新規フォルダファイル作成&#34;&gt;新規フォルダ・ファイル作成&lt;/h2&gt;
+&lt;p&gt;↑のディレクトリ構成に従う。
+app/javascript/packsに &lt;code&gt;application.css&lt;/code&gt; ファイルを作成&lt;/p&gt;
+&lt;h2 id=&#34;エントリーポイント&#34;&gt;エントリーポイント&lt;/h2&gt;
+&lt;p&gt;エントリーポイントは packs/application.js なので、application.cssファイルをimport。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-packs/application.js&#34; data-lang=&#34;packs/application.js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;packs/application.css&amp;#34;&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;applicationhtmlerbを編集&#34;&gt;application.html.erbを編集&lt;/h2&gt;
+&lt;p&gt;views/layouts/application.html.erb に以下を記述。
+おそらくデフォルトだと &lt;code&gt;stylesheets_link_tag&lt;/code&gt; になっているので、そこを &lt;code&gt;stylesheets_pack_tag&lt;/code&gt; に変更すればいいかと。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-erb&#34; data-lang=&#34;erb&#34;&gt;&amp;lt;%= javascript_pack_tag &#39;application&#39; %&amp;gt;
+&amp;lt;%= stylesheet_pack_tag &#39;application&#39; %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;cssを書く&#34;&gt;CSSを書く&lt;/h2&gt;
+&lt;p&gt;あとはCSSを書くのみです。
+次はReact、Vue.jsあたりも導入してみたい。&lt;/p&gt;
+&lt;p&gt;今回は手順だけをメモした感じなので、もう少し詳しく中身を知りたい人は↓が参考になると思われます。&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://techracho.bpsinc.jp/hachi8833/2019_11_28/83678&#34;&gt;Rails 6+Webpacker開発環境をJS強者ががっつりセットアップしてみた（翻訳）&lt;/a&gt;
+&lt;a href=&#34;https://qiita.com/msy-naka/items/dba5e880c501ca0d5d92&#34;&gt;webpackerでcssとimagesを参照したい&lt;/a&gt;
+&lt;a href=&#34;https://cloudpack.media/51718&#34;&gt;webpacker でページごとにスタイルを分ける&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[Rails] いいね数順でランキング</title>
+      <link>http://example.org/posts/rails-ranking-by-like/</link>
+      <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/rails-ranking-by-like/</guid>
+      <description>&lt;p&gt;今回はいいね数の多い順(いいね数が0も含む)に投稿を表示させるランキング機能の実装方法についてです。
+ランキング機能の実装方法は他でもあったのですが、いいねが0の投稿も表示させている記事が見当たらなかったので実装してみました。&lt;/p&gt;
+&lt;h1 id=&#34;前提&#34;&gt;前提&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;投稿のテーブルは &lt;code&gt;posts&lt;/code&gt;、 ユーザーのテーブルは &lt;code&gt;users&lt;/code&gt; とする。&lt;/li&gt;
+&lt;li&gt;いいね機能に必要な中間テーブルは &lt;code&gt;likes&lt;/code&gt; とする。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;posts&lt;/code&gt;・&lt;code&gt;users&lt;/code&gt;・&lt;code&gt;likes&lt;/code&gt; それぞれのテーブルはいずれも作成済みとする。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;手順&#34;&gt;手順&lt;/h1&gt;
+&lt;h2 id=&#34;モデルにアソシエーションを定義&#34;&gt;モデルにアソシエーションを定義&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-post.rb&#34; data-lang=&#34;post.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Post&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+    belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+    has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+    has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:liked_users&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;through&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;source&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-user.rb&#34; data-lang=&#34;user.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;User&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:posts&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:liked_posts&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;through&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;source&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:post&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-like.rb&#34; data-lang=&#34;like.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Like&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+  belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:post&lt;/span&gt;
+  belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;コントローラーをいじる&#34;&gt;コントローラーをいじる&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-posts_controller.rb&#34; data-lang=&#34;posts_controller.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;index&lt;/span&gt;
+  @posts &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Post&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;all&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sort {&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;a,b&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; b&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;liked_users&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;count &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&amp;gt;&lt;/span&gt; a&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;liked_users&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;count}
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ここでは &lt;code&gt;sort&lt;/code&gt; というrubyのメソッドを使って順序を操作している。
+=&amp;gt; &lt;a href=&#34;https://docs.ruby-lang.org/ja/latest/method/Array/i/sort.html&#34;&gt;sortに関してはこちらを参照&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;a.liked_users.count&lt;/code&gt;、&lt;code&gt;b.liked_users.count&lt;/code&gt; が表しているのはそれぞれ各投稿のいいね数。
+すなわち、各投稿のいいね数を比較して昇順で並び替えている。&lt;/p&gt;
+&lt;h2 id=&#34;ビューで表示させる&#34;&gt;ビューで表示させる&lt;/h2&gt;
+&lt;p&gt;あとはビューで表示させるだけ。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-index.html.erb&#34; data-lang=&#34;index.html.erb&#34;&gt;&amp;lt;% @posts.each do |post| %&amp;gt;
+
+  #省略
+
+&amp;lt;% end %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;まだまだ知らないメソッドたちはたくさんあるなぁ。&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.ruby-lang.org/ja/latest/method/Array/i/sort.html&#34;&gt;Array#sort (Ruby 2.7.0 リファレンスマニュアル)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>聞いたことはあるがよくわからないJavaScript周辺のあれこれ</title>
+      <link>http://example.org/posts/keywords-js/</link>
+      <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/keywords-js/</guid>
+      <description>&lt;p&gt;JSでよくお目にかかるキーワードをまとめてみました。
+今後も追加していくと思います。&lt;/p&gt;
+&lt;p&gt;JavaScriptを学習していると、よくわからない概念やライブラリに出会う機会が多いです。
+その中でも特によく耳にするものをざっくりまとめてみました。(ホントにざっくり)
+各内容をもっと掘り下げた参考記事も貼っているので気になる方はそちらも読んでみてください。&lt;/p&gt;
+&lt;h1 id=&#34;ecmascript&#34;&gt;ECMAScript&lt;/h1&gt;
+&lt;p&gt;ECMAScriptとはJavaScriptの言語仕様の取り決め。
+よく耳にする &lt;code&gt;ES2015&lt;/code&gt; や &lt;code&gt;ES6&lt;/code&gt; といった用語はJavaScriptのバージョンを表し、ここで出てくる &lt;code&gt;ES&lt;/code&gt; がECMAScriptのこと。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/yukibe/items/acd0bafcf2a10c99d0f6&#34;&gt;【JavaScript】JavaScript、その前に〜ECMAScriptとは？&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;npm&#34;&gt;npm&lt;/h1&gt;
+&lt;p&gt;Node Package Manager、すなわちNode.jsのパッケージを管理するもの。
+npmのおかげで、 &lt;code&gt;npm install 〇〇&lt;/code&gt; と打つだけで便利なライブラリを簡単にインストールして利用することができる。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/lelouch99v/items/05f973df9c54cec23419&#34;&gt;npmとは&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;yarn&#34;&gt;yarn&lt;/h1&gt;
+&lt;p&gt;2016年にFacebookが公開したかなり新しめのJavaScriptパッケージマネージャ。
+役割はnpmとほぼ同じだが、npmと比べてインストール・セキュリティ・バージョン管理の面で優れている。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/lelouch99v/items/c97ff951ca31298f3f24&#34;&gt;yarnとは&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;packagejson&#34;&gt;package.json&lt;/h1&gt;
+&lt;p&gt;パッケージマネージャを用いてプロジェクトを作成する際に、プロジェクトが依存するパッケージに関する情報（さらにはプロジェクト全体に関する情報）を記録するファイルがpackage.json。
+プロジェクトを動作させるために必要なパッケージをdependencies属性とdevDependencies属性に記述しておけば、&lt;code&gt;npm install&lt;/code&gt; コマンドを打つだけでプロジェクト環境を復元できるため、非常に便利。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/righteous/items/e5448cb2e7e11ab7d477&#34;&gt;【初心者向け】NPMとpackage.jsonを概念的に理解する&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;babel&#34;&gt;Babel&lt;/h1&gt;
+&lt;p&gt;BabelはJavaScriptのコンパイラ。
+これを使うとJavaScriptのコードを新しい書き方から古い書き方へと変換してくれる。
+ブラウザによって対応しているJavaScriptのバージョンや仕様が異なるので、各ブラウザの環境に合わせて記法を変換する必要がある。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/Shagamii/items/a87181c22ea777ee2acc&#34;&gt;【５分でなんとなく理解！】Babel入門&lt;/a&gt;
+&lt;a href=&#34;https://qiita.com/koedamon/items/92c986456e4b9e845acd&#34;&gt;webpackとBabelの基本を理解する(1) ―Babel編―&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;webpack&#34;&gt;webpack&lt;/h1&gt;
+&lt;p&gt;webpackはモジュールバンドラ。
+モジュールバンドラとは、複数のファイルを１つにまとめて出力してくれるツールのこと。
+webpackはJSファイルだけでなく、CSSや画像ファイルも1つにまとめてくれる。
+webpackを使えば、開発時には機能ごとにファイルを分割して開発を進めることができ、読み込み時には1つのファイルとして読み込めるので、非常に便利。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/kamykn/items/45fb4690ace32216ca25&#34;&gt;webpackってどんなもの？&lt;/a&gt;
+&lt;a href=&#34;https://qiita.com/koedamon/items/3e64612d22f3473f36a4&#34;&gt;webpackとBabelの基本を理解する(1) ―webpack編―&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;eslint&#34;&gt;ESLint&lt;/h1&gt;
+&lt;p&gt;ESLint は JavaScript のための静的検証ツール。
+コードを実行する前に明らかなバグを見つけたり、括弧やスペースの使い方などのスタイルを統一したりするのに役立つ。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/mysticatea/items/f523dab04a25f617c87d&#34;&gt;ESLint 最初の一歩&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>コロナ自粛期間の7月にやったこと</title>
+      <link>http://example.org/posts/log-on-july/</link>
+      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/log-on-july/</guid>
+      <description>&lt;p&gt;7月にやったことのログ。&lt;/p&gt;
+&lt;p&gt;成長も見やすいし何やったか振り返れるので、毎月やったことをログとして残していこうと思う。
+ちなみにこれまでの記事は以下です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-april/#アンカー&#34;&gt;コロナ自粛期間の4月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-may/#アンカー&#34;&gt;コロナ自粛期間の5月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-june/#アンカー&#34;&gt;コロナ自粛期間の6月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;7月にやったこと&#34;&gt;7月にやったこと&lt;/h1&gt;
+&lt;p&gt;7月はあまり頑張れなかった。先月にやると言ってたJS関係の勉強は頑張って取り組んだが、集中力が続かず、進捗も生めず。&lt;/p&gt;
+&lt;h2 id=&#34;技育祭&#34;&gt;技育祭&lt;/h2&gt;
+&lt;p&gt;7月上旬はなんといってもこのイベント。今年はコロナの影響もあってオンラインだったけど、コンテンツ充実しまくりで最高の2日間だった。有名企業の最前線でバリバリ活躍しているエンジニアの方々、CTOの方々、みんな超かっこよかったなぁ。当日は参加するルームを選択する形だったこともあり、見れていない登壇もあるのでアーカイブに期待&amp;hellip;！&lt;/p&gt;
+&lt;h2 id=&#34;サービス開発のお手伝い&#34;&gt;サービス開発のお手伝い&lt;/h2&gt;
+&lt;p&gt;知人の紹介でRailsを使ったサービス開発にジョインすることになった。今月はサービスの改修や新規機能の開発を少し任せてもらった。ユーザーがいるサービスの開発に携わるのは初めてなので、緊張感もありつつ、すごく楽しい。&lt;/p&gt;
+&lt;h2 id=&#34;javascript&#34;&gt;JavaScript&lt;/h2&gt;
+&lt;p&gt;データ型やリテラル、ES5以降とそれ以前の違い、プロトタイプオブジェクトの考え方、関数、などなどJavaScriptの基礎をじっくり学習した。個人的にthisの挙動と非同期処理の理解にかなり苦しんだ。というか、今も完璧に理解しているとは言い難い。。。&lt;/p&gt;
+&lt;h2 id=&#34;typescript&#34;&gt;TypeScript&lt;/h2&gt;
+&lt;p&gt;JavaScriptの学習を一通り終えると次はTypeScriptの学習に入った。文法的にはほぼJSなので、型システムを理解できればいいのでは？と思ってる。TypeScript触った後に生のJavaScript触ると型がなくて不安になる。&lt;/p&gt;
+&lt;h2 id=&#34;nodejs--react--mongodb&#34;&gt;Node.js / React / MongoDB&lt;/h2&gt;
+&lt;p&gt;これまた知人の紹介でNode.js / React / MongoDBを使用しているサービスの改修をすることになったので、そこらへんをインプット。全部新しく学ぶ概念たちなのでなかなか大変、だけど楽しい。&lt;/p&gt;
+&lt;h2 id=&#34;基本情報技術者試験の勉強を少し&#34;&gt;基本情報技術者試験の勉強を少し&lt;/h2&gt;
+&lt;p&gt;基本情報技術者試験はCSの基礎をさっとさらうのに適していると耳にしたので、その勉強を少し。基数変換 / 論理回路 / CPU / メモリ / DB / ネットワーク少し / セキュリティ / テスト / オブジェクト指向 あたりの分野をざっと参考書で読み、過去問を解くなどした。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;7月は全然頑張れなかった。。。毎年梅雨の時期はやる気が出なかったり、体調が優れない。8月から心機一転頑張りたいなぁ、梅雨さん早く明けておくれ。。。
+8月は色々やりたい。というか携わる予定の開発の案件が多いので、整理して取り組まないと詰む。余裕があれば、バックエンドRailsでAPI、フロントReact使ったアウトプット作ってみたい、あとはDockerとAWSあたりもう少し踏み込みたい。7月からまたコロナがヤンチャし始めたので、先行きが不安。。。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[Rails] link_toのリンク先を別タブで表示させたい</title>
+      <link>http://example.org/posts/rails-link_to/</link>
+      <pubDate>Sat, 11 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/rails-link_to/</guid>
+      <description>&lt;p&gt;railsのlink_toでの遷移先を別タブで表示させたい。&lt;/p&gt;
+&lt;p&gt;Railsでlink_toを使うときに別タブで表示させたいと思い、実装したのでメモとして残しておきます。&lt;/p&gt;
+&lt;h1 id=&#34;手順&#34;&gt;手順&lt;/h1&gt;
+&lt;p&gt;まず &lt;code&gt;link_to&lt;/code&gt; で表示させたい文字列とリンク先URLを指定。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-rhtml&#34; data-lang=&#34;rhtml&#34;&gt;&amp;lt;%= link_to &amp;quot;文字列&amp;quot;, &amp;quot;リンク先URL&amp;quot; %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;別タブで表示させるため、&lt;code&gt;target: :_blank&lt;/code&gt; を追加&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-rhtml&#34; data-lang=&#34;rhtml&#34;&gt;&amp;lt;%= link_to &amp;quot;文字列&amp;quot;, &amp;quot;リンク先URL&amp;quot;, target: :_blank %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これで別タブで開けるようになる。
+しかし、これだとパフォーマンスとセキュリティの面で問題が。。。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://webtan.impress.co.jp/e/2020/03/13/35510&#34;&gt;グーグルのエンジニアが警告、「別タブで開く」リンクは実はヤバいんだって！？【SEO情報まとめ】&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wwg.co.jp/blog/3807&#34;&gt;実はヤバい？危険な「別タブで開く（target=”_blank”）」&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;この問題を回避するためには &lt;code&gt;rel=&amp;quot;noopener noreferrer&amp;quot;&lt;/code&gt; をつけるといいみたい。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-rhtml&#34; data-lang=&#34;rhtml&#34;&gt;&amp;lt;%= link_to &amp;quot;文字列&amp;quot;, &amp;quot;リンク先URL&amp;quot;, target: :_blank, rel: &amp;quot;noopener noreferrer&amp;quot; %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これで安心して別タブを開けます。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>コロナ自粛期間の6月にやったこと</title>
+      <link>http://example.org/posts/log-on-june/</link>
+      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/log-on-june/</guid>
+      <description>&lt;p&gt;6月にやったことのログ。&lt;/p&gt;
+&lt;p&gt;成長も見やすいし何やったか振り返れるので、毎月やったことをログとして残していこうと思う。
+ちなみにこれまでの記事は以下です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-april/#アンカー&#34;&gt;コロナ自粛期間の4月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-may/#アンカー&#34;&gt;コロナ自粛期間の5月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;6月にやったこと&#34;&gt;6月にやったこと&lt;/h1&gt;
+&lt;p&gt;6月に入って徐々にコロナの自粛モードが解けてきたので、外出する機会も増えた。とはいえ、まだ怪しいので油断大敵。今月は自分のオリジナルアプリ作ったり書籍を読んで勉強できた。&lt;/p&gt;
+&lt;h2 id=&#34;リモートインターン&#34;&gt;リモートインターン&lt;/h2&gt;
+&lt;p&gt;6月上旬は先月から取り組んでいるインターンの課題に引き続き取り組んだ。結果的に即戦力としては力不足と判断されたが、研修のような形で引き続き課題に取り組むことになった。貴重な機会をいただけて感謝しかない。&lt;/p&gt;
+&lt;h2 id=&#34;htmlcss&#34;&gt;HTML/CSS&lt;/h2&gt;
+&lt;p&gt;これまで適当にやっていたHTML/CSSの概念をきちんと勉強した。HTMLに関しては、レイアウトを構築していく上で必要なツリー構造の考え方やSEOを意識したセマンティクスなどの考え方を学んだ。CSSに関しては、要素の並べ方がかなりうまくなったと思う。レスポンシブに必要なメディアクエリについても学んだほか、16進数で指定する色の考え方に関連して基数変換も勉強した。&lt;/p&gt;
+&lt;h2 id=&#34;aws&#34;&gt;AWS&lt;/h2&gt;
+&lt;p&gt;AWSは4月に少し勉強していたが、この機会に入門書を一冊購入し、ハンズオンで学習した。IAMユーザーを登録するところから始まり、S3を利用した静的なサイトのホスティングや、LAMPサーバーでWordPresswpを動かすところまでやってみた。VPC、EC2、S3、RDS、Elastic IP、Route 53などの基本的な概念はざっと理解した。書籍の通りLAMP環境の構築をしただけなので、Railsとかでも同様にやってみたい。&lt;/p&gt;
+&lt;h2 id=&#34;web-api&#34;&gt;Web API&lt;/h2&gt;
+&lt;p&gt;あまり理解できていなかったWeb APIを理解するために入門書を読んだ。RailsでJSONを返す簡易APIを作ったり、実際に公開されているAPIを叩いてみたりして、APIの考え方がだいぶ分かるようになってきた。とはいえ自分でAPIを作ってフロントに渡すとかはまだできないので勉強して実装したい。&lt;/p&gt;
+&lt;h2 id=&#34;vuejs&#34;&gt;Vue.js&lt;/h2&gt;
+&lt;p&gt;Udemyの講座を受講し、ディレクティブやコンポーネントなどの考え方をざっと理解したので、ポートフォリオを作成。できたサイトはNetlifyでGitHubと連携させて自動デプロイした。ネット上の色々なポートフォリオを参考にしながら、シンプルなレイアウトとデザインを心がけた。また、ポートフォリオの作成途中にAtomic Designという考え方に出会った。デザインの考え方についてもオーソドックスなところは勉強していかねば。&lt;/p&gt;
+&lt;p&gt;よかったら以下の記事も読んでみてください。
+&lt;a href=&#34;https://qiita.com/Kazuhiro_Mimaki/items/94c88f69d0c56cee4f16&#34;&gt;大学生がVue.jsでポートフォリオを作成してみた&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ポートフォリオ作成&#34;&gt;ポートフォリオ作成&lt;/h2&gt;
+&lt;p&gt;APIの勉強とVue.jsの勉強を兼ねてポートフォリオを2つ作成した。まだ実装途中の部分もあるが、一通りの機能とデプロイはできた。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;7月はJSに注力したい。JSの基礎的な概念からNode.jsやReact、他にTypeScriptなどを用いたより実践的なことにも取り組みたい。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>大学生がVue.jsを使って3日間でポートフォリオを作成してみた</title>
+      <link>http://example.org/posts/vue-portfolio/</link>
+      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/vue-portfolio/</guid>
+      <description>&lt;p&gt;Vue.jsでポートフォリオを作ったのでまとめました。&lt;/p&gt;
+&lt;h1 id=&#34;作ったサイト&#34;&gt;作ったサイト&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://mk-portfolio-site.netlify.app/&#34;&gt;https://mk-portfolio-site.netlify.app/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;動機&#34;&gt;動機&lt;/h1&gt;
+&lt;p&gt;今回サイトを作った動機は「自分のポートフォリオサイト持ってるのってなんかかっこいいよなぁ」と思ったからです。ちょうどいいアウトプットにもなりそうだったので作ることにしました。かかった期間は3日間。時間でいうと20時間くらいです。&lt;/p&gt;
+&lt;h1 id=&#34;1日目&#34;&gt;1日目&lt;/h1&gt;
+&lt;h2 id=&#34;サイトの構成を練る&#34;&gt;サイトの構成を練る&lt;/h2&gt;
+&lt;p&gt;ネット上で他の方が作ったポートフォリオを色々見まくって考えました。
+内容は以下の４項目に決めました。他の学生のポートフォリオを見ていると、インターンの開発経験や研究の内容を盛り込んでいる人も結構いましたが、自分は書くことがなかったのでその項目は外しました。悲しい。。。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Top(トップページ)&lt;/li&gt;
+&lt;li&gt;About(プロフィール)&lt;/li&gt;
+&lt;li&gt;Skills(使ってきた技術)&lt;/li&gt;
+&lt;li&gt;Works(制作物)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;デザインに関しても色々な方のポートフォリオを参考にしました。色やレイアウトはなるべくシンプルなものを目指しました。&lt;/p&gt;
+&lt;h2 id=&#34;使用技術の選定&#34;&gt;使用技術の選定&lt;/h2&gt;
+&lt;p&gt;基本的なレイアウトやデザインはHTML/CSS、動きをつけたりコンポーネントをまとめる部分でVue.jsを中心に使おうと決めました。Vue.jsを選択した理由は大きく2つ。1つ目の理由は他のライブラリやフレームワーク(ReactやAngularなど)と比べてとっつきやすいから、2つ目は人気そうだから、です(笑)。実際触ってみてかなり使いやすかったのでポートフォリオ作成したい人はVue.jsオススメです！&lt;/p&gt;
+&lt;h2 id=&#34;環境構築--大枠の実装&#34;&gt;環境構築 &amp;amp; 大枠の実装&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/567000/items/dde495d6a8ad1c25fa43&#34;&gt;Vue.js を vue-cli を使ってシンプルにはじめてみる&lt;/a&gt; という記事を見ながらVue CLIを使ってプロジェクトを作成しました。
+サイトの大まかなレイアウトやデザインを実装しました。細かいアニメーションやリンクの対応はまだできていない状態でした。&lt;/p&gt;
+&lt;h1 id=&#34;2日目&#34;&gt;2日目&lt;/h1&gt;
+&lt;h2 id=&#34;おしゃれなライブラリを導入&#34;&gt;おしゃれなライブラリを導入&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/shoma3571/items/025a4e8aedeb62b1fed4&#34;&gt;Vue.jsでポートフォリオを書く&lt;/a&gt;という記事に書かれていたvue-typerとsmoothScrollという2つのライブラリを導入しました。サイトに簡単な動作をつけたい人にはオススメです。&lt;/p&gt;
+&lt;h2 id=&#34;hover時の動作&#34;&gt;hover時の動作&lt;/h2&gt;
+&lt;p&gt;ボタンや画像のhoverに応じた色の変化や表示非表示の切り替えなどの動作をつけていきました。この辺ができてくると動きが出てきて楽しい。&lt;/p&gt;
+&lt;h1 id=&#34;3日目&#34;&gt;3日目&lt;/h1&gt;
+&lt;h2 id=&#34;レスポンシブデザイン&#34;&gt;レスポンシブデザイン&lt;/h2&gt;
+&lt;p&gt;今だとスマホで見る人が圧倒的に多いので、レスポンシブは必須かなと思い導入しました。レイアウトとフォントサイズの調整が主だったので割と簡単でした。1つ大変だったのがハンバーガーメニューです。ヘッダーにサイドバーを表示させるためのハンバーガーメニューを実装しました。Vue.jsのトランジションを取り入れて滑らかなアニメーションが実現できたかなと思います。(よかったらスマホで見てみてください&amp;hellip;！)&lt;/p&gt;
+&lt;h2 id=&#34;サイト公開&#34;&gt;サイト公開&lt;/h2&gt;
+&lt;p&gt;デプロイは&lt;a href=&#34;https://www.netlify.com/&#34;&gt;Netlify&lt;/a&gt;を利用しました。GitHubと連携させて自動デプロイができるので超便利です。&lt;a href=&#34;https://qiita.com/mnuma/items/15f2e8a5f34a392bc604&#34;&gt;vue-cliとNetlifyで始めるお手軽サイトホスティング&lt;/a&gt;という記事を見れば簡単にホスティングできます。&lt;a href=&#34;https://pages.github.com/&#34;&gt;Github Pages&lt;/a&gt;でもいいと思います。&lt;/p&gt;
+&lt;h1 id=&#34;もう少しやりたかったこと&#34;&gt;もう少しやりたかったこと&lt;/h1&gt;
+&lt;h2 id=&#34;ディレクトリ構成--単一ファイルコンポーネント&#34;&gt;ディレクトリ構成 &amp;amp; 単一ファイルコンポーネント&lt;/h2&gt;
+&lt;p&gt;実際にプロジェクトを作成していく中でディレクトリ構成に悩みました。そこで &lt;a href=&#34;https://qiita.com/tockn/items/2ce68b99e0839df52200#modules--pages%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3&#34;&gt;Vue.js ディレクトリ構成 色々試してみた&lt;/a&gt; という記事を参考に&lt;code&gt;Modules &amp;amp; Pagesパターン&lt;/code&gt;を採用してプロジェクトに反映させようとしました。Modulesに再利用可能なコンポーネント、Pagesに基本的なページ構成を書いていく、という考え方です。Vue.jsには単一ファイルコンポーネントという考え方があります。これは部品の再利用性や可読性を高めるために、レイアウトを部品ごとに分けて実装しようという考え方です。ディレクトリ構成は考えたもののうまくコンポーネントをまとめられなかったので、この辺はもう少し勉強して改善したいところです。&lt;/p&gt;
+&lt;h2 id=&#34;アニメーション&#34;&gt;アニメーション&lt;/h2&gt;
+&lt;p&gt;CSSアニメーションやVue.jsのトランジションを絡ませてサイトに動きをつけようとしたのですが、結構大変でした。上の方でも触れているハンバーガーメニューの実装は頑張りましたが、他のアニメーションに関しては今回は諦めました。時間ができたらまた挑戦したいです。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;思っていたより楽に良さげなサイトを作ることができました。「お手軽にポートフォリオ作ってみたい！」という方はぜひVue.js使ってみてください。では！&lt;/p&gt;
+&lt;h1 id=&#34;参考記事&#34;&gt;参考記事&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/567000/items/dde495d6a8ad1c25fa43&#34;&gt;Vue.js を vue-cli を使ってシンプルにはじめてみる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/shoma3571/items/025a4e8aedeb62b1fed4&#34;&gt;Vue.jsでポートフォリオを書く&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/p1ass/items/a01578b782f17f573510&#34;&gt;フロント未学習の大学生が1週間でVue.jsを使ったポートフォリオを作った話&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/mnuma/items/15f2e8a5f34a392bc604&#34;&gt;vue-cliとNetlifyで始めるお手軽サイトホスティング&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/tockn/items/2ce68b99e0839df52200#modules--pages%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3&#34;&gt;Vue.js ディレクトリ構成 色々試してみた&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;その他様々なポートフォリオサイトを拝見し、参考にさせていただきました。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>webサーバとアプリケーションサーバって何が違うんだろう？</title>
+      <link>http://example.org/posts/web-app-server/</link>
+      <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/web-app-server/</guid>
+      <description>&lt;p&gt;webサーバとアプリケーションサーバの違いについてのまとめです。&lt;/p&gt;
+&lt;p&gt;「webサーバとアプリケーションサーバって何が違うんだろう？」、ふと思ったのでまとめた。&lt;/p&gt;
+&lt;h1 id=&#34;サーバとは&#34;&gt;サーバとは&lt;/h1&gt;
+&lt;p&gt;まずサーバって何？という話。サーバは英語でserver、つまり供給する・提供するってこと。&lt;a href=&#34;http://e-words.jp/w/%E3%82%B5%E3%83%BC%E3%83%90.html&#34;&gt;IT用語辞典&lt;/a&gt; によるとサーバとは、コンピュータネットワークにおいて、他のコンピュータに対し、自身の持っている機能やサービス、データなどを提供するコンピュータのこと。私たちがwebページを閲覧するとき、自分のPCから「このページ見たい！」とサーバにお願いする。すると、サーバが「はい、これ！」とページを返してくれる。これで、めでたくwebページが見れる。通常、個々のサーバ機やサーバソフトは、外部に提供する機能やサービス、対応しているデータ形式やプロトコル（通信規約）が決まっている。そして、「DBサーバ」「webサーバ」「アプリケーションサーバ」のように、提供する機能などの種類を冠して「○○サーバ」と呼ぶ。&lt;/p&gt;
+&lt;h1 id=&#34;webサーバ&#34;&gt;webサーバ&lt;/h1&gt;
+&lt;p&gt;webサーバはブラウザからのコンテンツのリクエストを受け取り、ブラウザにレスポンスを返すのが役割。このときのリクエストが静的なwebコンテンツだった場合(HTML、CSS、画像ファイルのような更新しない限り同じ表示コンテンツを表示するコンテンツ)、webサーバが処理してレスポンスを返す。また、クライアントごとに表示内容を変化させる処理が必要な動的なwebコンテンツの場合、webサーバはアプリケーションサーバへとリクエストを送る。そして、アプリケーションサーバから返ってきた結果をレスポンスとして返します。webサーバとして有名なのは Nginx、Apache など。&lt;/p&gt;
+&lt;h1 id=&#34;アプリケーションサーバ&#34;&gt;アプリケーションサーバ&lt;/h1&gt;
+&lt;p&gt;アプリケーションサーバは私たちが作ったアプリケーションを動かしてくれるもの。webサーバから送られてきたリクエストをアプリケーションサーバからアプリケーションに伝え、アプリが処理した結果をwebサーバに返す。ローカル環境下での開発の場合はアプリケーションサーバのみを立てるが、本番環境ではwebサーバをアプリケーションの手前に置くことで、静的なコンテンツの処理を負担させることが多い。&lt;/p&gt;
+&lt;h2 id=&#34;例えばrailsだったら&#34;&gt;例えばRailsだったら&lt;/h2&gt;
+&lt;p&gt;Railsのアプリケーションサーバとして代表的なのはUnicorn、Thin、Rainbows、Pumaなど。webサーバから送られてきたリクエストをアプリケーションサーバからRailsアプリケーションに伝え、Railsアプリが処理した結果をwebサーバに返す。ローカル環境下での開発の場合はPumaのようなRails用のアプリケーションサーバのみを立てる(普段development環境でやってるやつ)。一方、本番環境(production環境)ではwebサーバをRailsアプリケーションの手前に置き、静的なコンテンツの処理を負担させることが多い。こうすることで、Webサーバが複数のアプリケーション一度に処理したり、アセットを素早くレンダリングしたりして、リクエストごとに発生する多くの処理をさばいてくれる。&lt;/p&gt;
+&lt;h2 id=&#34;rack&#34;&gt;Rack&lt;/h2&gt;
+&lt;p&gt;ここでRackに触れておく。RackとはRuby製のフレームワークとアプリケーションサーバの間に入り、互いをつなぐ役割をしてくれる。サーバはRackを使用することで、送られてきたHTTPのリクエストがアプリにも理解できる形に変換される。逆にアプリからのレスポンスはRackを通じてHTTPに変換されてサーバに返る。Rackを使用することでサーバとフレームワークの組み合わせが自由になる。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;ここまでの内容をまとめる。ブラウザから送られてきたリクエストをwebサーバが受け取り、静的なwebコンテンツだった場合レスポンスをブラウザに返す。しかし、リクエストが動的なwebコンテンツの場合、webサーバでは処理せず、アプリケーションサーバに送る。そして、アプリケーションサーバがミドルウェアを通してアプリに伝える。処理が終わったら、先ほどとは逆の順番で結果をブラウザに返す。&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/sumin/items/86a0e2edc40566bcb666&#34;&gt;webサーバーとアプリケーションサーバーの違い&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://e-words.jp/w/%E3%82%B5%E3%83%BC%E3%83%90.html&#34;&gt;IT用語辞典&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/jnchito/items/3884f9a2ccc057f8f3a3&#34;&gt;Rails開発におけるwebサーバーとアプリケーションサーバーの違い（翻訳）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>モジュール・パッケージ・ライブラリの違いがよく分からないので整理してみた</title>
+      <link>http://example.org/posts/module-package-library/</link>
+      <pubDate>Fri, 05 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/module-package-library/</guid>
+      <description>&lt;p&gt;モジュール・パッケージ・ライブラリの区別難しい。。。&lt;/p&gt;
+&lt;p&gt;「モジュール」・「パッケージ」・「ライブラリ」はよく聞くワードだが、違いがよく分からなかったので調べてまとめてみた。調べているとPythonを前提にした記事が多かったので、本記事でもPythonを前提に進める。他の言語等に対しても同じ理論が通用するかについては不明だが、おそらく通ずるところはあると思う。&lt;/p&gt;
+&lt;h1 id=&#34;モジュール&#34;&gt;モジュール&lt;/h1&gt;
+&lt;p&gt;モジュールとは&lt;code&gt;.py&lt;/code&gt;で作られるファイルのこと。ある程度長いプログラムを書く際に&lt;code&gt;.py&lt;/code&gt;ファイルに内容を保存。そして使いたい時がきたら、他のPythonファイルからimportでモジュールとして呼び出す。もちろん、呼び出したモジュールに保存されているクラスや関数は呼び出し先でも利用可能。&lt;/p&gt;
+&lt;h1 id=&#34;パッケージ&#34;&gt;パッケージ&lt;/h1&gt;
+&lt;p&gt;パッケージとはいくつかのモジュールをディレクトリに整理し、ひとまとめにしたもの。機能が似通っているモジュール同士が複数あると、それらをまとめた方が扱いやすくなる。importでパッケージを呼び出すと、パッケージ内にある全てのモジュールの内容を利用できるようになる。&lt;/p&gt;
+&lt;h1 id=&#34;ライブラリ&#34;&gt;ライブラリ&lt;/h1&gt;
+&lt;p&gt;ライブラリとはいくつかのパッケージをインストールできる形にまとめたもの。ライブラリには、Pythonに付属していてすぐに使える &lt;strong&gt;標準ライブラリ&lt;/strong&gt; と、ダウンロードなど追加インストールをしてから利用する &lt;strong&gt;外部ライブラリ&lt;/strong&gt; がある。機械学習で用いられる「TensorFlow(テンソルフロー)」、グラフ描画に使われるMatplotlib（マットプロットリブ）、データ解析を支援する機能を提供するPandas（パンダス）などは全て外部ライブラリ。&lt;/p&gt;
+&lt;h1 id=&#34;階層&#34;&gt;階層&lt;/h1&gt;
+&lt;p&gt;ライブラリ &amp;gt; パッケージ &amp;gt; モジュール&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://ai-inter1.com/python-module_package_library/&#34;&gt;Pythonのモジュール、パッケージ、ライブラリ徹底解説！&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>コロナ自粛期間の5月にやったこと</title>
+      <link>http://example.org/posts/log-on-may/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/log-on-may/</guid>
+      <description>&lt;p&gt;5月にやったことのログ。&lt;/p&gt;
+&lt;p&gt;成長も見やすいし、何やったか振り返れるので、毎月やったことをログとして残していこうと思う。
+ちなみに先月の記事は以下です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://example.org/posts/log-on-may/#アンカー&#34;&gt;コロナ自粛期間の4月にやったこと&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;5月にやったこと&#34;&gt;5月にやったこと&lt;/h1&gt;
+&lt;p&gt;今月は急なタスクが降ってきたりして、5月当初に思い描いていた1ヶ月とはちょっと違った。けど、色々と嬉しいこともあったので良かった。ちな、生活の仕方は基本的に先月と変わらずニートをぶっ通した。6月はさすがにもうちょい外出できそうかな。笑&lt;/p&gt;
+&lt;h2 id=&#34;flutter&#34;&gt;Flutter&lt;/h2&gt;
+&lt;p&gt;5月頭にインターン先でFLutterを使ったハッカソンが行われた。スマホアプリ作ること自体初めてだったのでめちゃくちゃ楽しかった。普段関わりの少ない東京のメンターたちと関われたのも刺激的だった。賞は取れなかったけどね〜。&lt;/p&gt;
+&lt;h2 id=&#34;javascriptとvuejs&#34;&gt;JavaScriptとVue.js&lt;/h2&gt;
+&lt;p&gt;JavaScriptの勉強ようやく始めた。とりあえず手を動かそうと思って、ドットインストールのJavaScriptを一通り学習した。ES6以降とそれ以前での仕様の違いをおおよそ理解した。async/await、promiseあたりの概念はまだ理解できない。。。
+フレームワークに関しては、「一番とっかかりやすそう」という理由だけでVue.jsを選択。チュートリアルを一通り確認して電卓を作ってみた。その後Udemyの講座をやりかけていたところで、後述するインターンのお誘いがあったので、Vue.jsは一旦中断。&lt;/p&gt;
+&lt;h2 id=&#34;リモートインターン&#34;&gt;リモートインターン&lt;/h2&gt;
+&lt;p&gt;SNS上で運よくつながった方からリモートインターンのお誘いを受け、とりあえず1ヶ月試用期間として雇ってもらうことになった。1ヶ月で1つWebサービスを完成させないといけないので、5月中旬からはこの作業にだいぶ時間を割いてる。&lt;/p&gt;
+&lt;h2 id=&#34;テーブルのリレーション&#34;&gt;テーブルのリレーション&lt;/h2&gt;
+&lt;p&gt;上記のサービスを作る中でRailsを使ったバックエンドの構築を一通りおこない、その中でリレーションの理解が深まった。多対多、１対多などの関係性を意識しながら複数のテーブルを繋いでいく作業は超楽しい。&lt;/p&gt;
+&lt;h2 id=&#34;javascript&#34;&gt;JavaScript&lt;/h2&gt;
+&lt;p&gt;これも上記のサービスを作る中でフロント部分に使用。JavaScriptは全然触れたことがないので、分からないことしかない、大変。でも良い勉強になってる。&lt;/p&gt;
+&lt;h2 id=&#34;就活で内定&#34;&gt;就活で内定&lt;/h2&gt;
+&lt;p&gt;就活で志望度高かった企業から内定をいただきました、嬉しい。来年からはエンジニアとして東京で働くことになりそう。「文系未経験から半年でエンジニア就職した」みたいな記事、また書こうかな〜。こんなご時世なので、とりあえず内定いただけてほっとしてます、、、感謝。。。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;4月にやろうと思ってたことはあんまりできなかったけど、新しいことにチャレンジできてる毎日なので、これはこれで良き。
+6月の目標はインターンの課題終わらせることと、Vue.jsでアウトプット作ること。それから色々書籍が積読状態なので、こっちも消化していきます。ではでは、6月も頑張っていきやしょー！！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>コロナ自粛期間の4月にやったこと</title>
+      <link>http://example.org/posts/log-on-april/</link>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/log-on-april/</guid>
+      <description>&lt;p&gt;4月にやったことのログ。&lt;/p&gt;
+&lt;p&gt;成長も見やすいし、何やったか振り返れるので、毎月やったことをログとして残していこうと思う。&lt;/p&gt;
+&lt;h1 id=&#34;4月にやったこと&#34;&gt;4月にやったこと&lt;/h1&gt;
+&lt;p&gt;コロナで自粛期間に入り、他にやることもないので、この1ヶ月は勉強が捗った。4月はプログラミングスクールのメンターとしてリモートインターンをしているか、自分の勉強をしているか、その2択だった。流石にニート。たぶん5月もこんな感じ。笑&lt;/p&gt;
+&lt;h2 id=&#34;railsでlinebot作成&#34;&gt;RailsでLINEBot作成&lt;/h2&gt;
+&lt;p&gt;かねてから作ってみたかったLINEbotを作成。LINEが大部分の機能を用意してくれているので意外と簡単にできた。&lt;/p&gt;
+&lt;h2 id=&#34;railsとgooglemapの連携&#34;&gt;RailsとGooglemapの連携&lt;/h2&gt;
+&lt;p&gt;Railsで登録した住所を元に緯度・経度の情報をとってきて地図で表示するという機能を実装した。APIを利用したのは初めてで、JSがわからないこともあって、色々と苦戦したが、なんとかできた。&lt;/p&gt;
+&lt;h2 id=&#34;raisでポーカーの役判定アプリ&#34;&gt;Raisでポーカーの役判定アプリ&lt;/h2&gt;
+&lt;p&gt;数字とマークを入力したらポーカーの役を判定してくれるアプリ。RailsというかRubyやね。インターンの課題で勉強したけど、面白かった。色々あって結局そこのインターンには参加しないですが(笑)。ストレートフラッシュの実装がむずいんよ。&lt;/p&gt;
+&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+&lt;p&gt;仮想環境のことを全然知らなかったので、勉強した。VMと比べて、Dockerがどれほど優秀かということを実感。Docker使ってRailsの仮想環境立ててみたり。これは本当にすごい、感動。&lt;/p&gt;
+&lt;h2 id=&#34;aws&#34;&gt;AWS&lt;/h2&gt;
+&lt;p&gt;サーバーとかネットワークの仕組みを理解する上で、いい勉強になった。教材をやっただけなので、実際にRailsを動かせるように、これから色々いじってみようかなと。&lt;/p&gt;
+&lt;h2 id=&#34;atcoder&#34;&gt;AtCoder&lt;/h2&gt;
+&lt;p&gt;競技プログラミングは敬遠していたが、アルゴリズムとデータ構造の理解は、エンジニアを志す上で避けて通れないので、始めることにした。しかし、やってみると意外と楽しい笑。数学の問題を解く感じで進めていけるのは楽しい。とはいえ、まだクソ雑魚問題しか解けないので、5月以降も継続して取り組んでいこうと思う。&lt;/p&gt;
+&lt;h2 id=&#34;sql&#34;&gt;SQL&lt;/h2&gt;
+&lt;p&gt;SNSで新卒研修で使用されて教材が上がっていたので、それを元にチュートリアル演習。狙ったデータを引っ張ってこれた時が楽しい。割と時間がかかったが、面白かったし勉強になった。&lt;/p&gt;
+&lt;h2 id=&#34;flutter&#34;&gt;Flutter&lt;/h2&gt;
+&lt;p&gt;5月頭にインターン先でハッカソンが行われた。使用した言語は今アツいFlutter。アプリ開発は全く触ったことがなかったので、初めて勉強した。が、めちゃめちゃ面白かった。シミュレーターが立ち上がるとテンション爆上げ。4月中旬くらいからハッカソンに向けて学習を進めた。&lt;/p&gt;
+&lt;h2 id=&#34;javascript&#34;&gt;JavaScript&lt;/h2&gt;
+&lt;p&gt;Googlemapの表示でJSが出てきたり、Flutterで使われてるDartという言語がAltJSだったり。これはもう「JSやれ」と言われてるとしか思えなかったので、勉強をスタート。ドットインストールで色々ゲームとか作りつつ、理解が微妙なところは書籍で補う感じで進める。大体の理解はできたかなと。5月はフレームワーク勉強してアウトプット2つくらい作れたらいいなぁって感じです。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;書き出すと意外と勉強してるなと思った。笑
+勉強と並行して、就活はガッツリやってます。早く内定ほしい。。。
+プログラミング勉強してて思うけど、やっぱり開発インターンしたいなぁ。実務を経験してみたいという思いがかなりあるんですが、このご時世やと厳しいですな。とりあえず今自分にできることを精一杯やろうかなと。とりあえず、5月の目標はJavaScriptのフレームワークでアウトプット作成することと、AWS・Docker・Railsを一通り使ってアウトプット作成すること。では今月も頑張りましょー！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>【PATHを通す】を理解する</title>
+      <link>http://example.org/posts/pass-path/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/pass-path/</guid>
+      <description>&lt;p&gt;「PATHを通す」ってよく聞くけど、意味がよく分からなかったので勉強しました。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PATHを通す&lt;/strong&gt;の意味がよくわからんので、色々調べました。&lt;/p&gt;
+&lt;h1 id=&#34;そもそもpathとは&#34;&gt;そもそもPATHとは&lt;/h1&gt;
+&lt;p&gt;PATHとは環境変数の1つ。環境変数とはPC環境についての変数で、すでに多くの環境変数が設定されている。Terminalで&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;$ env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;と入力すると、設定されているすべての環境変数が表示される。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;PWD&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/Users/hogehoge
+SHELL&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/bin/zsh
+PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+COLORTERM&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;truecolor
+HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/Users/hogehoge
+USER&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;hogehoge
+LOGNAME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;hogehoge
+ZSH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/Users/hogehoge/.oh-my-zsh
+PAGER&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;less
+LESS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;-R
+LC_CTYPE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+LSCOLORS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Gxfxcxdxbxegedabagacad
+_&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/usr/bin/printenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;例えば&lt;code&gt;$HOME&lt;/code&gt;という環境変数がホームディレクトリのパスになっていたり、&lt;code&gt;$USER&lt;/code&gt;という環境変数にユーザ名が入ってるのがわかる。&lt;code&gt;＄PATH&lt;/code&gt;という環境変数にもパスが入っているのが分かる。&lt;/p&gt;
+&lt;h1 id=&#34;path変数&#34;&gt;PATH変数&lt;/h1&gt;
+&lt;p&gt;Terminal上でコマンドが実行されたらコンピュータはそのコマンドを探しに行く。でも、コンピュータの中にはたくさんのファイルやフォルダがあるので、コンピュータ内をすべて探していたら時間がかかる。PATH変数に登録されているPATHだけ探すことで手間を省いている。&lt;/p&gt;
+&lt;p&gt;実際に通っているPATHはechoコマンドで確認できる。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;パスは&lt;code&gt;:&lt;/code&gt;で区切られており、今回の例では下記のパスが設定されている。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;/usr/local/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+/usr/local/sbin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;pathを通す&#34;&gt;PATHを通す&lt;/h1&gt;
+&lt;p&gt;PATHを通すというのはすなわちPATHという環境変数に新しいパスを追加するということ。新しいパスを追加したい場合は、&lt;code&gt;~/.bash_profile&lt;/code&gt;などの設定ファイルに&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$PATH：&amp;lt;追加したいPATH&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;を追記すればいい。&lt;/p&gt;
+&lt;h1 id=&#34;環境変数を永続化する&#34;&gt;環境変数を永続化する&lt;/h1&gt;
+&lt;p&gt;PATH以外でも、環境変数を永続化する場合、やり方は同様。環境変数はshellからexitすると消えるので、環境変数を永続化するためにはshellファイルを利用する。Bashというshellなら&lt;code&gt;~/.bash_profile&lt;/code&gt;や&lt;code&gt;~/.bashrc&lt;/code&gt;、zshなら&lt;code&gt;~/.zshrc&lt;/code&gt;がshellファイルに当たる。このファイルの中にexportで環境変数を追加する処理を加えれば、環境変数を永続化できる。すなわち、Terminalを再び立ち上げた後もその変数を利用できる。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Web APIの概念を押さえる</title>
+      <link>http://example.org/posts/what-is-web-api/</link>
+      <pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/what-is-web-api/</guid>
+      <description>&lt;p&gt;Web API is 何？&lt;/p&gt;
+&lt;h1 id=&#34;apiとは&#34;&gt;APIとは&lt;/h1&gt;
+&lt;p&gt;Web APIの前に、そもそもAPIとはApplication Program Interfaceの略。どのアプリーケーションでも共通で使える機能を提供する仕組み。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;例えば「AというファイルをBという名前でコピーをして、作業完了したら、ポップアップウィンドウを出して知らせる！」というプログラムを作るとします。実際にどんな動きをするのかパートに分けてみると……、&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Aというファイルを選択&lt;/li&gt;
+&lt;li&gt;実行ボタンを押すと3のステップへ&lt;/li&gt;
+&lt;li&gt;データをコピーする&lt;/li&gt;
+&lt;li&gt;コピーされたデータをBという名前を付け保存&lt;/li&gt;
+&lt;li&gt;ポップアップウィンドウを出して作業完了を告げる&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;この1.〜5.の作業をすべて一から作成すると、かなり手間が掛かります（マウスの動きを計算して、ウィンドウのデザインを考えて……）。そこで登場するのがAPIです。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;ファイルを選択するAPI&lt;/li&gt;
+&lt;li&gt;ボタンを押すとプログラムを動かすAPI&lt;/li&gt;
+&lt;li&gt;データをコピーするAPI&lt;/li&gt;
+&lt;li&gt;ファイルに名前を付けるAPI&lt;/li&gt;
+&lt;li&gt;ウィンドウを出してメッセージを出すAPI&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;と、いろいろな機能があるAPIから、必要なAPIを探し出し組み合わせるだけで、プログラムができてしまうのです。つまりAPIは「特定の機能を持つプログラム部品」なのです。よく使われる命令をAPIにしてみんなで共有してしまえば、非常に効率的に作業ができますね。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;API
+&lt;img src=&#34;https://image.itmedia.co.jp/ait/articles/0703/13/r85minapi_01.gif&#34; alt=&#34;alt&#34;&gt;
+図1 APIを使えば、細かい作業や無駄を省いてプログラムができる&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;by &lt;a href=&#34;https://www.atmarkit.co.jp/ait/articles/0703/13/news095.html&#34;&gt;https://www.atmarkit.co.jp/ait/articles/0703/13/news095.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;web-apiとは&#34;&gt;Web APIとは&lt;/h1&gt;
+&lt;p&gt;Web APIはWebサービスの窓口。外部Webサービスから通信を通して、操作することができる。自分で作成することも可能。&lt;/p&gt;
+&lt;p&gt;具体例 １：【マッチングアプリ】&lt;br&gt;
+Facebook APIから情報を取得。Facebook API経由でFacebookの友達のデータを取ってきて、そのデータを元にその人とは会わないようにアプリ側が人をマッチングさせてくれる。&lt;/p&gt;
+&lt;p&gt;具体例 ２：【食べログ】&lt;br&gt;
+Google Maps APIから情報を取得。「ウェブサイトに地図を埋め込む」、「レストランや店舗のデータベースを、地図情報とともに提供する」、「目的までの最適なルートを探し出す」、といった機能を実現している。&lt;/p&gt;
+&lt;p&gt;具体例 ３&lt;br&gt;
+PythonでTwiiter APIからツイートを取得しフォロワーの全ての人のデータを取ってくることもできる。&lt;/p&gt;
+&lt;h1 id=&#34;web-apiに対応している主なサービス&#34;&gt;Web APIに対応している主なサービス&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Twitter&lt;/li&gt;
+&lt;li&gt;Instagram&lt;/li&gt;
+&lt;li&gt;Youtube&lt;/li&gt;
+&lt;li&gt;Google map&lt;/li&gt;
+&lt;li&gt;Slack&lt;/li&gt;
+&lt;li&gt;Chatwork&lt;/li&gt;
+&lt;li&gt;仮想通貨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;apiを実装してみる&#34;&gt;APIを実装してみる&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/Masato338/items/6fb1ac277c965905e019&#34;&gt;Web APIとは？ （LINE bot API・グルナビAPI）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/keiya01/items/c96a0393c76f5560ee41&#34;&gt;Ruby on Rails: twitterでユーザー認証&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dotinstall.com/lessons/basic_google_maps_v2&#34;&gt;ドットインストール/Google Maps API入門 (全17回)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;参考資料&#34;&gt;参考資料&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/busyoumono99/items/9b5ffd35dd521bafce47&#34;&gt;https://qiita.com/busyoumono99/items/9b5ffd35dd521bafce47&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/Arata0608/items/f292dedffc8c0db1df28&#34;&gt;https://qiita.com/Arata0608/items/f292dedffc8c0db1df28&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.atmarkit.co.jp/ait/articles/0703/13/news095.html&#34;&gt;https://www.atmarkit.co.jp/ait/articles/0703/13/news095.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linuxとは</title>
+      <link>http://example.org/posts/what-is-linux/</link>
+      <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/what-is-linux/</guid>
+      <description>&lt;p&gt;Linuxとはそもそも何なのかについて調べました。&lt;/p&gt;
+&lt;h1 id=&#34;os&#34;&gt;OS&lt;/h1&gt;
+&lt;p&gt;OSとは、Operating Systemの略で、システム全体を管理するソフトウェアのこと。
+みんながPCとして利用しているWindowsやMacなどもOS。&lt;/p&gt;
+&lt;h1 id=&#34;linux&#34;&gt;Linux&lt;/h1&gt;
+&lt;p&gt;プログラミングではLinuxというOSがよく用いられる。LinuxはWindowsやMacとは異なり、厳密にはOSの中核部分(Linuxカーネル)を指す。&lt;/p&gt;
+&lt;p&gt;実用的なOSとして動かすためには、カーネルに加え、画面表示・通信・ファイル管理など各種機能を担うソフトウェアを組み合わせる必要がある。
+車に例えるならカーネルはエンジン。エンジンは車の中核部分だが、車が走行するためにはブレーキ・アクセル・ハンドルなどの部品が必要になる。&lt;/p&gt;
+&lt;p&gt;Linuxカーネルとソフトウェアを組み合わせて実際に機能するOSを作り上げるためには、Linuxカーネル自体やOSに関する深い知識が必要となるため、現実的ではない。&lt;/p&gt;
+&lt;h1 id=&#34;linuxディストリビューション&#34;&gt;Linuxディストリビューション&lt;/h1&gt;
+&lt;p&gt;そこで、一般のユーザーや開発者が手軽にLinuxを利用できるよう、Linuxカーネルと各種ソフトウェアをいい感じに組み合わせて配布されているものがある。これが「Linuxディストリビューション」。一般的には色々なLinuxディストリビューションをまとめて「Linux」と呼ぶことが多い。&lt;/p&gt;
+&lt;p&gt;サーバー向けに安定性を重視したもの、古いPCでも快適に利用できるものなど、Linuxディストリビューションには様々な用途に最適化されたものが存在している。&lt;/p&gt;
+&lt;h1 id=&#34;linuxを使う理由&#34;&gt;Linuxを使う理由&lt;/h1&gt;
+&lt;p&gt;プログラミングのためにLinuxを使う理由は、Linuxにはプログラミング用のソフトウェアが豊富に存在し、便利だから。
+さらに、 Linux は GNU General Public Licence (グヌー・ジェネラル・パブリック・ライセンス、GPL) というライセンスの下で提供されているため、基本的に無料で利用できる。
+これは膨大な数の PC を用意することになるサーバー運営において、大きくコストを下げることができるというメリットがある。
+そのためWebプログラミングの世界では、広くLinuxが利用されている。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ES6(JavaScript)の基礎を押さえる</title>
+      <link>http://example.org/posts/es6-tutorial/</link>
+      <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/es6-tutorial/</guid>
+      <description>&lt;p&gt;JavaScriptの新記法ES6の基礎を少し学んだので、そのアウトプットです。&lt;/p&gt;
+&lt;h1 id=&#34;es6とは&#34;&gt;ES6とは&lt;/h1&gt;
+&lt;p&gt;ES6はJavaScriptの新しいバージョン。
+現在は多くのブラウザが対応していないため、ES6で書いたコードを動かすためにはES5(1つ前のバージョン)への変換が必要になる。
+この変更を&amp;quot;トランスパイル&amp;quot;と呼び、Babelというツールを利用してトランスパイルを行う。&lt;/p&gt;
+&lt;h1 id=&#34;letとconst&#34;&gt;letとconst&lt;/h1&gt;
+&lt;p&gt;letで変数を、constで定数を定義できる。
+letは再代入が可能であるのに対し、constは再代入が不可能。&lt;/p&gt;
+&lt;p&gt;letでの変数宣言&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript:&#34; data-lang=&#34;javascript:&#34;&gt;let name = &#39;Jonh&#39;;
+console.log(name); // =&amp;gt; Jonh
+
+name = &#39;Kate&#39;; // 再代入する
+console.log(name); // =&amp;gt; Kate
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;constでの変数宣言&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript:&#34; data-lang=&#34;javascript:&#34;&gt;const name = &#39;Jonh&#39;;
+console.log(name); // =&amp;gt; Jonh
+
+name = &#39;Kate&#39;; // 再代入するとエラーになる
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;テンプレートリテラル&#34;&gt;テンプレートリテラル&lt;/h1&gt;
+&lt;p&gt;バッククオートで文字列を囲むと、&lt;code&gt;${}&lt;/code&gt;で文字列内に変数展開ができ、改行も反映できる。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript:&#34; data-lang=&#34;javascript:&#34;&gt;const name = &#39;Jonh&#39;;
+const age = 21;
+
+console.log(`${name}は${age}歳です`); // =&amp;gt; Jonhは21歳です
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;アロー関数&#34;&gt;アロー関数&lt;/h1&gt;
+&lt;p&gt;関数とはいくつかの処理をまとめたもの。
+アロー関数は関数の中でも無名関数の省略形で、従来より簡潔な記述で関数を定義できる。&lt;/p&gt;
+&lt;p&gt;通常の関数&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript:&#34; data-lang=&#34;javascript:&#34;&gt;const a = function(){
+//まとめたい処理
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上と同義のアロー関数&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript:&#34; data-lang=&#34;javascript:&#34;&gt;const a = () =&amp;gt; {
+//まとめたい処理
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;class構文&#34;&gt;Class構文&lt;/h1&gt;
+&lt;p&gt;オブジェクトを生成する際、最初に設計図を用意する必要がある。
+この設計図を&amp;quot;クラス&amp;quot;と呼ぶ。
+「class クラス名」とすることでクラスを定義することができる。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript:&#34; data-lang=&#34;javascript:&#34;&gt;class User = {
+ constructor() {
+  this.name = &#39;Jonh&#39;;
+ }
+} //クラスの定義
+
+const user = new User(); //インスタンスを生成
+console.log(user.name); // =&amp;gt; Jonh
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Dockerと仮想マシンの違い</title>
+      <link>http://example.org/posts/difference-docker-vm/</link>
+      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/difference-docker-vm/</guid>
+      <description>&lt;p&gt;Dockerと仮想マシンの違いについてまとめてみました。&lt;/p&gt;
+&lt;h1 id=&#34;dockerとは&#34;&gt;Dockerとは&lt;/h1&gt;
+&lt;p&gt;Dockerとは軽量な仮想化環境を実現するためのツールです。
+Dockerを利用すればOSの内部に独立したアプリケーションの実行環境を構築することができます。この構築環境をコンテナと呼びます。&lt;/p&gt;
+&lt;h3 id=&#34;コンテナ&#34;&gt;コンテナ&lt;/h3&gt;
+&lt;p&gt;コンテナ内のファイルシステムやリソースはベースOSと分離されており、コンテナ内は実行環境として独立しています。
+コンテナを利用することで、1つのOS内に複数の実行環境を構築できます。&lt;/p&gt;
+&lt;h3 id=&#34;イメージ&#34;&gt;イメージ&lt;/h3&gt;
+&lt;p&gt;イメージとはコンテナを生成する元になるものです。同じイメージを使えば、同じ Linux ディストリビューションで同じアプリケーションがインストールされた全く同じ環境を複製することができます。
+また、Dockerではイメージを編集し、イメージの機能・内容を継承することもできます。
+Dockerイメージを使うことで、従来必要だったプログラミング言語のインストールやフレームワークのインストールといった手間がかからず、パソコンのプログラミング環境を汚すことなく様々なアプリ開発に即・挑戦できるという訳です。&lt;/p&gt;
+&lt;h1 id=&#34;仮想マシン&#34;&gt;仮想マシン&lt;/h1&gt;
+&lt;p&gt;仮想マシンとは仮想的にハードウェアを動作させることです。
+仮想マシンには大きく分けて「ホスト型」と「ハイパーバイザー型」の２種類あります。&lt;/p&gt;
+&lt;h3 id=&#34;ホスト型とハイパーバイザー型&#34;&gt;ホスト型とハイパーバイザー型&lt;/h3&gt;
+&lt;p&gt;ホスト型とは、OSに仮想化ソフトウェアをインストールし、その上で仮想マシンを動かすことです。既存のサーバーを使えるため、手軽に利用できる一方で、ハードウェアにアクセスする際OSを経由しなければいけません。
+ハイパーバイザー型とは、ホストOSを使わず直接サーバーにインストールし仮想マシンを動かすことです。ハードウェアのリソースを直接管理できます。&lt;/p&gt;
+&lt;h3 id=&#34;ホストosとゲストos&#34;&gt;ホストOSとゲストOS&lt;/h3&gt;
+&lt;p&gt;仮想化・仮想マシンに関連してよく出る用語が「ホストOS」と「ゲストOS」です。
+ホストOSは仮想環境の土台となるOSのことで、ゲストOSは仮想マシン上にインストールされたOSのことです。
+たとえば、Linuxサーバ上に仮想マシンを作り出しWindowsをインストールしたら、ホストOSはLinuxでゲストOSはWindowsということになります。&lt;/p&gt;
+&lt;h1 id=&#34;仮想マシンとdockerコンテナの違い&#34;&gt;仮想マシンとDockerコンテナの違い&lt;/h1&gt;
+&lt;p&gt;仮想マシンはマシン単位での仮想化であるのに対して、Dockerコンテナはプロセス単位での仮想化となっています。
+仮想マシンは自由度が高い一方で、リソースの消費が激しいです。
+それに対して、Dockerコンテナは仮想マシンよりも軽量ですが、OSをホストと共有するため自由度は下がります。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQLの４大命令について</title>
+      <link>http://example.org/posts/sql-order/</link>
+      <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/sql-order/</guid>
+      <description>&lt;p&gt;SQLとはデータベース言語であり、データベースを管理するソフトウェアを操作・制御することが目的です。&lt;/p&gt;
+&lt;h1 id=&#34;sqlとは&#34;&gt;SQLとは&lt;/h1&gt;
+&lt;p&gt;データベースというのは、集めたデータをプログラムによって整理し、操作できるようにしたものです。データベース言語はデータを管理して、ユーザーが指定した条件に合致するものを見つけ出すためのものです。&lt;/p&gt;
+&lt;h1 id=&#34;sqlの種類&#34;&gt;SQLの種類&lt;/h1&gt;
+&lt;p&gt;SQLは、大きく分けて以下の3種類の言語から構成されています。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;データ定義言語(CREATE,DROP,ALTER等)&lt;/li&gt;
+&lt;li&gt;データ操作言語(INSERT,UPDATE,DELETE,SELECT)&lt;/li&gt;
+&lt;li&gt;データ制御言語(GRANT,REVOKE,SET TRANSACTION,BEGIN,COMMIT,ROLLBACK,SAVEPOINT,LOCK)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;今回はデータ操作言語に該当するSQLの４大命令についてまとめてみました。&lt;/p&gt;
+&lt;h1 id=&#34;sqlの４大命令とは&#34;&gt;SQLの４大命令とは&lt;/h1&gt;
+&lt;p&gt;SQLの４大命令とは以下の４種類です。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;命令&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;説明&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;文法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;INSERT&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;データを追加する&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;INSERT INTO テーブル名 (カラム名1, カラム名2, &amp;hellip;) VALUES (値1, 値2, &amp;hellip;);&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SELECT&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;データを取得する&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;SELECT カラム名1, カラム名2, &amp;hellip; FROM テーブル名 [WHERE 絞込条件];&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;UPGRADE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;データを更新する&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;UPDATE テーブル名 SET カラム名1=値1 [, カラム名2=値2 &amp;hellip;] [WHERE 絞込条件];&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DELETE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;データを削除する&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;DELETE FROM テーブル名 [WHERE 絞込条件];&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;insert&#34;&gt;INSERT&lt;/h1&gt;
+&lt;p&gt;テーブルにデータを追加する&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;INTO&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;テーブル名&amp;#34;&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;列名1&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;列名2&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;列名3&amp;#34;&lt;/span&gt;, ...) &lt;span style=&#34;color:#66d9ef&#34;&gt;VALUES&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;値1&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;値2&amp;#34;&lt;/span&gt;, )
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;select&#34;&gt;SELECT&lt;/h1&gt;
+&lt;p&gt;テーブルからデータを取得する&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;列名&amp;#34;&lt;/span&gt;... &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;テーブル名&amp;#34;&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;条件式&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;upgrade&#34;&gt;UPGRADE&lt;/h1&gt;
+&lt;p&gt;テーブルにデータを追加する&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;UPDATE&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;テーブル名&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SET&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;列名=値1&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;列名2=値2&amp;#34;&lt;/span&gt;, ... (&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;条件式&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;※注:WHEREのないUPDATEは全レコードが更新される。&lt;/p&gt;
+&lt;h1 id=&#34;delete&#34;&gt;DELETE&lt;/h1&gt;
+&lt;p&gt;テーブルのデータを削除する&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;DELETE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;テーブル名&amp;#34;&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;条件式&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;※注:WHEREのないDELETEは全レコードが消去される。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>My First Post</title>
+      <link>http://example.org/posts/myfirstpost/</link>
+      <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      
+      <guid>http://example.org/posts/myfirstpost/</guid>
+      <description>&lt;p&gt;こんにちは、世界。&lt;/p&gt;
+</description>
+    </item>
     
   </channel>
 </rss>

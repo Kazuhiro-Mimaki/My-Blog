@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rails on My Hugo Blog</title>
+    <link>http://example.org/tags/rails/</link>
+    <description>My Hugo Blog (Rails)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Nov 2020 14:30:00 +0900</lastBuildDate>
+    
+    <atom:link href="http://example.org/tags/rails/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Rails] いいね数順でランキングかつページネーション</title>
+      <link>http://example.org/posts/rails-ranking-by-like-with-pagination/</link>
+      <pubDate>Wed, 11 Nov 2020 14:30:00 +0900</pubDate>
+      
+      <guid>http://example.org/posts/rails-ranking-by-like-with-pagination/</guid>
+      <description>&lt;p&gt;以前このような記事を書きました。
+&lt;a href=&#34;http://example.org/posts/rails-ranking-by-like/#アンカー&#34;&gt;[Rails]いいね数順でランキング&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;この内容に加え、ページネーションを実装したのでメモとして残しておきます。
+今回はいいね数順で並び替えた投稿を1ページに5つ表示させるページネーションの実装を目指します。&lt;/p&gt;
+&lt;h1 id=&#34;前提&#34;&gt;前提&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;投稿のテーブルは &lt;code&gt;posts&lt;/code&gt;、 ユーザーのテーブルは &lt;code&gt;users&lt;/code&gt; とする。&lt;/li&gt;
+&lt;li&gt;いいね機能に必要な中間テーブルは &lt;code&gt;likes&lt;/code&gt; とする。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;posts&lt;/code&gt;・&lt;code&gt;users&lt;/code&gt;・&lt;code&gt;likes&lt;/code&gt; それぞれのテーブルはいずれも作成済みとする。&lt;/li&gt;
+&lt;li&gt;ページネーションは&lt;code&gt;Kaminari&lt;/code&gt;というgemを使用して実装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;手順&#34;&gt;手順&lt;/h1&gt;
+&lt;h2 id=&#34;モデルにアソシエーションを定義&#34;&gt;モデルにアソシエーションを定義&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-post.rb&#34; data-lang=&#34;post.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Post&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+    belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+    has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+    has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:liked_users&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;through&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;source&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-user.rb&#34; data-lang=&#34;user.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;User&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:posts&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:liked_posts&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;through&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;source&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:post&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-like.rb&#34; data-lang=&#34;like.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Like&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+  belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:post&lt;/span&gt;
+  belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;kaminari-をgemfileに追記し-bundle-install&#34;&gt;Kaminari をGemfileに追記し, bundle install&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Gemfile&#34; data-lang=&#34;Gemfile&#34;&gt;gem &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;kaminari&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;~&amp;gt; 0.17.0&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;$ bundle install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;コントローラーをいじる&#34;&gt;コントローラーをいじる&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-app/controller/posts_controller.rb&#34; data-lang=&#34;app/controller/posts_controller.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;index&lt;/span&gt;
+  posts &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Post&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;includes(&lt;span style=&#34;color:#e6db74&#34;&gt;:liked_users&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sort {&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;a,b&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; b&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;liked_users&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;size &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&amp;gt;&lt;/span&gt; a&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;liked_users&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;size}
+  @posts &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Kaminari&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;paginate_array(posts)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;page(params&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;:page&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;per(&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ここでは &lt;code&gt;sort&lt;/code&gt; というrubyのメソッドを使って順序を操作している。
+=&amp;gt; &lt;a href=&#34;https://docs.ruby-lang.org/ja/latest/method/Array/i/sort.html&#34;&gt;sortに関してはこちらを参照&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;a.liked_users.size&lt;/code&gt;、&lt;code&gt;b.liked_users.size&lt;/code&gt; が表しているのはそれぞれ各投稿のいいね数。
+すなわち、各投稿のいいね数を比較して昇順で並び替えている。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sort&lt;/code&gt;メソッドによって生成される&lt;code&gt;posts&lt;/code&gt;という変数は配列のデータなので、&lt;code&gt;paginate_array&lt;/code&gt;というメソッドを使用している。&lt;/p&gt;
+&lt;h2 id=&#34;ビューで表示させる&#34;&gt;ビューで表示させる&lt;/h2&gt;
+&lt;p&gt;あとはビューで表示させるだけ。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-app/view/posts/index.html&#34; data-lang=&#34;app/view/posts/index.html&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt;% @posts.each do |post| %&amp;gt;
+
+  #省略
+
+&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt;% end %&amp;gt;
+&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt;%= paginate @posts %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;まだまだ知らないメソッドたちはたくさんあるなぁ。&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.ruby-lang.org/ja/latest/method/Array/i/sort.html&#34;&gt;Array#sort (Ruby 2.7.0 リファレンスマニュアル)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/you8/items/df68aaee3010e282d1ae&#34;&gt;[rails]kaminariを使ってページネーションを作る&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.konboi.com/post/2013/03/31/224939/&#34;&gt;kaminariを使って配列に対してのページャーを作成する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>[Rails] いいね数順でランキング</title>
+      <link>http://example.org/posts/rails-ranking-by-like/</link>
+      <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/rails-ranking-by-like/</guid>
+      <description>&lt;p&gt;今回はいいね数の多い順(いいね数が0も含む)に投稿を表示させるランキング機能の実装方法についてです。
+ランキング機能の実装方法は他でもあったのですが、いいねが0の投稿も表示させている記事が見当たらなかったので実装してみました。&lt;/p&gt;
+&lt;h1 id=&#34;前提&#34;&gt;前提&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;投稿のテーブルは &lt;code&gt;posts&lt;/code&gt;、 ユーザーのテーブルは &lt;code&gt;users&lt;/code&gt; とする。&lt;/li&gt;
+&lt;li&gt;いいね機能に必要な中間テーブルは &lt;code&gt;likes&lt;/code&gt; とする。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;posts&lt;/code&gt;・&lt;code&gt;users&lt;/code&gt;・&lt;code&gt;likes&lt;/code&gt; それぞれのテーブルはいずれも作成済みとする。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;手順&#34;&gt;手順&lt;/h1&gt;
+&lt;h2 id=&#34;モデルにアソシエーションを定義&#34;&gt;モデルにアソシエーションを定義&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-post.rb&#34; data-lang=&#34;post.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Post&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+    belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+    has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+    has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:liked_users&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;through&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;source&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-user.rb&#34; data-lang=&#34;user.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;User&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:posts&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;dependent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:destroy&lt;/span&gt;
+  has_many &lt;span style=&#34;color:#e6db74&#34;&gt;:liked_posts&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;through&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:likes&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;source&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;:post&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-like.rb&#34; data-lang=&#34;like.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Like&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ApplicationRecord&lt;/span&gt;
+  belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:post&lt;/span&gt;
+  belongs_to &lt;span style=&#34;color:#e6db74&#34;&gt;:user&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;コントローラーをいじる&#34;&gt;コントローラーをいじる&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-posts_controller.rb&#34; data-lang=&#34;posts_controller.rb&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;index&lt;/span&gt;
+  @posts &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Post&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;all&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sort {&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;a,b&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; b&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;liked_users&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;count &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&amp;gt;&lt;/span&gt; a&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;liked_users&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;count}
+&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ここでは &lt;code&gt;sort&lt;/code&gt; というrubyのメソッドを使って順序を操作している。
+=&amp;gt; &lt;a href=&#34;https://docs.ruby-lang.org/ja/latest/method/Array/i/sort.html&#34;&gt;sortに関してはこちらを参照&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;a.liked_users.count&lt;/code&gt;、&lt;code&gt;b.liked_users.count&lt;/code&gt; が表しているのはそれぞれ各投稿のいいね数。
+すなわち、各投稿のいいね数を比較して昇順で並び替えている。&lt;/p&gt;
+&lt;h2 id=&#34;ビューで表示させる&#34;&gt;ビューで表示させる&lt;/h2&gt;
+&lt;p&gt;あとはビューで表示させるだけ。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-index.html.erb&#34; data-lang=&#34;index.html.erb&#34;&gt;&amp;lt;% @posts.each do |post| %&amp;gt;
+
+  #省略
+
+&amp;lt;% end %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;まだまだ知らないメソッドたちはたくさんあるなぁ。&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.ruby-lang.org/ja/latest/method/Array/i/sort.html&#34;&gt;Array#sort (Ruby 2.7.0 リファレンスマニュアル)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
