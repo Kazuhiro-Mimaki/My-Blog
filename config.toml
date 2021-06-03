@@ -1,6 +1,6 @@
 baseURL = "https://b1essk.com/"
 languageCode = "en-us"
-title = "My Hugo Blog"
+title = "完全に理解したい"
 paginate = 5
 
 disqusShortname = ""
@@ -23,11 +23,11 @@ utterancesLabel = "" # optional
   
   [[params.social]]
   id = "github"
-  name = "gohugoio"
+  url = "https://github.com/Kazuhiro-Mimaki"
 
   [[params.social]]
-  id = "telegram"
-  url = "https://ya.ru"
+  id = "twitter"
+  url = "https://twitter.com/b1essk"
 
 [menu]
 
@@ -55,3 +55,6 @@ tag = "tags"
 
 [markup.goldmark.renderer]
 unsafe = true
+	
+[blackfriday]
+hrefTargetBlank = true
