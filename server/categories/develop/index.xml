@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>develop on My Hugo Blog</title>
+    <link>https://b1essk.com/categories/develop/</link>
+    <description>My Hugo Blog (develop)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Nov 2020 00:00:00 +0900</lastBuildDate>
+    
+    <atom:link href="https://b1essk.com/categories/develop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>静的サイトジェネレーターHugoで自作ブログ</title>
+      <link>https://b1essk.com/posts/make-hugo-blog/</link>
+      <pubDate>Sun, 15 Nov 2020 00:00:00 +0900</pubDate>
+      
+      <guid>https://b1essk.com/posts/make-hugo-blog/</guid>
+      <description>&lt;p&gt;今回Hugoで自作ブログを作ってみました。&lt;/p&gt;
+&lt;h2 id=&#34;hugoとは&#34;&gt;Hugoとは&lt;/h2&gt;
+&lt;p&gt;Hugoとはスピードと柔軟性を兼ね備えたGo製の静的サイトジェネレーターです。
+静的サイトジェネレーターやjamstackといった静的サイトベースの技術を最近よく目にするので、僕もその波に乗りました。(ミーハー)&lt;/p&gt;
+&lt;p&gt;クラウドサーバーを使えば、自分でサーバーを管理する手間も省けるし、DBも不要。
+あと、当たり前かもだけど動的サイトと比べるとページ表示速度がとにかく速い。
+このあたりがWordpressのようなCMSと比べた時のメリットかなと思います。&lt;/p&gt;
+&lt;h2 id=&#34;hugoでブログ作成をスタート&#34;&gt;Hugoでブログ作成をスタート&lt;/h2&gt;
+&lt;p&gt;Hugoには素敵なテンプレートがたくさん用意されています。
+ので、僕のように「完全オリジナルは面倒」という人も安心してください。
+このブログも「」というテーマを拝借させていただいています。
+&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;Hugoテーマ一覧&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下のコマンドを打つだけで最初のセットアップが完了します。
+なんて便利なんだ、、、！&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;$ hugo new site &amp;lt;ディレクトリ名&amp;gt;
+$ cd &amp;lt;ディレクトリ名&amp;gt;
+$ git init
+$ git submodule add &amp;lt;GitHub上のテーマのurl&amp;gt; &amp;lt;テーマの名前&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;あとは自分好みにレイアウトやデザインをカスタマイズしたり、記事を追加していけばいい感じになります。(適当)
+各テーマのdocumentを見れば割とカスタマイズできるかと思います。&lt;/p&gt;
+&lt;h2 id=&#34;firebaseでホスティング&#34;&gt;Firebaseでホスティング&lt;/h2&gt;
+&lt;p&gt;FirebaseかNetlifyが良さそうだなぁと思っていたのですが、表示速度は妥協したくなかったのでfirebaseにしました。
+ドメインはgoogle domainで取得しました。(まじで一瞬だった)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://techblog.kayac.com/netlify-vs-firebase-2018&#34;&gt;徹底比較！Firebase vs Netlify (2018年版)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://usomitainikagayakumachi.tokyo/2018-05-29_github_pages_or_netrify_or_firebase/&#34;&gt;【GithubPages VS Netlify VS Firebase】爆速で静的サイトのホスティングができるのはどれ？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GitHub Actionsで自動ビルド&amp;amp;デプロイをしてくれるように設定しておけば、pushするだけで本番環境に差分が反映されるのでオススメです。&lt;/p&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;まだ未完成の部分もあるのでそこの調整は引き続きしていきます。
+静的サイトジェネレーターめちゃくちゃ便利だなとしみじみ。
+新しくブログを書き始めるならHugoにhello worldしてみてはどうでしょうか。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>rebase完全に理解した</title>
+      <link>https://b1essk.com/posts/tutorial-rebase/</link>
+      <pubDate>Sun, 25 Oct 2020 14:30:00 +0900</pubDate>
+      
+      <guid>https://b1essk.com/posts/tutorial-rebase/</guid>
+      <description>&lt;p&gt;最近実務で初めてrebaseを使って「？？？？」となったので調べました。&lt;/p&gt;
+&lt;p&gt;以下の動画、記事が分かりやすかったです。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=CRlGDDprdOQ&#34;&gt;Git MERGE vs REBASE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.atlassian.com/ja/git/tutorials/merging-vs-rebasing&#34;&gt;マージとリベース&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;具体例&#34;&gt;具体例&lt;/h2&gt;
+&lt;p&gt;今回は動画から引用してこのような場合を考えてみます。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;m2まで作業が進んでいるmasterブランチからfeatureブランチへcheckout&lt;/li&gt;
+&lt;li&gt;featureブランチでf1をコミット&lt;/li&gt;
+&lt;li&gt;masterブランチにcheckoutしてm3をコミット&lt;/li&gt;
+&lt;li&gt;再度featureブランチにcheckoutしてf2をコミット
+&lt;img src=&#34;https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/575694/adb79854-97ec-a83f-0ac8-0f61e8c9719a.png&#34; alt=&#34;スクリーンショット 2020-10-25 10.58.28.png&#34;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;ここまでの各ブランチのlog&#34;&gt;ここまでの各ブランチのlog&lt;/h2&gt;
+&lt;h4 id=&#34;masterブランチのlog&#34;&gt;masterブランチのlog&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;m3
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;featureブランチのlog&#34;&gt;featureブランチのlog&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;f2
+f1
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;merge-vs-rebase&#34;&gt;merge vs rebase&lt;/h2&gt;
+&lt;p&gt;ここからfeatureブランチにて、masterブランチを&lt;code&gt;merge&lt;/code&gt;, &lt;code&gt;rebase&lt;/code&gt;するとそれぞれどうなるか見ていきます。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git merge master&lt;/code&gt;のlog&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;f2
+m3
+f1
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;git rebase master&lt;/code&gt;のlog&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;f2
+f1
+m3
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;merge&lt;/code&gt;では時系列に沿ってそのまま差分を統合しているのに対し、&lt;code&gt;rebase&lt;/code&gt;ではfeatureブランチの先端がmasterで置き換えられています。
+&lt;code&gt;rebase&lt;/code&gt;を用いるとコミット履歴がすっきりしますね。&lt;/p&gt;
+&lt;h2 id=&#34;rebaseのアンチパターン&#34;&gt;rebaseのアンチパターン&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.atlassian.com/ja/git/tutorials/merging-vs-rebasing&#34;&gt;この記事&lt;/a&gt;から引用します。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;リベースの特徴を理解できたら、次に最も重要なことは、実行してはいけないときを知ることです。git rebase の黄金律は、リベースを public ブランチでは決して使用しないことです。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;masterブランチにて、自分の作業ブランチをrebaseしてしまうとmasterのコミット履歴が書き換えられてしまいます。
+このように、他の人にも共有済みのブランチで&lt;code&gt;rebase&lt;/code&gt;は使わないように注意しましょう。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

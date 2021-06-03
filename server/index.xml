@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My Hugo Blog</title>
+    <link>https://b1essk.com/</link>
+    <description>My Hugo Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="https://b1essk.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【React】再レンダリングの仕組みと最適化</title>
+      <link>https://b1essk.com/posts/react-re-rendering/</link>
+      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://b1essk.com/posts/react-re-rendering/</guid>
+      <description>&lt;p&gt;Reactのレンダリングについてまとめてみました。&lt;/p&gt;
+&lt;h1 id=&#34;reactが再レンダリングするタイミング&#34;&gt;Reactが再レンダリングするタイミング&lt;/h1&gt;
+&lt;p&gt;基本的にReactで再レンダリングが起きるタイミングは以下の3つ。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;stateが更新された時&lt;/li&gt;
+&lt;li&gt;propsが更新された時&lt;/li&gt;
+&lt;li&gt;親コンポーネントが再レンダリングされた時&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;1-stateが更新された時&#34;&gt;1. stateが更新された時&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上記のコードで空欄に文字を入力・削除してみると、処理回数に応じてconsoleに &lt;code&gt;App&lt;/code&gt; が繰り返される。
+すなわち、stateが変更されることで再レンダリングが発生している。&lt;/p&gt;
+&lt;h2 id=&#34;2-propsが更新された時&#34;&gt;2. propsが更新された時&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./components/Child&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setCount&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;countUp&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; () =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setCount&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onClick&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;countUp&lt;/span&gt;}&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;up&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;} /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/components/Child.jsx&#34; data-lang=&#34;js:src/components/Child.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) =&amp;gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt; } &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;;
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Child&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      {&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;}
+    &amp;lt;/&amp;gt;
+  );
+};
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;親である&lt;code&gt;App&lt;/code&gt;コンポーネントから子である&lt;code&gt;Child&lt;/code&gt;コンポーネントへ&lt;code&gt;count&lt;/code&gt;というpropsを渡している。
+ブラウザで実行して&lt;code&gt;count up&lt;/code&gt;ボタンを押すと数字が1ずつ増えていき、consoleには&lt;code&gt;Child&lt;/code&gt;が回数分表示される。
+すなわち、propsが変更されることで再レンダリングが発生している。&lt;/p&gt;
+&lt;h2 id=&#34;3-親コンポーネントが再レンダリングされた時&#34;&gt;3. 親コンポーネントが再レンダリングされた時&lt;/h2&gt;
+&lt;p&gt;これは「親コンポーネントで再レンダリングが発生すると、その配下にある子コンポーネントが全て再レンダリングされてしまう」というもの。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./components/Child&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Child&lt;/span&gt; /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/components/Child.jsx&#34; data-lang=&#34;js:src/components/Child.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; () =&amp;gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Child&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+};
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上記のコードでは親子間でのpropsの受け渡しはないが、ブラウザ上で空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、consoleに&lt;code&gt;App&lt;/code&gt;と&lt;code&gt;Child&lt;/code&gt;が繰り返し表示されることが確認できる。
+すなわち、親コンポーネントが再レンダリングされているタイミングで子コンポーネントも再レンダリングされている。
+親子間で値の受け渡しが無いのにも関わらず、意図せずこのような再レンダリングが発生してしまうことで、パフォーマンスが下がってしまう。&lt;/p&gt;
+&lt;h1 id=&#34;再レンダリングを最適化する&#34;&gt;再レンダリングを最適化する&lt;/h1&gt;
+&lt;p&gt;再レンダリングを最適化する、すなわち無駄な計算や処理を抑えるために必要なReactの機能が以下の3つ。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;memo&lt;/li&gt;
+&lt;li&gt;useCallback&lt;/li&gt;
+&lt;li&gt;useMemo&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;これらの機能を用いることで、メモ化(計算結果を保持し、それを再利用すること)ができる。
+同じ結果を返す処理に関しては初回のみ処理を実行しておき、2回目以降は前回の処理結果を呼び出すことで毎回同じ処理を実行しなくてよくなる。&lt;/p&gt;
+&lt;h2 id=&#34;1-memo&#34;&gt;1. memo&lt;/h2&gt;
+&lt;p&gt;以下のコードをブラウザで実行し、空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、consoleには&lt;code&gt;App&lt;/code&gt;のみが繰り返し表示される。(メモ化していない先ほどのコードでは&lt;code&gt;App&lt;/code&gt;と&lt;code&gt;Child&lt;/code&gt;が交互に繰り返されていた)
+Childコンポーネントはメモ化されているので、&lt;code&gt;Child&lt;/code&gt;はconsoleに表示されない。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./components/Child&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Child&lt;/span&gt; /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/components/Child.jsx&#34; data-lang=&#34;js:src/components/Child.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;memo&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;memo&lt;/span&gt;(() =&amp;gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Child&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+});
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2-usecallback&#34;&gt;2. useCallback&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;useCallback&lt;/code&gt;はメモ化したコールバック関数を返すHooks API。
+次に、以下のようなコードを実行してみる。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./components/Child&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/components/Child.jsx&#34; data-lang=&#34;js:src/components/Child.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;memo&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;memo&lt;/span&gt;((&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) =&amp;gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Child&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; } &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;;
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+});
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;先ほど親コンポーネント(App)で処理していたinput要素を子コンポーネント(Child)に移動させ、関数&lt;code&gt;changeText&lt;/code&gt;もpropsで受け渡している。
+以下のコードをブラウザで実行し、空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、再びconsoleに&lt;code&gt;App&lt;/code&gt;と&lt;code&gt;Child&lt;/code&gt;が繰り返し表示される。
+「&lt;code&gt;Child&lt;/code&gt;コンポーネントをメモ化しているのになぜ？」&lt;/p&gt;
+&lt;p&gt;この原因はpropsで受け渡した関数にある。
+親コンポーネントで生成した関数をpropsで子コンポーネントに渡すと、関数の内容が同じでも子コンポーネントでは「毎回新しい関数が渡されている」と判断されてしまう。
+そこで&lt;code&gt;useCallback&lt;/code&gt;を使う。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;useCallback&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./components/Child&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useCallback&lt;/span&gt;(
+    (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+    },
+    [&lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;]
+  );
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上のように関数(changeText)を&lt;code&gt;useCallback&lt;/code&gt;で囲み、第2引数には配列を設定できる。(&lt;code&gt;useEffect&lt;/code&gt;と同様)
+このコードをブラウザで実行し、空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、consoleには&lt;code&gt;App&lt;/code&gt;のみが繰り返し表示される。&lt;/p&gt;
+&lt;h2 id=&#34;3-usememo&#34;&gt;3. useMemo&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;useMemo&lt;/code&gt;は変数のメモ化ができるHooks API。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;todayDate&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; () =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Date&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Date();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dateString&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getFullYear&lt;/span&gt;()&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;年&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getMonth&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+    &lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;月&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getDate&lt;/span&gt;()&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;日`&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;// YYYY年MM月DD日
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;日付&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;dateString&lt;/span&gt;}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;;
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      {&lt;span style=&#34;color:#a6e22e&#34;&gt;todayDate&lt;/span&gt;()}
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上のコードをブラウザで実行し、空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、consoleに&lt;code&gt;App&lt;/code&gt;と&lt;code&gt;Date&lt;/code&gt;が交互に繰り返し表示される。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;useMemo&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;todayDate&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useMemo&lt;/span&gt;(() =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Date&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Date();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dateString&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getFullYear&lt;/span&gt;()&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;年&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getMonth&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+    &lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;月&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getDate&lt;/span&gt;()&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;日`&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;// YYYY年MM月DD日
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;日付&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;dateString&lt;/span&gt;}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;;
+  }, []);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      {&lt;span style=&#34;color:#a6e22e&#34;&gt;todayDate&lt;/span&gt;}
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上のように変数を返す関数(todayDate)を&lt;code&gt;useMemo&lt;/code&gt;で囲み、第2引数には配列を設定できる。(&lt;code&gt;useEffect&lt;/code&gt;と同様)
+このコードをブラウザで実行し、空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、consoleには&lt;code&gt;App&lt;/code&gt;のみが繰り返し表示される。&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zenn.dev/tsukunin/articles/4b41bce046ba74011cf4&#34;&gt;https://zenn.dev/tsukunin/articles/4b41bce046ba74011cf4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://times.hrbrain.co.jp/entry/react-hooks-performance&#34;&gt;https://times.hrbrain.co.jp/entry/react-hooks-performance&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2020年にやったこと</title>
+      <link>https://b1essk.com/posts/log-on-2020/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0900</pubDate>
+      
+      <guid>https://b1essk.com/posts/log-on-2020/</guid>
+      <description>&lt;p&gt;メリークリスマス！
+聖なる夜に振り返りするのってなんかロマンチックじゃない？&lt;/p&gt;
+&lt;p&gt;ということで、今年1年間の振り返り記事を書いてみました。
+今年1年間と書いてますが実際頑張ったのは, 就活が終わった5月以降なので半年の振り返りをしていきます。&lt;/p&gt;
+&lt;p&gt;GitHubを見てもきれいに半分がまっさら！w&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://b1essk.com/images/posts/2020-github-log.png&#34; alt=&#34;github-log&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;触れた技術たち&#34;&gt;触れた技術たち&lt;/h1&gt;
+&lt;p&gt;とりあえず興味のある言語やフレームワークに手を伸ばしてたら, 少し幅を広げすぎました。
+来年はもう少し的を絞って1つの理解を深めるのが課題。&lt;/p&gt;
+&lt;h3 id=&#34;ruby-on-rails&#34;&gt;Ruby on Rails&lt;/h3&gt;
+&lt;p&gt;最近はdisられることも多いが最初に触れたフレームワークがこいつでよかったです。
+「プログラミング全くわからん」の状態から「なんとなくアプリケーションが作れる」になれたのはこのフレームワークが優秀だったからだと思います。
+ありがとう, Ruby on Rails。&lt;/p&gt;
+&lt;h3 id=&#34;javascript&#34;&gt;JavaScript&lt;/h3&gt;
+&lt;p&gt;ちょうど半年前に触り始めました。めちゃくちゃ苦手からちょっと苦手に変わりました。&lt;/p&gt;
+&lt;h3 id=&#34;typescript&#34;&gt;TypeScript&lt;/h3&gt;
+&lt;p&gt;初めて触れた静的型付け言語です。
+最近はJS製のフレームワーク触る時もTSを使おうと頑張ってます。&lt;/p&gt;
+&lt;h3 id=&#34;flutter&#34;&gt;Flutter&lt;/h3&gt;
+&lt;p&gt;確か5月？に開催されたハッカソンで触れました。もう全部忘れましたがw
+また機会があればアプリ開発もやってみたいです。&lt;/p&gt;
+&lt;h3 id=&#34;vuejs&#34;&gt;Vue.js&lt;/h3&gt;
+&lt;p&gt;初めて触れたJSのフレームワークです。
+HTMLライクに書けるのがVue.jsのいいところかなと思ってます。
+初心者の僕でもとっつきやすかったです。&lt;/p&gt;
+&lt;h3 id=&#34;react&#34;&gt;React&lt;/h3&gt;
+&lt;p&gt;絶賛キャッチアップ中。
+最近触り始めたのですが, もうVue.jsに戻りたいです。w&lt;/p&gt;
+&lt;h3 id=&#34;gas&#34;&gt;GAS&lt;/h3&gt;
+&lt;p&gt;バイト先でスプシやgoogleフォームを使ったタスクの自動化で使いました。
+GASってわりと簡単に書けて便利ですね。&lt;/p&gt;
+&lt;h3 id=&#34;python&#34;&gt;Python&lt;/h3&gt;
+&lt;p&gt;スクレイピングとアルゴリズムの勉強程度しか触ってません。
+内定先ではメインで使う言語っぽいので来年はPythonに浸りそう&amp;hellip;？&lt;/p&gt;
+&lt;h3 id=&#34;docker&#34;&gt;Docker&lt;/h3&gt;
+&lt;p&gt;ローカルでコンテナ環境作るくらいならできるようになりました。
+本番環境でのコンテナ運用などはまだやったことないです。&lt;/p&gt;
+&lt;h3 id=&#34;heroku&#34;&gt;Heroku&lt;/h3&gt;
+&lt;p&gt;デプロイでたくさんお世話になりました。&lt;/p&gt;
+&lt;h3 id=&#34;firebase&#34;&gt;Firebase&lt;/h3&gt;
+&lt;p&gt;特にfirestoreとcloud storageはお世話になりました。
+firebase超便利。
+ただ、クエリの種類がまだまだ充実していない印象でした。検索機能とかの実装はかなりやりづらかった。
+この辺りはSQLベースの方が扱いやすいです。&lt;/p&gt;
+&lt;h3 id=&#34;aws&#34;&gt;AWS&lt;/h3&gt;
+&lt;p&gt;入門書買ってきてちょっと動かしてみた程度。
+本当に初歩の初歩しか理解してません。
+来年は業務でもガッツリ触れるといいな〜。&lt;/p&gt;
+&lt;h3 id=&#34;github&#34;&gt;GitHub&lt;/h3&gt;
+&lt;p&gt;ここ半年で一気に力がついたように思います。
+普通にチーム開発していく分には困らなくなりました。&lt;/p&gt;
+&lt;h1 id=&#34;技術書&#34;&gt;技術書&lt;/h1&gt;
+&lt;p&gt;流し読みしたものや途中で挫折したものもあります。
+お正月に読み返したい。
+個人的には「リーダブルコード」, 「SOFT SKILLS」, 「Web API The Good Parts」が良かったです。
+それにしても技術書高すぎない？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Webを支える技術&lt;/li&gt;
+&lt;li&gt;基本情報技術者試験参考書&lt;/li&gt;
+&lt;li&gt;プログラムはなぜ動くのか&lt;/li&gt;
+&lt;li&gt;オブジェクト指向でなぜ作るのか&lt;/li&gt;
+&lt;li&gt;ネットワークはなぜ繋がるのか&lt;/li&gt;
+&lt;li&gt;リーダブルコード&lt;/li&gt;
+&lt;li&gt;SOFT SKILLS&lt;/li&gt;
+&lt;li&gt;新しいLinuxの教科書&lt;/li&gt;
+&lt;li&gt;Rubyチェリー本&lt;/li&gt;
+&lt;li&gt;Ruby on Rails5アプリケーションプログラミング&lt;/li&gt;
+&lt;li&gt;達人に学ぶDB設計徹底指南書&lt;/li&gt;
+&lt;li&gt;JavaScript本格入門&lt;/li&gt;
+&lt;li&gt;Amazon Web Services超入門&lt;/li&gt;
+&lt;li&gt;プロになるためのWeb技術入門&lt;/li&gt;
+&lt;li&gt;Web API The Good Parts&lt;/li&gt;
+&lt;li&gt;Web db press 4冊&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;チーム開発-or-お仕事-or-ボランティア&#34;&gt;チーム開発 or お仕事 or ボランティア&lt;/h1&gt;
+&lt;p&gt;ありがたいことに色々経験させてもらいました, 感謝 :pray:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;web制作(LP4本)&lt;/li&gt;
+&lt;li&gt;スマートコスメのiOSアプリ(バックエンドのAPI)&lt;/li&gt;
+&lt;li&gt;ヴィーガン向けのレシピ共有サービス&lt;/li&gt;
+&lt;li&gt;海外で作られたサービスの改修&lt;/li&gt;
+&lt;li&gt;スクールの卒業生のプロダクトを投稿/閲覧できるサービス&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;個人開発&#34;&gt;個人開発&lt;/h1&gt;
+&lt;p&gt;もう少し手の凝ったやつを作りたかった, というのが反省です。
+どれも簡単なものばかり。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;開発プロダクト投稿サービス(GitHub APIとrails)&lt;/li&gt;
+&lt;li&gt;ポートフォリオサイト(Vue.jsで3日で頑張ったやつ)&lt;/li&gt;
+&lt;li&gt;LINE bot(googleカレンダー, slackと紐付けたto do管理のためのLINE bot)&lt;/li&gt;
+&lt;li&gt;スクールの卒業生のプロダクトを投稿/閲覧できるサービス(β版)&lt;/li&gt;
+&lt;li&gt;ブログ(Hugoのテーマをカスタマイズ)&lt;/li&gt;
+&lt;li&gt;Buzzrita(QiitaをスクレイピングしてTwitterのボットに呟かせる)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;作りかけ-or-リリースはしてない小さなアウトプット&#34;&gt;作りかけ or リリースはしてない小さなアウトプット&lt;/h1&gt;
+&lt;p&gt;この単位のアウトプットはもっと増やしたいです。
+あと質も上げたい。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;映画検索アプリ(tmdb APIとReact, TypeScriptで実装なう)&lt;/li&gt;
+&lt;li&gt;電卓(Vue.js)&lt;/li&gt;
+&lt;li&gt;ブラックジャック(php)&lt;/li&gt;
+&lt;li&gt;バックエンドrailsのAPI, フロントエンドはReact&amp;amp;TypeScriptでTwitterクローン(実装なう)&lt;/li&gt;
+&lt;li&gt;GASで色々自動化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;記事など&#34;&gt;記事など&lt;/h1&gt;
+&lt;p&gt;Qiitaに22記事投稿。以上！w
+来年はZennを使ってみたい&amp;hellip;！&lt;/p&gt;
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
+&lt;p&gt;直接技術に関連した話ではないのですが, 毎月のログをまとめていたのは良かったです。
+何をやったか, 何ができなかったか, 来月は何をやるか, みたいなところが把握しやすかった気がします。
+これは来年も続けたい。&lt;/p&gt;
+&lt;p&gt;勉強会に関してはいくつかオンラインで参加したのですが, うまく活用できなかったので来年はもっと活用したいです。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;書き出してみると意外と頑張ってたかもしれないです。
+半年あれば色々できるもんやね。&lt;/p&gt;
+&lt;p&gt;自分の弱みはすぐ目移りしちゃうことと, 質の高いアウトプットが少ないことだと思ってるので, 来年修正したいです。
+あと圧倒的基礎力不足。
+プログラミング言語やフレームワークを使うよりももっと前にやるべき根本的な仕組みの理解, ネットワークへの理解, 基本的なアルゴリズムの理解などなど, この辺の知識が皆無なのでヤバイなぁと思ってます。ここも頑張って勉強せねば。
+やることいっぱいですね。終わりが見えない。でも、楽しいです。
+来年は今年の3倍アウトプット出します。&lt;/p&gt;
+&lt;p&gt;それでは皆さん, 良いお年を〜&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>静的サイトジェネレーターHugoで自作ブログ</title>
+      <link>https://b1essk.com/posts/make-hugo-blog/</link>
+      <pubDate>Sun, 15 Nov 2020 00:00:00 +0900</pubDate>
+      
+      <guid>https://b1essk.com/posts/make-hugo-blog/</guid>
+      <description>&lt;p&gt;今回Hugoで自作ブログを作ってみました。&lt;/p&gt;
+&lt;h2 id=&#34;hugoとは&#34;&gt;Hugoとは&lt;/h2&gt;
+&lt;p&gt;Hugoとはスピードと柔軟性を兼ね備えたGo製の静的サイトジェネレーターです。
+静的サイトジェネレーターやjamstackといった静的サイトベースの技術を最近よく目にするので、僕もその波に乗りました。(ミーハー)&lt;/p&gt;
+&lt;p&gt;クラウドサーバーを使えば、自分でサーバーを管理する手間も省けるし、DBも不要。
+あと、当たり前かもだけど動的サイトと比べるとページ表示速度がとにかく速い。
+このあたりがWordpressのようなCMSと比べた時のメリットかなと思います。&lt;/p&gt;
+&lt;h2 id=&#34;hugoでブログ作成をスタート&#34;&gt;Hugoでブログ作成をスタート&lt;/h2&gt;
+&lt;p&gt;Hugoには素敵なテンプレートがたくさん用意されています。
+ので、僕のように「完全オリジナルは面倒」という人も安心してください。
+このブログも「」というテーマを拝借させていただいています。
+&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;Hugoテーマ一覧&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下のコマンドを打つだけで最初のセットアップが完了します。
+なんて便利なんだ、、、！&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;$ hugo new site &amp;lt;ディレクトリ名&amp;gt;
+$ cd &amp;lt;ディレクトリ名&amp;gt;
+$ git init
+$ git submodule add &amp;lt;GitHub上のテーマのurl&amp;gt; &amp;lt;テーマの名前&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;あとは自分好みにレイアウトやデザインをカスタマイズしたり、記事を追加していけばいい感じになります。(適当)
+各テーマのdocumentを見れば割とカスタマイズできるかと思います。&lt;/p&gt;
+&lt;h2 id=&#34;firebaseでホスティング&#34;&gt;Firebaseでホスティング&lt;/h2&gt;
+&lt;p&gt;FirebaseかNetlifyが良さそうだなぁと思っていたのですが、表示速度は妥協したくなかったのでfirebaseにしました。
+ドメインはgoogle domainで取得しました。(まじで一瞬だった)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://techblog.kayac.com/netlify-vs-firebase-2018&#34;&gt;徹底比較！Firebase vs Netlify (2018年版)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://usomitainikagayakumachi.tokyo/2018-05-29_github_pages_or_netrify_or_firebase/&#34;&gt;【GithubPages VS Netlify VS Firebase】爆速で静的サイトのホスティングができるのはどれ？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GitHub Actionsで自動ビルド&amp;amp;デプロイをしてくれるように設定しておけば、pushするだけで本番環境に差分が反映されるのでオススメです。&lt;/p&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;まだ未完成の部分もあるのでそこの調整は引き続きしていきます。
+静的サイトジェネレーターめちゃくちゃ便利だなとしみじみ。
+新しくブログを書き始めるならHugoにhello worldしてみてはどうでしょうか。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>rebase完全に理解した</title>
+      <link>https://b1essk.com/posts/tutorial-rebase/</link>
+      <pubDate>Sun, 25 Oct 2020 14:30:00 +0900</pubDate>
+      
+      <guid>https://b1essk.com/posts/tutorial-rebase/</guid>
+      <description>&lt;p&gt;最近実務で初めてrebaseを使って「？？？？」となったので調べました。&lt;/p&gt;
+&lt;p&gt;以下の動画、記事が分かりやすかったです。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=CRlGDDprdOQ&#34;&gt;Git MERGE vs REBASE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.atlassian.com/ja/git/tutorials/merging-vs-rebasing&#34;&gt;マージとリベース&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;具体例&#34;&gt;具体例&lt;/h2&gt;
+&lt;p&gt;今回は動画から引用してこのような場合を考えてみます。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;m2まで作業が進んでいるmasterブランチからfeatureブランチへcheckout&lt;/li&gt;
+&lt;li&gt;featureブランチでf1をコミット&lt;/li&gt;
+&lt;li&gt;masterブランチにcheckoutしてm3をコミット&lt;/li&gt;
+&lt;li&gt;再度featureブランチにcheckoutしてf2をコミット
+&lt;img src=&#34;https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/575694/adb79854-97ec-a83f-0ac8-0f61e8c9719a.png&#34; alt=&#34;スクリーンショット 2020-10-25 10.58.28.png&#34;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;ここまでの各ブランチのlog&#34;&gt;ここまでの各ブランチのlog&lt;/h2&gt;
+&lt;h4 id=&#34;masterブランチのlog&#34;&gt;masterブランチのlog&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;m3
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;featureブランチのlog&#34;&gt;featureブランチのlog&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;f2
+f1
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;merge-vs-rebase&#34;&gt;merge vs rebase&lt;/h2&gt;
+&lt;p&gt;ここからfeatureブランチにて、masterブランチを&lt;code&gt;merge&lt;/code&gt;, &lt;code&gt;rebase&lt;/code&gt;するとそれぞれどうなるか見ていきます。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git merge master&lt;/code&gt;のlog&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;f2
+m3
+f1
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;git rebase master&lt;/code&gt;のlog&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;f2
+f1
+m3
+m2
+m1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;merge&lt;/code&gt;では時系列に沿ってそのまま差分を統合しているのに対し、&lt;code&gt;rebase&lt;/code&gt;ではfeatureブランチの先端がmasterで置き換えられています。
+&lt;code&gt;rebase&lt;/code&gt;を用いるとコミット履歴がすっきりしますね。&lt;/p&gt;
+&lt;h2 id=&#34;rebaseのアンチパターン&#34;&gt;rebaseのアンチパターン&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.atlassian.com/ja/git/tutorials/merging-vs-rebasing&#34;&gt;この記事&lt;/a&gt;から引用します。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;リベースの特徴を理解できたら、次に最も重要なことは、実行してはいけないときを知ることです。git rebase の黄金律は、リベースを public ブランチでは決して使用しないことです。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;masterブランチにて、自分の作業ブランチをrebaseしてしまうとmasterのコミット履歴が書き換えられてしまいます。
+このように、他の人にも共有済みのブランチで&lt;code&gt;rebase&lt;/code&gt;は使わないように注意しましょう。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>大学生がVue.jsを使って3日間でポートフォリオを作成してみた</title>
+      <link>https://b1essk.com/posts/vue-portfolio/</link>
+      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://b1essk.com/posts/vue-portfolio/</guid>
+      <description>&lt;p&gt;Vue.jsでポートフォリオを作ったのでまとめました。&lt;/p&gt;
+&lt;h1 id=&#34;作ったサイト&#34;&gt;作ったサイト&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://mk-portfolio-site.netlify.app/&#34;&gt;https://mk-portfolio-site.netlify.app/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;動機&#34;&gt;動機&lt;/h1&gt;
+&lt;p&gt;今回サイトを作った動機は「自分のポートフォリオサイト持ってるのってなんかかっこいいよなぁ」と思ったからです。ちょうどいいアウトプットにもなりそうだったので作ることにしました。かかった期間は3日間。時間でいうと20時間くらいです。&lt;/p&gt;
+&lt;h1 id=&#34;1日目&#34;&gt;1日目&lt;/h1&gt;
+&lt;h2 id=&#34;サイトの構成を練る&#34;&gt;サイトの構成を練る&lt;/h2&gt;
+&lt;p&gt;ネット上で他の方が作ったポートフォリオを色々見まくって考えました。
+内容は以下の４項目に決めました。他の学生のポートフォリオを見ていると、インターンの開発経験や研究の内容を盛り込んでいる人も結構いましたが、自分は書くことがなかったのでその項目は外しました。悲しい。。。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Top(トップページ)&lt;/li&gt;
+&lt;li&gt;About(プロフィール)&lt;/li&gt;
+&lt;li&gt;Skills(使ってきた技術)&lt;/li&gt;
+&lt;li&gt;Works(制作物)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;デザインに関しても色々な方のポートフォリオを参考にしました。色やレイアウトはなるべくシンプルなものを目指しました。&lt;/p&gt;
+&lt;h2 id=&#34;使用技術の選定&#34;&gt;使用技術の選定&lt;/h2&gt;
+&lt;p&gt;基本的なレイアウトやデザインはHTML/CSS、動きをつけたりコンポーネントをまとめる部分でVue.jsを中心に使おうと決めました。Vue.jsを選択した理由は大きく2つ。1つ目の理由は他のライブラリやフレームワーク(ReactやAngularなど)と比べてとっつきやすいから、2つ目は人気そうだから、です(笑)。実際触ってみてかなり使いやすかったのでポートフォリオ作成したい人はVue.jsオススメです！&lt;/p&gt;
+&lt;h2 id=&#34;環境構築--大枠の実装&#34;&gt;環境構築 &amp;amp; 大枠の実装&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/567000/items/dde495d6a8ad1c25fa43&#34;&gt;Vue.js を vue-cli を使ってシンプルにはじめてみる&lt;/a&gt; という記事を見ながらVue CLIを使ってプロジェクトを作成しました。
+サイトの大まかなレイアウトやデザインを実装しました。細かいアニメーションやリンクの対応はまだできていない状態でした。&lt;/p&gt;
+&lt;h1 id=&#34;2日目&#34;&gt;2日目&lt;/h1&gt;
+&lt;h2 id=&#34;おしゃれなライブラリを導入&#34;&gt;おしゃれなライブラリを導入&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://qiita.com/shoma3571/items/025a4e8aedeb62b1fed4&#34;&gt;Vue.jsでポートフォリオを書く&lt;/a&gt;という記事に書かれていたvue-typerとsmoothScrollという2つのライブラリを導入しました。サイトに簡単な動作をつけたい人にはオススメです。&lt;/p&gt;
+&lt;h2 id=&#34;hover時の動作&#34;&gt;hover時の動作&lt;/h2&gt;
+&lt;p&gt;ボタンや画像のhoverに応じた色の変化や表示非表示の切り替えなどの動作をつけていきました。この辺ができてくると動きが出てきて楽しい。&lt;/p&gt;
+&lt;h1 id=&#34;3日目&#34;&gt;3日目&lt;/h1&gt;
+&lt;h2 id=&#34;レスポンシブデザイン&#34;&gt;レスポンシブデザイン&lt;/h2&gt;
+&lt;p&gt;今だとスマホで見る人が圧倒的に多いので、レスポンシブは必須かなと思い導入しました。レイアウトとフォントサイズの調整が主だったので割と簡単でした。1つ大変だったのがハンバーガーメニューです。ヘッダーにサイドバーを表示させるためのハンバーガーメニューを実装しました。Vue.jsのトランジションを取り入れて滑らかなアニメーションが実現できたかなと思います。(よかったらスマホで見てみてください&amp;hellip;！)&lt;/p&gt;
+&lt;h2 id=&#34;サイト公開&#34;&gt;サイト公開&lt;/h2&gt;
+&lt;p&gt;デプロイは&lt;a href=&#34;https://www.netlify.com/&#34;&gt;Netlify&lt;/a&gt;を利用しました。GitHubと連携させて自動デプロイができるので超便利です。&lt;a href=&#34;https://qiita.com/mnuma/items/15f2e8a5f34a392bc604&#34;&gt;vue-cliとNetlifyで始めるお手軽サイトホスティング&lt;/a&gt;という記事を見れば簡単にホスティングできます。&lt;a href=&#34;https://pages.github.com/&#34;&gt;Github Pages&lt;/a&gt;でもいいと思います。&lt;/p&gt;
+&lt;h1 id=&#34;もう少しやりたかったこと&#34;&gt;もう少しやりたかったこと&lt;/h1&gt;
+&lt;h2 id=&#34;ディレクトリ構成--単一ファイルコンポーネント&#34;&gt;ディレクトリ構成 &amp;amp; 単一ファイルコンポーネント&lt;/h2&gt;
+&lt;p&gt;実際にプロジェクトを作成していく中でディレクトリ構成に悩みました。そこで &lt;a href=&#34;https://qiita.com/tockn/items/2ce68b99e0839df52200#modules--pages%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3&#34;&gt;Vue.js ディレクトリ構成 色々試してみた&lt;/a&gt; という記事を参考に&lt;code&gt;Modules &amp;amp; Pagesパターン&lt;/code&gt;を採用してプロジェクトに反映させようとしました。Modulesに再利用可能なコンポーネント、Pagesに基本的なページ構成を書いていく、という考え方です。Vue.jsには単一ファイルコンポーネントという考え方があります。これは部品の再利用性や可読性を高めるために、レイアウトを部品ごとに分けて実装しようという考え方です。ディレクトリ構成は考えたもののうまくコンポーネントをまとめられなかったので、この辺はもう少し勉強して改善したいところです。&lt;/p&gt;
+&lt;h2 id=&#34;アニメーション&#34;&gt;アニメーション&lt;/h2&gt;
+&lt;p&gt;CSSアニメーションやVue.jsのトランジションを絡ませてサイトに動きをつけようとしたのですが、結構大変でした。上の方でも触れているハンバーガーメニューの実装は頑張りましたが、他のアニメーションに関しては今回は諦めました。時間ができたらまた挑戦したいです。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;思っていたより楽に良さげなサイトを作ることができました。「お手軽にポートフォリオ作ってみたい！」という方はぜひVue.js使ってみてください。では！&lt;/p&gt;
+&lt;h1 id=&#34;参考記事&#34;&gt;参考記事&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/567000/items/dde495d6a8ad1c25fa43&#34;&gt;Vue.js を vue-cli を使ってシンプルにはじめてみる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/shoma3571/items/025a4e8aedeb62b1fed4&#34;&gt;Vue.jsでポートフォリオを書く&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/p1ass/items/a01578b782f17f573510&#34;&gt;フロント未学習の大学生が1週間でVue.jsを使ったポートフォリオを作った話&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/mnuma/items/15f2e8a5f34a392bc604&#34;&gt;vue-cliとNetlifyで始めるお手軽サイトホスティング&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/tockn/items/2ce68b99e0839df52200#modules--pages%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3&#34;&gt;Vue.js ディレクトリ構成 色々試してみた&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;その他様々なポートフォリオサイトを拝見し、参考にさせていただきました。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>webサーバとアプリケーションサーバって何が違うんだろう？</title>
+      <link>https://b1essk.com/posts/web-app-server/</link>
+      <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://b1essk.com/posts/web-app-server/</guid>
+      <description>&lt;p&gt;webサーバとアプリケーションサーバの違いについてのまとめです。&lt;/p&gt;
+&lt;p&gt;「webサーバとアプリケーションサーバって何が違うんだろう？」、ふと思ったのでまとめた。&lt;/p&gt;
+&lt;h1 id=&#34;サーバとは&#34;&gt;サーバとは&lt;/h1&gt;
+&lt;p&gt;まずサーバって何？という話。サーバは英語でserver、つまり供給する・提供するってこと。&lt;a href=&#34;http://e-words.jp/w/%E3%82%B5%E3%83%BC%E3%83%90.html&#34;&gt;IT用語辞典&lt;/a&gt; によるとサーバとは、コンピュータネットワークにおいて、他のコンピュータに対し、自身の持っている機能やサービス、データなどを提供するコンピュータのこと。私たちがwebページを閲覧するとき、自分のPCから「このページ見たい！」とサーバにお願いする。すると、サーバが「はい、これ！」とページを返してくれる。これで、めでたくwebページが見れる。通常、個々のサーバ機やサーバソフトは、外部に提供する機能やサービス、対応しているデータ形式やプロトコル（通信規約）が決まっている。そして、「DBサーバ」「webサーバ」「アプリケーションサーバ」のように、提供する機能などの種類を冠して「○○サーバ」と呼ぶ。&lt;/p&gt;
+&lt;h1 id=&#34;webサーバ&#34;&gt;webサーバ&lt;/h1&gt;
+&lt;p&gt;webサーバはブラウザからのコンテンツのリクエストを受け取り、ブラウザにレスポンスを返すのが役割。このときのリクエストが静的なwebコンテンツだった場合(HTML、CSS、画像ファイルのような更新しない限り同じ表示コンテンツを表示するコンテンツ)、webサーバが処理してレスポンスを返す。また、クライアントごとに表示内容を変化させる処理が必要な動的なwebコンテンツの場合、webサーバはアプリケーションサーバへとリクエストを送る。そして、アプリケーションサーバから返ってきた結果をレスポンスとして返します。webサーバとして有名なのは Nginx、Apache など。&lt;/p&gt;
+&lt;h1 id=&#34;アプリケーションサーバ&#34;&gt;アプリケーションサーバ&lt;/h1&gt;
+&lt;p&gt;アプリケーションサーバは私たちが作ったアプリケーションを動かしてくれるもの。webサーバから送られてきたリクエストをアプリケーションサーバからアプリケーションに伝え、アプリが処理した結果をwebサーバに返す。ローカル環境下での開発の場合はアプリケーションサーバのみを立てるが、本番環境ではwebサーバをアプリケーションの手前に置くことで、静的なコンテンツの処理を負担させることが多い。&lt;/p&gt;
+&lt;h2 id=&#34;例えばrailsだったら&#34;&gt;例えばRailsだったら&lt;/h2&gt;
+&lt;p&gt;Railsのアプリケーションサーバとして代表的なのはUnicorn、Thin、Rainbows、Pumaなど。webサーバから送られてきたリクエストをアプリケーションサーバからRailsアプリケーションに伝え、Railsアプリが処理した結果をwebサーバに返す。ローカル環境下での開発の場合はPumaのようなRails用のアプリケーションサーバのみを立てる(普段development環境でやってるやつ)。一方、本番環境(production環境)ではwebサーバをRailsアプリケーションの手前に置き、静的なコンテンツの処理を負担させることが多い。こうすることで、Webサーバが複数のアプリケーション一度に処理したり、アセットを素早くレンダリングしたりして、リクエストごとに発生する多くの処理をさばいてくれる。&lt;/p&gt;
+&lt;h2 id=&#34;rack&#34;&gt;Rack&lt;/h2&gt;
+&lt;p&gt;ここでRackに触れておく。RackとはRuby製のフレームワークとアプリケーションサーバの間に入り、互いをつなぐ役割をしてくれる。サーバはRackを使用することで、送られてきたHTTPのリクエストがアプリにも理解できる形に変換される。逆にアプリからのレスポンスはRackを通じてHTTPに変換されてサーバに返る。Rackを使用することでサーバとフレームワークの組み合わせが自由になる。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;ここまでの内容をまとめる。ブラウザから送られてきたリクエストをwebサーバが受け取り、静的なwebコンテンツだった場合レスポンスをブラウザに返す。しかし、リクエストが動的なwebコンテンツの場合、webサーバでは処理せず、アプリケーションサーバに送る。そして、アプリケーションサーバがミドルウェアを通してアプリに伝える。処理が終わったら、先ほどとは逆の順番で結果をブラウザに返す。&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/sumin/items/86a0e2edc40566bcb666&#34;&gt;webサーバーとアプリケーションサーバーの違い&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://e-words.jp/w/%E3%82%B5%E3%83%BC%E3%83%90.html&#34;&gt;IT用語辞典&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/jnchito/items/3884f9a2ccc057f8f3a3&#34;&gt;Rails開発におけるwebサーバーとアプリケーションサーバーの違い（翻訳）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>【PATHを通す】を理解する</title>
+      <link>https://b1essk.com/posts/pass-path/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://b1essk.com/posts/pass-path/</guid>
+      <description>&lt;p&gt;「PATHを通す」ってよく聞くけど、意味がよく分からなかったので勉強しました。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PATHを通す&lt;/strong&gt;の意味がよくわからんので、色々調べました。&lt;/p&gt;
+&lt;h1 id=&#34;そもそもpathとは&#34;&gt;そもそもPATHとは&lt;/h1&gt;
+&lt;p&gt;PATHとは環境変数の1つ。環境変数とはPC環境についての変数で、すでに多くの環境変数が設定されている。Terminalで&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;$ env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;と入力すると、設定されているすべての環境変数が表示される。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;PWD&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/Users/hogehoge
+SHELL&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/bin/zsh
+PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+COLORTERM&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;truecolor
+HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/Users/hogehoge
+USER&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;hogehoge
+LOGNAME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;hogehoge
+ZSH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/Users/hogehoge/.oh-my-zsh
+PAGER&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;less
+LESS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;-R
+LC_CTYPE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+LSCOLORS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Gxfxcxdxbxegedabagacad
+_&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/usr/bin/printenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;例えば&lt;code&gt;$HOME&lt;/code&gt;という環境変数がホームディレクトリのパスになっていたり、&lt;code&gt;$USER&lt;/code&gt;という環境変数にユーザ名が入ってるのがわかる。&lt;code&gt;＄PATH&lt;/code&gt;という環境変数にもパスが入っているのが分かる。&lt;/p&gt;
+&lt;h1 id=&#34;path変数&#34;&gt;PATH変数&lt;/h1&gt;
+&lt;p&gt;Terminal上でコマンドが実行されたらコンピュータはそのコマンドを探しに行く。でも、コンピュータの中にはたくさんのファイルやフォルダがあるので、コンピュータ内をすべて探していたら時間がかかる。PATH変数に登録されているPATHだけ探すことで手間を省いている。&lt;/p&gt;
+&lt;p&gt;実際に通っているPATHはechoコマンドで確認できる。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;パスは&lt;code&gt;:&lt;/code&gt;で区切られており、今回の例では下記のパスが設定されている。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;/usr/local/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+/usr/local/sbin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;pathを通す&#34;&gt;PATHを通す&lt;/h1&gt;
+&lt;p&gt;PATHを通すというのはすなわちPATHという環境変数に新しいパスを追加するということ。新しいパスを追加したい場合は、&lt;code&gt;~/.bash_profile&lt;/code&gt;などの設定ファイルに&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$PATH：&amp;lt;追加したいPATH&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;を追記すればいい。&lt;/p&gt;
+&lt;h1 id=&#34;環境変数を永続化する&#34;&gt;環境変数を永続化する&lt;/h1&gt;
+&lt;p&gt;PATH以外でも、環境変数を永続化する場合、やり方は同様。環境変数はshellからexitすると消えるので、環境変数を永続化するためにはshellファイルを利用する。Bashというshellなら&lt;code&gt;~/.bash_profile&lt;/code&gt;や&lt;code&gt;~/.bashrc&lt;/code&gt;、zshなら&lt;code&gt;~/.zshrc&lt;/code&gt;がshellファイルに当たる。このファイルの中にexportで環境変数を追加する処理を加えれば、環境変数を永続化できる。すなわち、Terminalを再び立ち上げた後もその変数を利用できる。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

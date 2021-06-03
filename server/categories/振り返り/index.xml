@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>振り返り on My Hugo Blog</title>
+    <link>https://b1essk.com/categories/%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/</link>
+    <description>My Hugo Blog (振り返り)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Dec 2020 00:00:00 +0900</lastBuildDate>
+    
+    <atom:link href="https://b1essk.com/categories/%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2020年にやったこと</title>
+      <link>https://b1essk.com/posts/log-on-2020/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0900</pubDate>
+      
+      <guid>https://b1essk.com/posts/log-on-2020/</guid>
+      <description>&lt;p&gt;メリークリスマス！
+聖なる夜に振り返りするのってなんかロマンチックじゃない？&lt;/p&gt;
+&lt;p&gt;ということで、今年1年間の振り返り記事を書いてみました。
+今年1年間と書いてますが実際頑張ったのは, 就活が終わった5月以降なので半年の振り返りをしていきます。&lt;/p&gt;
+&lt;p&gt;GitHubを見てもきれいに半分がまっさら！w&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://b1essk.com/images/posts/2020-github-log.png&#34; alt=&#34;github-log&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;触れた技術たち&#34;&gt;触れた技術たち&lt;/h1&gt;
+&lt;p&gt;とりあえず興味のある言語やフレームワークに手を伸ばしてたら, 少し幅を広げすぎました。
+来年はもう少し的を絞って1つの理解を深めるのが課題。&lt;/p&gt;
+&lt;h3 id=&#34;ruby-on-rails&#34;&gt;Ruby on Rails&lt;/h3&gt;
+&lt;p&gt;最近はdisられることも多いが最初に触れたフレームワークがこいつでよかったです。
+「プログラミング全くわからん」の状態から「なんとなくアプリケーションが作れる」になれたのはこのフレームワークが優秀だったからだと思います。
+ありがとう, Ruby on Rails。&lt;/p&gt;
+&lt;h3 id=&#34;javascript&#34;&gt;JavaScript&lt;/h3&gt;
+&lt;p&gt;ちょうど半年前に触り始めました。めちゃくちゃ苦手からちょっと苦手に変わりました。&lt;/p&gt;
+&lt;h3 id=&#34;typescript&#34;&gt;TypeScript&lt;/h3&gt;
+&lt;p&gt;初めて触れた静的型付け言語です。
+最近はJS製のフレームワーク触る時もTSを使おうと頑張ってます。&lt;/p&gt;
+&lt;h3 id=&#34;flutter&#34;&gt;Flutter&lt;/h3&gt;
+&lt;p&gt;確か5月？に開催されたハッカソンで触れました。もう全部忘れましたがw
+また機会があればアプリ開発もやってみたいです。&lt;/p&gt;
+&lt;h3 id=&#34;vuejs&#34;&gt;Vue.js&lt;/h3&gt;
+&lt;p&gt;初めて触れたJSのフレームワークです。
+HTMLライクに書けるのがVue.jsのいいところかなと思ってます。
+初心者の僕でもとっつきやすかったです。&lt;/p&gt;
+&lt;h3 id=&#34;react&#34;&gt;React&lt;/h3&gt;
+&lt;p&gt;絶賛キャッチアップ中。
+最近触り始めたのですが, もうVue.jsに戻りたいです。w&lt;/p&gt;
+&lt;h3 id=&#34;gas&#34;&gt;GAS&lt;/h3&gt;
+&lt;p&gt;バイト先でスプシやgoogleフォームを使ったタスクの自動化で使いました。
+GASってわりと簡単に書けて便利ですね。&lt;/p&gt;
+&lt;h3 id=&#34;python&#34;&gt;Python&lt;/h3&gt;
+&lt;p&gt;スクレイピングとアルゴリズムの勉強程度しか触ってません。
+内定先ではメインで使う言語っぽいので来年はPythonに浸りそう&amp;hellip;？&lt;/p&gt;
+&lt;h3 id=&#34;docker&#34;&gt;Docker&lt;/h3&gt;
+&lt;p&gt;ローカルでコンテナ環境作るくらいならできるようになりました。
+本番環境でのコンテナ運用などはまだやったことないです。&lt;/p&gt;
+&lt;h3 id=&#34;heroku&#34;&gt;Heroku&lt;/h3&gt;
+&lt;p&gt;デプロイでたくさんお世話になりました。&lt;/p&gt;
+&lt;h3 id=&#34;firebase&#34;&gt;Firebase&lt;/h3&gt;
+&lt;p&gt;特にfirestoreとcloud storageはお世話になりました。
+firebase超便利。
+ただ、クエリの種類がまだまだ充実していない印象でした。検索機能とかの実装はかなりやりづらかった。
+この辺りはSQLベースの方が扱いやすいです。&lt;/p&gt;
+&lt;h3 id=&#34;aws&#34;&gt;AWS&lt;/h3&gt;
+&lt;p&gt;入門書買ってきてちょっと動かしてみた程度。
+本当に初歩の初歩しか理解してません。
+来年は業務でもガッツリ触れるといいな〜。&lt;/p&gt;
+&lt;h3 id=&#34;github&#34;&gt;GitHub&lt;/h3&gt;
+&lt;p&gt;ここ半年で一気に力がついたように思います。
+普通にチーム開発していく分には困らなくなりました。&lt;/p&gt;
+&lt;h1 id=&#34;技術書&#34;&gt;技術書&lt;/h1&gt;
+&lt;p&gt;流し読みしたものや途中で挫折したものもあります。
+お正月に読み返したい。
+個人的には「リーダブルコード」, 「SOFT SKILLS」, 「Web API The Good Parts」が良かったです。
+それにしても技術書高すぎない？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Webを支える技術&lt;/li&gt;
+&lt;li&gt;基本情報技術者試験参考書&lt;/li&gt;
+&lt;li&gt;プログラムはなぜ動くのか&lt;/li&gt;
+&lt;li&gt;オブジェクト指向でなぜ作るのか&lt;/li&gt;
+&lt;li&gt;ネットワークはなぜ繋がるのか&lt;/li&gt;
+&lt;li&gt;リーダブルコード&lt;/li&gt;
+&lt;li&gt;SOFT SKILLS&lt;/li&gt;
+&lt;li&gt;新しいLinuxの教科書&lt;/li&gt;
+&lt;li&gt;Rubyチェリー本&lt;/li&gt;
+&lt;li&gt;Ruby on Rails5アプリケーションプログラミング&lt;/li&gt;
+&lt;li&gt;達人に学ぶDB設計徹底指南書&lt;/li&gt;
+&lt;li&gt;JavaScript本格入門&lt;/li&gt;
+&lt;li&gt;Amazon Web Services超入門&lt;/li&gt;
+&lt;li&gt;プロになるためのWeb技術入門&lt;/li&gt;
+&lt;li&gt;Web API The Good Parts&lt;/li&gt;
+&lt;li&gt;Web db press 4冊&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;チーム開発-or-お仕事-or-ボランティア&#34;&gt;チーム開発 or お仕事 or ボランティア&lt;/h1&gt;
+&lt;p&gt;ありがたいことに色々経験させてもらいました, 感謝 :pray:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;web制作(LP4本)&lt;/li&gt;
+&lt;li&gt;スマートコスメのiOSアプリ(バックエンドのAPI)&lt;/li&gt;
+&lt;li&gt;ヴィーガン向けのレシピ共有サービス&lt;/li&gt;
+&lt;li&gt;海外で作られたサービスの改修&lt;/li&gt;
+&lt;li&gt;スクールの卒業生のプロダクトを投稿/閲覧できるサービス&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;個人開発&#34;&gt;個人開発&lt;/h1&gt;
+&lt;p&gt;もう少し手の凝ったやつを作りたかった, というのが反省です。
+どれも簡単なものばかり。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;開発プロダクト投稿サービス(GitHub APIとrails)&lt;/li&gt;
+&lt;li&gt;ポートフォリオサイト(Vue.jsで3日で頑張ったやつ)&lt;/li&gt;
+&lt;li&gt;LINE bot(googleカレンダー, slackと紐付けたto do管理のためのLINE bot)&lt;/li&gt;
+&lt;li&gt;スクールの卒業生のプロダクトを投稿/閲覧できるサービス(β版)&lt;/li&gt;
+&lt;li&gt;ブログ(Hugoのテーマをカスタマイズ)&lt;/li&gt;
+&lt;li&gt;Buzzrita(QiitaをスクレイピングしてTwitterのボットに呟かせる)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;作りかけ-or-リリースはしてない小さなアウトプット&#34;&gt;作りかけ or リリースはしてない小さなアウトプット&lt;/h1&gt;
+&lt;p&gt;この単位のアウトプットはもっと増やしたいです。
+あと質も上げたい。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;映画検索アプリ(tmdb APIとReact, TypeScriptで実装なう)&lt;/li&gt;
+&lt;li&gt;電卓(Vue.js)&lt;/li&gt;
+&lt;li&gt;ブラックジャック(php)&lt;/li&gt;
+&lt;li&gt;バックエンドrailsのAPI, フロントエンドはReact&amp;amp;TypeScriptでTwitterクローン(実装なう)&lt;/li&gt;
+&lt;li&gt;GASで色々自動化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;記事など&#34;&gt;記事など&lt;/h1&gt;
+&lt;p&gt;Qiitaに22記事投稿。以上！w
+来年はZennを使ってみたい&amp;hellip;！&lt;/p&gt;
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
+&lt;p&gt;直接技術に関連した話ではないのですが, 毎月のログをまとめていたのは良かったです。
+何をやったか, 何ができなかったか, 来月は何をやるか, みたいなところが把握しやすかった気がします。
+これは来年も続けたい。&lt;/p&gt;
+&lt;p&gt;勉強会に関してはいくつかオンラインで参加したのですが, うまく活用できなかったので来年はもっと活用したいです。&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;書き出してみると意外と頑張ってたかもしれないです。
+半年あれば色々できるもんやね。&lt;/p&gt;
+&lt;p&gt;自分の弱みはすぐ目移りしちゃうことと, 質の高いアウトプットが少ないことだと思ってるので, 来年修正したいです。
+あと圧倒的基礎力不足。
+プログラミング言語やフレームワークを使うよりももっと前にやるべき根本的な仕組みの理解, ネットワークへの理解, 基本的なアルゴリズムの理解などなど, この辺の知識が皆無なのでヤバイなぁと思ってます。ここも頑張って勉強せねば。
+やることいっぱいですね。終わりが見えない。でも、楽しいです。
+来年は今年の3倍アウトプット出します。&lt;/p&gt;
+&lt;p&gt;それでは皆さん, 良いお年を〜&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

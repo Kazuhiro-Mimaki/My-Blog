@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>react on My Hugo Blog</title>
+    <link>https://b1essk.com/tags/react/</link>
+    <description>My Hugo Blog (react)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="https://b1essk.com/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【React】再レンダリングの仕組みと最適化</title>
+      <link>https://b1essk.com/posts/react-re-rendering/</link>
+      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://b1essk.com/posts/react-re-rendering/</guid>
+      <description>&lt;p&gt;Reactのレンダリングについてまとめてみました。&lt;/p&gt;
+&lt;h1 id=&#34;reactが再レンダリングするタイミング&#34;&gt;Reactが再レンダリングするタイミング&lt;/h1&gt;
+&lt;p&gt;基本的にReactで再レンダリングが起きるタイミングは以下の3つ。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;stateが更新された時&lt;/li&gt;
+&lt;li&gt;propsが更新された時&lt;/li&gt;
+&lt;li&gt;親コンポーネントが再レンダリングされた時&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;1-stateが更新された時&#34;&gt;1. stateが更新された時&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上記のコードで空欄に文字を入力・削除してみると、処理回数に応じてconsoleに &lt;code&gt;App&lt;/code&gt; が繰り返される。
+すなわち、stateが変更されることで再レンダリングが発生している。&lt;/p&gt;
+&lt;h2 id=&#34;2-propsが更新された時&#34;&gt;2. propsが更新された時&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./components/Child&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setCount&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;countUp&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; () =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setCount&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onClick&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;countUp&lt;/span&gt;}&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;up&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;} /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/components/Child.jsx&#34; data-lang=&#34;js:src/components/Child.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) =&amp;gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt; } &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;;
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Child&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      {&lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;}
+    &amp;lt;/&amp;gt;
+  );
+};
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;親である&lt;code&gt;App&lt;/code&gt;コンポーネントから子である&lt;code&gt;Child&lt;/code&gt;コンポーネントへ&lt;code&gt;count&lt;/code&gt;というpropsを渡している。
+ブラウザで実行して&lt;code&gt;count up&lt;/code&gt;ボタンを押すと数字が1ずつ増えていき、consoleには&lt;code&gt;Child&lt;/code&gt;が回数分表示される。
+すなわち、propsが変更されることで再レンダリングが発生している。&lt;/p&gt;
+&lt;h2 id=&#34;3-親コンポーネントが再レンダリングされた時&#34;&gt;3. 親コンポーネントが再レンダリングされた時&lt;/h2&gt;
+&lt;p&gt;これは「親コンポーネントで再レンダリングが発生すると、その配下にある子コンポーネントが全て再レンダリングされてしまう」というもの。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./components/Child&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Child&lt;/span&gt; /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/components/Child.jsx&#34; data-lang=&#34;js:src/components/Child.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; () =&amp;gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Child&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+};
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上記のコードでは親子間でのpropsの受け渡しはないが、ブラウザ上で空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、consoleに&lt;code&gt;App&lt;/code&gt;と&lt;code&gt;Child&lt;/code&gt;が繰り返し表示されることが確認できる。
+すなわち、親コンポーネントが再レンダリングされているタイミングで子コンポーネントも再レンダリングされている。
+親子間で値の受け渡しが無いのにも関わらず、意図せずこのような再レンダリングが発生してしまうことで、パフォーマンスが下がってしまう。&lt;/p&gt;
+&lt;h1 id=&#34;再レンダリングを最適化する&#34;&gt;再レンダリングを最適化する&lt;/h1&gt;
+&lt;p&gt;再レンダリングを最適化する、すなわち無駄な計算や処理を抑えるために必要なReactの機能が以下の3つ。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;memo&lt;/li&gt;
+&lt;li&gt;useCallback&lt;/li&gt;
+&lt;li&gt;useMemo&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;これらの機能を用いることで、メモ化(計算結果を保持し、それを再利用すること)ができる。
+同じ結果を返す処理に関しては初回のみ処理を実行しておき、2回目以降は前回の処理結果を呼び出すことで毎回同じ処理を実行しなくてよくなる。&lt;/p&gt;
+&lt;h2 id=&#34;1-memo&#34;&gt;1. memo&lt;/h2&gt;
+&lt;p&gt;以下のコードをブラウザで実行し、空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、consoleには&lt;code&gt;App&lt;/code&gt;のみが繰り返し表示される。(メモ化していない先ほどのコードでは&lt;code&gt;App&lt;/code&gt;と&lt;code&gt;Child&lt;/code&gt;が交互に繰り返されていた)
+Childコンポーネントはメモ化されているので、&lt;code&gt;Child&lt;/code&gt;はconsoleに表示されない。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./components/Child&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Child&lt;/span&gt; /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/components/Child.jsx&#34; data-lang=&#34;js:src/components/Child.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;memo&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;memo&lt;/span&gt;(() =&amp;gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Child&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+});
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2-usecallback&#34;&gt;2. useCallback&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;useCallback&lt;/code&gt;はメモ化したコールバック関数を返すHooks API。
+次に、以下のようなコードを実行してみる。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./components/Child&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/components/Child.jsx&#34; data-lang=&#34;js:src/components/Child.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;memo&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;memo&lt;/span&gt;((&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) =&amp;gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Child&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; } &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;;
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+});
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;先ほど親コンポーネント(App)で処理していたinput要素を子コンポーネント(Child)に移動させ、関数&lt;code&gt;changeText&lt;/code&gt;もpropsで受け渡している。
+以下のコードをブラウザで実行し、空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、再びconsoleに&lt;code&gt;App&lt;/code&gt;と&lt;code&gt;Child&lt;/code&gt;が繰り返し表示される。
+「&lt;code&gt;Child&lt;/code&gt;コンポーネントをメモ化しているのになぜ？」&lt;/p&gt;
+&lt;p&gt;この原因はpropsで受け渡した関数にある。
+親コンポーネントで生成した関数をpropsで子コンポーネントに渡すと、関数の内容が同じでも子コンポーネントでは「毎回新しい関数が渡されている」と判断されてしまう。
+そこで&lt;code&gt;useCallback&lt;/code&gt;を使う。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;useCallback&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./components/Child&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useCallback&lt;/span&gt;(
+    (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+    },
+    [&lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;]
+  );
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Child&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上のように関数(changeText)を&lt;code&gt;useCallback&lt;/code&gt;で囲み、第2引数には配列を設定できる。(&lt;code&gt;useEffect&lt;/code&gt;と同様)
+このコードをブラウザで実行し、空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、consoleには&lt;code&gt;App&lt;/code&gt;のみが繰り返し表示される。&lt;/p&gt;
+&lt;h2 id=&#34;3-usememo&#34;&gt;3. useMemo&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;useMemo&lt;/code&gt;は変数のメモ化ができるHooks API。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;todayDate&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; () =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Date&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Date();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dateString&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getFullYear&lt;/span&gt;()&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;年&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getMonth&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+    &lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;月&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getDate&lt;/span&gt;()&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;日`&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;// YYYY年MM月DD日
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;日付&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;dateString&lt;/span&gt;}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;;
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      {&lt;span style=&#34;color:#a6e22e&#34;&gt;todayDate&lt;/span&gt;()}
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上のコードをブラウザで実行し、空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、consoleに&lt;code&gt;App&lt;/code&gt;と&lt;code&gt;Date&lt;/code&gt;が交互に繰り返し表示される。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js:src/App.jsx&#34; data-lang=&#34;js:src/App.jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;useMemo&lt;/span&gt; } &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt;() {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;App&amp;#34;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useState&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;) =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;setText&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;);
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;todayDate&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useMemo&lt;/span&gt;(() =&amp;gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Date&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Date();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dateString&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getFullYear&lt;/span&gt;()&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;年&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getMonth&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+    &lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;月&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dateObj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getDate&lt;/span&gt;()&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;日`&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;// YYYY年MM月DD日
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;日付&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;dateString&lt;/span&gt;}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;;
+  }, []);
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onChange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;changeText&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt; /&amp;gt;
+      {&lt;span style=&#34;color:#a6e22e&#34;&gt;todayDate&lt;/span&gt;}
+    &amp;lt;/&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上のように変数を返す関数(todayDate)を&lt;code&gt;useMemo&lt;/code&gt;で囲み、第2引数には配列を設定できる。(&lt;code&gt;useEffect&lt;/code&gt;と同様)
+このコードをブラウザで実行し、空欄に文字を入力・削除すると(親である&lt;code&gt;App&lt;/code&gt;コンポーネントに記述されている&lt;code&gt;input&lt;/code&gt;要素に値を入力すると)、consoleには&lt;code&gt;App&lt;/code&gt;のみが繰り返し表示される。&lt;/p&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zenn.dev/tsukunin/articles/4b41bce046ba74011cf4&#34;&gt;https://zenn.dev/tsukunin/articles/4b41bce046ba74011cf4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://times.hrbrain.co.jp/entry/react-hooks-performance&#34;&gt;https://times.hrbrain.co.jp/entry/react-hooks-performance&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
